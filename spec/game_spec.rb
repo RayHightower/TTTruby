@@ -11,5 +11,9 @@ describe Game do
       sample_grid = @game.get_status
       sample_grid.should == [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
+
+    it "really gets the status, not that made up junk" do
+      @game.get_status.should == false
+    end
   end
 end
