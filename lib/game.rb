@@ -9,7 +9,8 @@ class Game
     @player0 = Player.new
   end
 
-  def print_status
+  def get_status
+
 
   end
 

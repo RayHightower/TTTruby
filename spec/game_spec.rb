@@ -7,8 +7,9 @@ describe Game do
       @game = Game.new
     end
 
-    it "prints the grid with the current cell contents" do
-      @game.print_status
+    it "stores the status of the cells in the grid" do
+      @game.get_status
+
     end
   end
 end
