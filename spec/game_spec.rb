@@ -1,7 +1,5 @@
 require 'game'
 
-module TTTruby
-
   describe Game do
     context "orginary game of Tic Tac Toe" do
 
@@ -15,4 +13,3 @@ module TTTruby
       end
     end
   end
-end
