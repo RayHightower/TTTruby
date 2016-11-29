@@ -1,11 +1,14 @@
+require 'grid'
+
 class Game
 
   def initialize
-    @cells = 0
-    
+    @grid = Grid.new
+
+
   end
 
-  def cells
+  def print_status
 
   end
 
