@@ -25,10 +25,6 @@ describe Game do
       expect(@player[1].designation).to eq "O"
     end
 
-    it "gets moves" do
-
-    end
-
     it "prints the current state of the grid" do
       @game.print_grid
     end

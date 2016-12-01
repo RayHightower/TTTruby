@@ -5,7 +5,6 @@ describe Grid do
 
     before do
       @thisgrid = Grid.new
-
     end
 
     it "creates the initial TTT grid" do
@@ -31,6 +30,20 @@ describe Grid do
       @thisgrid.add_move(original_designation, location)
       @thisgrid.add_move(interloper, location)
       expect(@thisgrid.contents[location]).to eq original_designation
+    end
+
+    it "will return false if we try to move into an occupied cell" do
+      location = 1
+      original_designation = "O"
+      interloper = "X"
+      @thisgrid.add_move(original_designation, location)
+      expect(@thisgrid.add_move(interloper, location)).to eq false
+    end
+
+    it "will return true if we move into an empty cell" do
+      location = 1
+      designation = "O"
+      expect(@thisgrid.add_move(designation, location)).to eq true
     end
   end
 end

@@ -20,9 +20,9 @@ class Grid
   def add_move(designation, location)
     if @cell[location] == location  # that is, if this cell is empty
       then @cell[location] = designation
-      printf "\n@cell[#{location}] = #{@cell[location]}"
+      return true # because we successfully added the move
     else
-      printf "\nSorry Player #{designation}, but that cell is already occupied."
+      return false # because the cell is already occupied
     end
   end
 end
