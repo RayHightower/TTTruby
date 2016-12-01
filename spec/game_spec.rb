@@ -6,8 +6,8 @@ describe Game do
     before do
       @game = Game.new
       @player = []
-      @player[0] = Player.new
-      @player[1] = Player.new
+      @player[0] = Player.new("X")
+      @player[1] = Player.new("O")
     end
 
     it "inits the game" do
@@ -15,8 +15,14 @@ describe Game do
       expect(sample_grid_contents).to eq [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
-    it "inits the players" do
+    it "inits the first player with the correct designation" do
+      @player[0].designation = "X"
+      expect(@player[0].designation).to eq "X"
+    end
 
+    it "inits the second player with the correct designation" do
+      @player[1].designation = "O"
+      expect(@player[1].designation).to eq "O"
     end
 
     it "gets moves" do
