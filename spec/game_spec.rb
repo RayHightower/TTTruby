@@ -19,9 +19,16 @@ describe Game do
 
     end
 
+    it "gets moves" do
+
+    end
+
     it "prints the current state of the grid" do
       @game.print_grid
     end
 
+    it "checks for a winnner" do
+      @game.check_winner
+    end
   end
 end

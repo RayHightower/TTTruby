@@ -15,7 +15,14 @@ describe Player do
 
     it "chooses letter 'X' for the first player" do
       puts "@player[0].name = #{@player[0].name}"
+      @player[0].designation = "X"
       expect(@player[0].designation).to eq "X"
+    end
+
+    it "chooses letter 'O' for the second player" do
+      puts "@player[1].name = #{@player[1].name}"
+      @player[1].designation = "O"
+      expect(@player[1].designation).to eq "O"
     end
   end
 end

@@ -1,12 +1,10 @@
 class Player
 
+  attr_accessor :designation
+
   def initialize
     @designation = "X"
     @name = "Random Name"
-  end
-
-  def designation
-    @designation
   end
 
   def name
@@ -14,8 +12,3 @@ class Player
   end
 
 end
-
-@player = []
-@player[8] = Player.new
-puts "@player[8].name = #{@player[8].name}"
-
