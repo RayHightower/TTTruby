@@ -16,11 +16,6 @@ class Game
     @grid.print_grid
   end
 
-  def get_move(mover)
-    move = gets.chomp
-    puts "Okay #{mover.designation}, your move is #{move}."
-  end
-
   def check_winner
     true
   end

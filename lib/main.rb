@@ -15,7 +15,7 @@ puts "\nWelcome to Tic Tac Toe\nYou know the rules. Here's the grid.\n"
 turn = 0
 
 # Main event loop.
-while true
+while game_is_active
   turn = turn + 1
   mover = @player[turn % 2]
   move = gets.chomp
