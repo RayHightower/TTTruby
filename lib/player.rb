@@ -3,7 +3,7 @@ class Player
   attr_accessor :designation
 
   def initialize
-    @designation = "X"
+    @designation = ""
     @name = "Random Name"
   end
 

@@ -17,7 +17,7 @@ class Game
   end
 
   def get_move(mover)
-    move = gets
+    move = gets.chomp
     puts "Okay #{mover.designation}, your move is #{move}."
   end
 
@@ -44,7 +44,9 @@ turn = 0
 while true
   turn = turn + 1
   mover = @player[turn % 2]
-  @thisgame.get_move(mover)
+  move = gets.chomp
+  puts "Okay #{mover.designation}, your move is #{move}."
+  # @thisgame.get_move(mover)
   
   # if @thisgame.check_winner 
   #   puts "*** #{mover} wins! ***"
