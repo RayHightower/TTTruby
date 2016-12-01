@@ -18,15 +18,15 @@ class Grid
   end
 
   def add_move(designation, location)
-    if (location < 1) || (location > 9)
-      then return false
+    if ((location < 1) || (location > 9))
+      return false
+    end
 
     if @cell[location] != location  # that is, if this cell is empty
       return false # because the cell is already occupied
-
-    else
-      then @cell[location] = designation
-      return true # because we successfully added the move
     end
+
+    @cell[location] = designation
+    return true # because we successfully added the move
   end
 end
