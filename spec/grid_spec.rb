@@ -16,6 +16,27 @@ describe Grid do
       @thisgrid.print_grid
     end
 
+    it "allows moves between the range of 1 and 9, inclusive" do
+      designation = "X"
+      location = 4
+      returnvalue = @thisgrid.add_move(designation, location)
+      expect(returnvalue).to eq true
+    end
+
+    it "disallows moves greater than 9" do
+      designation = "X"
+      location = 10
+      returnvalue = @thisgrid.add_move(designation, location)
+      expect(returnvalue).to eq false
+    end
+
+    it "disallows moves less than 1" do
+      designation = "X"
+      location = 0
+      returnvalue = @thisgrid.add_move(designation, location)
+      expect(returnvalue).to eq false
+    end
+
     it "adds a move to a cell" do
       designation = "X"
       location = 4
