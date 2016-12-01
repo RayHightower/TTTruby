@@ -1,7 +1,7 @@
 require 'grid'
 
 describe Grid do
-  context "what the grid should look like" do
+  context "TTT grid" do
 
     before do
       @thisgrid = Grid.new
@@ -24,8 +24,13 @@ describe Grid do
       expect(@thisgrid.contents[location]).to eq designation
     end
 
-    it "determines whether or not a cell is occupied" do
-
+    it "will disallow a move to an occupied cell" do
+      location = 5
+      original_designation = "X"
+      interloper = "O"
+      @thisgrid.add_move(original_designation, location)
+      @thisgrid.add_move(interloper, location)
+      expect(@thisgrid.contents[location]).to eq original_designation
     end
   end
 end

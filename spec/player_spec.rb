@@ -1,7 +1,7 @@
 require 'player'
 
 describe Player do
-  context "create TTT players" do
+  context "TTT players" do
 
     before do
       @player = []

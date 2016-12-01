@@ -16,4 +16,13 @@ class Grid
     print " #{@cell[7]} | #{@cell[8]} | #{@cell[9]}"
     print "\n"
   end
+
+  def add_move(designation, location)
+    if @cell[location] == location  # that is, if this cell is empty
+      then @cell[location] = designation
+      printf "\n@cell[#{location}] = #{@cell[location]}"
+    else
+      printf "\nSorry Player #{designation}, but that cell is already occupied."
+    end
+  end
 end
