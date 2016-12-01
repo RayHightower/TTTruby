@@ -21,5 +21,6 @@ end
 sample_grid = Grid.new
 sample_grid.print_grid
 
-sample_grid.contents
+print "\nsample_grid.contents = #{sample_grid.contents}"
+
 
