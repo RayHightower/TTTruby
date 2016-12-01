@@ -9,7 +9,7 @@ class Grid
   end
 
   def print_grid
-    print " #{@cell[1]} | #{@cell[2]} | #{@cell[3]}"
+    print "\n #{@cell[1]} | #{@cell[2]} | #{@cell[3]}"
     print "\n-----------\n"
     print " #{@cell[4]} | #{@cell[5]} | #{@cell[6]}"
     print "\n-----------\n"

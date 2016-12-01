@@ -27,3 +27,14 @@ end
 @player[1] = Player.new
 
 
+puts "\nWelcome to Tic Tac Toe\nYou know the rules. Here's the grid.\n"
+@thisgame.print_grid
+
+turn = 0
+
+while true
+  turn = turn + 1
+  mover = @player[turn % 2]
+  move = gets.chomp
+  puts "Your move is #{move}."
+end
