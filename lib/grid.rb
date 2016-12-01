@@ -17,10 +17,3 @@ class Grid
     print "\n"
   end
 end
-
-sample_grid = Grid.new
-sample_grid.print_grid
-
-print "\nsample_grid.contents = #{sample_grid.contents}"
-
-
