@@ -21,7 +21,7 @@ while game_is_active
   move = gets.chomp.to_i
 
   while !thisgame.add_move(mover, move)
-    puts "Nice try, #{mover.designation}. Illegal move. Try again."
+    puts "No way, Player #{mover.designation}. Illegal move. Try again."
     move = gets.chomp.to_i
   end
 
