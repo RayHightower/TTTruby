@@ -22,6 +22,7 @@ while game_is_active
 
   while !thisgame.add_move(mover, move)
     puts "Nice try, buster. Illegal move. Try again."
+    move = gets.chomp.to_i
   end
 
   puts "You placed your #{mover.designation} at position #{move}.\n\n"
