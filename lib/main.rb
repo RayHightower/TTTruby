@@ -21,15 +21,12 @@ while game_is_active
   move = gets.chomp.to_i
 
   while !thisgame.add_move(mover, move)
-    puts "Nice try, buster. Illegal move. Try again."
+    puts "Nice try, #{mover.designation}. Illegal move. Try again."
     move = gets.chomp.to_i
   end
 
   puts "You placed your #{mover.designation} at position #{move}.\n\n"
   thisgame.print_grid
-
-  # thisgame.add_move(move)
-  # @thisgame.get_move(mover)
 
   # if @thisgame.check_winner
   #   puts "*** #{mover} wins! ***"
