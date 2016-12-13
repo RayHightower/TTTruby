@@ -28,6 +28,7 @@ while game_is_active
   puts "You placed your #{mover.designation} at position #{move}.\n\n"
   thisgame.print_color_grid
 
+  thisgame.check_winner
   # if @thisgame.check_winner
   #   puts "*** #{mover} wins! ***"
   #   break

@@ -43,7 +43,7 @@ class Grid
       return false
     end
 
-    if @cell[location] != location  # that is, if this cell is empty
+    if @cell[location] != location  # if this cell is empty
       return false # because the cell is already occupied
     end
 

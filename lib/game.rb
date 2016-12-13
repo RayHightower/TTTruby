@@ -27,6 +27,10 @@ class Game
   end
 
   def check_winner
+  # if @thisgame.check_winner
+  #   puts "*** #{mover} wins! ***"
+  #   break
+  # end
     true
   end
 

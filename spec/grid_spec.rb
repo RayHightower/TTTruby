@@ -14,12 +14,14 @@ describe Grid do
 
     it "displays the contents of the tic-tac-toe grid" do
       @thisgrid.print_grid
+      # What assertion (other than looking at the printout) works here?
     end
 
     it "prints the grid in color" do
       @thisgrid.add_move("X", 5)
       @thisgrid.add_move("O", 9)
       @thisgrid.print_color_grid
+      # What assertion (other than looking at the printout) works here?
     end
 
     it "allows moves between the range of 1 and 9, inclusive" do

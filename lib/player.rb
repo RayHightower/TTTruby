@@ -1,14 +1,10 @@
 class Player
 
-  attr_accessor :designation
+  attr_accessor :designation, :name
 
   def initialize(designation)
     @designation = designation
     @name = "Random Name"
-  end
-
-  def name
-    @name
   end
 
   def get_move
