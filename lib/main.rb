@@ -33,5 +33,11 @@ while game_is_active
       game_is_active = false
   end
 
+  if (turn >= 9)
+    print "**** Tie game. ***"
+    game_is_active = false
+  end
+
   turn = turn + 1
+  print "\n\nturn = #{turn}\n\n"
 end
