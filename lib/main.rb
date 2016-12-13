@@ -1,6 +1,4 @@
 # Entry point for the TTT game. Instantiates the Game object.
-#
-
 require_relative './game'
 
 # Setup for main event loop.
@@ -19,11 +17,11 @@ game_is_active = true
 while game_is_active
   mover = player[turn % 2]
   print "\nYour move, #{mover.designation}: "
-  move = STDIN.getch.to_i # gets.chomp.to_i
+  move = STDIN.getch.to_i
 
   while !thisgame.add_move(mover, move)
     puts "No way, Player #{mover.designation}. Illegal move. Try again."
-    move = STDIN.getch.to_i # gets.chomp.to_i
+    move = STDIN.getch.to_i
   end
 
   thisgame.print_color_grid
