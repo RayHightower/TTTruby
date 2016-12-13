@@ -9,7 +9,7 @@ player = []
 player[0] = Player.new("X")
 player[1] = Player.new("O")
 
-puts "\nWelcome to Tic Tac Toe\nYou know the rules. Here's the grid.\n"
+puts "\nWelcome to Tic Tac Toe!\nYou know the rules. Here's the grid.\n"
 thisgame.print_grid
 
 turn = 0
