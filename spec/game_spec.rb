@@ -82,14 +82,14 @@ describe Game do
       expect(@game.check_winner).to eq true
     end
 
-    it "checks for a 1st column vertical winnner" do
+    it "checks for a 2nd column vertical winnner" do
       @game.add_move(@player[1], 2)
       @game.add_move(@player[1], 5)
       @game.add_move(@player[1], 8)
       expect(@game.check_winner).to eq true
     end
 
-    it "checks for a 1st column vertical winnner" do
+    it "checks for a 3rd column vertical winnner" do
       @game.add_move(@player[1], 3)
       @game.add_move(@player[1], 6)
       @game.add_move(@player[1], 9)
