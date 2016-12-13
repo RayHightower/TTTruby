@@ -22,6 +22,7 @@ class Grid
   end
 
   def print_color_grid
+    print "\n"
     for location in 1..9 do
       print " "
       if @cell[location] == "X" then print colorize("X", 31)
@@ -29,7 +30,12 @@ class Grid
       else print location
       end
       print " "
+
+      if (location % 3 == 0 && location % 9 != 0) then print "\n-----------\n" 
+      elsif (location % 9 != 0) then print "|"
+      end
     end
+    print "\n"
   end
 
   def add_move(designation, location)

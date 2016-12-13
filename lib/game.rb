@@ -18,6 +18,10 @@ class Game
     @grid.print_grid
   end
 
+  def print_color_grid
+    @grid.print_color_grid
+  end
+
   def add_move(mover, move)
     @grid.add_move(mover.designation, move)
   end
