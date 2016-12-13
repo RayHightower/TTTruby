@@ -29,7 +29,7 @@ while game_is_active
   thisgame.print_color_grid
 
   if (thisgame.check_winner)
-      print "*** Player #{mover.designation} wins! ***\n"
+      print "\n*** Player #{mover.designation} wins! ***\n"
       game_is_active = false
   end
 
