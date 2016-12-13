@@ -19,11 +19,11 @@ game_is_active = true
 while game_is_active
   mover = player[turn % 2]
   print "\nYour move, #{mover.designation}: "
-  move = gets.chomp.to_i
+  move = STDIN.getch.to_i # gets.chomp.to_i
 
   while !thisgame.add_move(mover, move)
     puts "No way, Player #{mover.designation}. Illegal move. Try again."
-    move = gets.chomp.to_i
+    move = STDIN.getch.to_i # gets.chomp.to_i
   end
 
   thisgame.print_color_grid

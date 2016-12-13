@@ -1,3 +1,4 @@
+require 'io/console'
 require_relative './grid'
 require_relative './player'
 
