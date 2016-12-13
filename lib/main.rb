@@ -20,11 +20,13 @@ while game_is_active
   mover = player[turn % 2]
   move = gets.chomp.to_i
 
-  if thisgame.add_move(mover, move)
+  while !thisgame.add_move(mover, move)
+    puts "Nice try, buster. Illegal move. Try again."
+  end
+
     puts "You placed your #{mover.designation} at position #{move}.\n\n"
     thisgame.print_grid
   else
-    puts "Nice try, buster. Illegal move. Try again."
   end
 
   # thisgame.add_move(move)
