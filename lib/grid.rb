@@ -18,6 +18,9 @@ class Grid
   end
 
   def add_move(designation, location)
+    puts "designation = #{designation} and class is #{designation.class}"
+    puts "location = #{location} and class is #{location.class}\n\n"
+
     if ((location < 1) || (location > 9))
       return false
     end
