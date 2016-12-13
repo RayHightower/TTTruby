@@ -18,6 +18,7 @@ game_is_active = true
 # Main event loop.
 while game_is_active
   mover = player[turn % 2]
+  print "\nYour move, #{mover.designation}: "
   move = gets.chomp.to_i
 
   while !thisgame.add_move(mover, move)
@@ -28,7 +29,7 @@ while game_is_active
   thisgame.print_color_grid
 
   if (thisgame.check_winner)
-      print "*** Player #{mover.designation} wins! ***"
+      print "*** Player #{mover.designation} wins! ***\n"
       game_is_active = false
   end
 
