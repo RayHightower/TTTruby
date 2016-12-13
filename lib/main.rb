@@ -24,10 +24,8 @@ while game_is_active
     puts "Nice try, buster. Illegal move. Try again."
   end
 
-    puts "You placed your #{mover.designation} at position #{move}.\n\n"
-    thisgame.print_grid
-  else
-  end
+  puts "You placed your #{mover.designation} at position #{move}.\n\n"
+  thisgame.print_grid
 
   # thisgame.add_move(move)
   # @thisgame.get_move(mover)
