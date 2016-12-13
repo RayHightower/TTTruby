@@ -24,4 +24,9 @@ class Game
     true
   end
 
+
+  def colorize(text, color_mode)
+    "\e[#{color_code}m#{text}\e[0m"
+  end
+
 end

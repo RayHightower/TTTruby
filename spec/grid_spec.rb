@@ -16,6 +16,10 @@ describe Grid do
       @thisgrid.print_grid
     end
 
+    it "prints the grid in color" do
+      @thisgrid.print_color_grid
+    end
+
     it "allows moves between the range of 1 and 9, inclusive" do
       designation = "X"
       location = 4

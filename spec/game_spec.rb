@@ -57,5 +57,9 @@ describe Game do
     it "checks for a winnner" do
       @game.check_winner
     end
+
+    it "prints player designations in color" do
+
+    end
   end
 end

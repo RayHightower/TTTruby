@@ -8,6 +8,10 @@ class Grid
     @cell
   end
 
+  def colorize(text, color_code)
+    "\e[#{color_code}m#{text}\e[0m"
+  end
+
   def print_grid
     print "\n #{@cell[1]} | #{@cell[2]} | #{@cell[3]}"
     print "\n-----------\n"
@@ -15,6 +19,14 @@ class Grid
     print "\n-----------\n"
     print " #{@cell[7]} | #{@cell[8]} | #{@cell[9]}"
     print "\n"
+  end
+
+  def print_color_grid
+    for location in 1..9 do
+
+      puts location
+
+    end
   end
 
   def add_move(designation, location)
@@ -29,4 +41,7 @@ class Grid
     @cell[location] = designation
     return true # because we successfully added the move
   end
+
 end
+
+

@@ -13,7 +13,7 @@ puts "\nWelcome to Tic Tac Toe!\nYou know the rules. Here's the grid.\n"
 thisgame.print_grid
 
 turn = 0
-game_is_active = :true
+game_is_active = true
 
 # Main event loop.
 while game_is_active
