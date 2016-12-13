@@ -54,10 +54,59 @@ describe Game do
       expect(reaction).to eq false
     end
 
-    it "checks for a winnner" do
+    it "checks for a 1st row horizontal winnner" do
       @game.add_move(@player[1], 1)
       @game.add_move(@player[1], 2)
       @game.add_move(@player[1], 3)
+      expect(@game.check_winner).to eq true
+    end
+
+    it "checks for a 2nd row horizontal winnner" do
+      @game.add_move(@player[1], 4)
+      @game.add_move(@player[1], 5)
+      @game.add_move(@player[1], 6)
+      expect(@game.check_winner).to eq true
+    end
+
+    it "checks for a 3rd row horizontal winnner" do
+      @game.add_move(@player[1], 7)
+      @game.add_move(@player[1], 8)
+      @game.add_move(@player[1], 9)
+      expect(@game.check_winner).to eq true
+    end
+
+    it "checks for a 1st column vertical winnner" do
+      @game.add_move(@player[1], 1)
+      @game.add_move(@player[1], 4)
+      @game.add_move(@player[1], 7)
+      expect(@game.check_winner).to eq true
+    end
+
+    it "checks for a 1st column vertical winnner" do
+      @game.add_move(@player[1], 2)
+      @game.add_move(@player[1], 5)
+      @game.add_move(@player[1], 8)
+      expect(@game.check_winner).to eq true
+    end
+
+    it "checks for a 1st column vertical winnner" do
+      @game.add_move(@player[1], 3)
+      @game.add_move(@player[1], 6)
+      @game.add_move(@player[1], 9)
+      expect(@game.check_winner).to eq true
+    end
+
+    it "checks for a / diagonal winnner" do
+      @game.add_move(@player[1], 3)
+      @game.add_move(@player[1], 5)
+      @game.add_move(@player[1], 7)
+      expect(@game.check_winner).to eq true
+    end
+
+    it "checks for a \ diagonal winnner" do
+      @game.add_move(@player[1], 1)
+      @game.add_move(@player[1], 5)
+      @game.add_move(@player[1], 9)
       expect(@game.check_winner).to eq true
     end
 

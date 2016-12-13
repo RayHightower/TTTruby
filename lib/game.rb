@@ -27,11 +27,21 @@ class Game
   end
 
   def check_winner
-  # if @thisgame.check_winner
-  #   puts "*** #{mover} wins! ***"
-  #   break
-  # end
-    false
+
+    winner = false
+
+    (@grid.contents[1] == @grid.contents[2] && @grid.contents[2] == @grid.contents[3]) ? winner = true : false
+    (@grid.contents[4] == @grid.contents[5] && @grid.contents[5] == @grid.contents[6]) ? winner = true : false
+    (@grid.contents[7] == @grid.contents[8] && @grid.contents[8] == @grid.contents[9]) ? winner = true : false
+
+    (@grid.contents[1] == @grid.contents[4] && @grid.contents[4] == @grid.contents[7]) ? winner = true : false
+    (@grid.contents[2] == @grid.contents[5] && @grid.contents[5] == @grid.contents[8]) ? winner = true : false
+    (@grid.contents[3] == @grid.contents[6] && @grid.contents[6] == @grid.contents[9]) ? winner = true : false
+
+    (@grid.contents[1] == @grid.contents[5] && @grid.contents[5] == @grid.contents[9]) ? winner = true : false
+    (@grid.contents[3] == @grid.contents[5] && @grid.contents[5] == @grid.contents[7]) ? winner = true : false
+
+    return winner
   end
 
 end
