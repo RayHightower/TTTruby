@@ -18,10 +18,11 @@ game_is_active = :true
 # Main event loop.
 while game_is_active
   mover = player[turn % 2]
-  move = gets.chomp
+  move = gets.chomp.to_i
 
   if thisgame.add_move(mover, move)
     puts "You placed your #{mover.designation} at position #{move}.\n\n"
+    thisgame.print_grid
   else
     puts "Nice try, buster. Illegal move. Try again."
   end
