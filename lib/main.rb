@@ -17,6 +17,8 @@ game_is_active = true
 
 # Main event loop.
 while game_is_active
+  print "#{game_is_active} turn = #{turn}\n\n"
+
   mover = player[turn % 2]
   move = gets.chomp.to_i
 
