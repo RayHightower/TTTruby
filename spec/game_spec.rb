@@ -55,7 +55,10 @@ describe Game do
     end
 
     it "checks for a winnner" do
-      @game.check_winner
+      @game.add_move(@player[1], 1)
+      @game.add_move(@player[1], 2)
+      @game.add_move(@player[1], 3)
+      expect(@game.check_winner).to eq true
     end
 
     it "prints player designations in color" do
