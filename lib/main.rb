@@ -27,7 +27,7 @@ while game_is_active
   thisgame.print_color_grid
 
   if (thisgame.check_winner)
-      print "\n*** Player #{mover.designation} wins! ***\n"
+      print "\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
       game_is_active = false
   end
 
