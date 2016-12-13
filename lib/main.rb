@@ -19,7 +19,9 @@ game_is_active = :true
 while game_is_active
   mover = player[turn % 2]
   move = gets.chomp
-  puts "You placed your #{mover.designation} at position #{move}."
+  puts "You placed your #{mover.designation} at position #{move}.\n\n"
+  thisgame.add_move(mover, move)
+
   # thisgame.add_move(move)
   # @thisgame.get_move(mover)
 

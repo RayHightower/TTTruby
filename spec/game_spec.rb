@@ -29,6 +29,13 @@ describe Game do
       @game.print_grid
     end
 
+    it "adds a move to the grid" do
+      move = 5
+      mover = @player[0]
+      @game.add_move(mover, move)
+      expect(@game.get_status).to eq [ 0, 1, 2, 3, 4, "X", 6, 7, 8, 9 ]
+    end
+
     it "checks for a winnner" do
       @game.check_winner
     end

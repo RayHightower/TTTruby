@@ -16,6 +16,10 @@ class Game
     @grid.print_grid
   end
 
+  def add_move(mover, move)
+    @grid.add_move(mover.designation, move)
+  end
+
   def check_winner
     true
   end
