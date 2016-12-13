@@ -3,6 +3,8 @@ require_relative './player'
 
 class Game
 
+  attr_accessor :grid
+
   def initialize
     @grid = Grid.new
     @player = []
@@ -22,11 +24,6 @@ class Game
 
   def check_winner
     true
-  end
-
-
-  def colorize(text, color_mode)
-    "\e[#{color_code}m#{text}\e[0m"
   end
 
 end

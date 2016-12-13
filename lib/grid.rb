@@ -23,9 +23,12 @@ class Grid
 
   def print_color_grid
     for location in 1..9 do
-
-      puts location
-
+      print " "
+      if @cell[location] == "X" then print colorize("X", 31)
+      elsif @cell[location] == "O" then print colorize("O", 34)
+      else print location
+      end
+      print " "
     end
   end
 
