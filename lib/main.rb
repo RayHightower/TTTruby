@@ -1,3 +1,4 @@
+#! /usr/bin/env ruby
 # Entry point for the TTT game. Instantiates the Game object.
 require_relative './game'
 
