@@ -11,4 +11,6 @@ Experiment with TTT in Ruby.
 1. Run `$ rspec` at the root of the project to run all of the tests.
 1. Run `$ bundle exec guard` at the root of the project to make the tests run automatically every time a file is changed.
 
+## Running the Program
+
 
