@@ -4,9 +4,7 @@ describe Player do
   context "TTT players" do
 
     before do
-      @player = []
-      @player[0] = Player.new("X")
-      @player[1] = Player.new("O")
+      @player = [Player.new("X"), Player.new("O")]
     end
 
     it "passes this test no matter what happens" do
