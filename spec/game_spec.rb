@@ -5,9 +5,7 @@ describe Game do
 
     before do
       @game = Game.new
-      @player = []
-      @player[0] = Player.new("X")
-      @player[1] = Player.new("O")
+      @player = [Player.new("X"), Player.new("O")]
     end
 
     it "inits the game" do
