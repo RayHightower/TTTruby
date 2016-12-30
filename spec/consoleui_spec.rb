@@ -15,5 +15,9 @@ describe ConsoleUI do
 
     end
 
+    it "can tell when the game is over" do
+
+    end
+
   end
 end
