@@ -33,7 +33,7 @@ class GameRunner
 
     @game.add_move(mover, move)
 
-    if (thisgamerunner.game.check_winner)
+    if (self.game.check_winner)
         print "\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
         game_is_active = false
     end

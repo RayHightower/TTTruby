@@ -10,5 +10,5 @@ game_is_active = true
 # Main event loop.
 while game_is_active
   mover = thisgamerunner.game.player[turn % 2]
-  thisgamerunner.next_turn
+  game_is_active = thisgamerunner.next_turn
 end
