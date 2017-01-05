@@ -1,6 +1,6 @@
 require_relative './game'
 
-class Gamerunner
+class GameRunner
   attr_accessor :game
 
   def initialize

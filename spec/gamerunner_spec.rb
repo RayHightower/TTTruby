@@ -1,18 +1,18 @@
 require 'gamerunner'
 
-describe Gamerunner do
+describe GameRunner do
   context "entry point for the TTT game" do
     before do
       # Do we really need to set anything up in this case?
     end
 
     it "creates a game with player named 'X'" do
-      thisgamerunner = Gamerunner.new
+      thisgamerunner = GameRunner.new
       expect(thisgamerunner.game.player[0].designation).to eq "X"
     end
 
     it "creates a game with player named 'O'" do
-      thisgamerunner = Gamerunner.new
+      thisgamerunner = GameRunner.new
       expect(thisgamerunner.game.player[1].designation).to eq "O"
     end
 
