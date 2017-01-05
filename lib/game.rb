@@ -15,10 +15,6 @@ class Game
     @grid.contents
   end
 
-  def print_grid
-    @grid.print_grid
-  end
-
   def print_color_grid
     @grid.print_color_grid
   end

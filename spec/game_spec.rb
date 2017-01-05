@@ -23,10 +23,6 @@ describe Game do
       expect(@player[1].designation).to eq "O"
     end
 
-    it "prints the current state of the grid" do
-      @game.print_grid
-    end
-
     it "adds a move to the grid" do
       move = 5
       mover = @player[0]

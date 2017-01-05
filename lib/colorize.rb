@@ -1,0 +1,3 @@
+class Colorize
+
+end

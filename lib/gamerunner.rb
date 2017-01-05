@@ -12,4 +12,7 @@ class GameRunner
     @game.get_status
   end
 
+  def next_turn
+
+  end
 end

@@ -42,6 +42,14 @@ describe GameRunner do
       expect(@thisgamerunner.game.check_winner).to eq true
     end
 
+    it "can take the next turn when you tell it to do so" do
+      current_status = @thisgamerunner.get_status
+      @thisgamerunner.next_turn
+      next_status = @thisgamerunner.get_status
+      expect(current_status).not_to eq next_status
+    end
+
+
     it "can determine whether the game is over" do
 
 
