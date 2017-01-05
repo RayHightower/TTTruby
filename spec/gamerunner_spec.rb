@@ -43,15 +43,14 @@ describe GameRunner do
     end
 
     it "can take the next turn when you tell it to do so" do
+      player = @players[0]
       current_status = @thisgamerunner.get_status
-      @thisgamerunner.next_turn
+      @thisgamerunner.next_turn(player)
       next_status = @thisgamerunner.get_status
       expect(current_status).not_to eq next_status
     end
 
-
     it "can determine whether the game is over" do
-
 
     end
   end

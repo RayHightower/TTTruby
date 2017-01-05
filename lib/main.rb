@@ -14,6 +14,8 @@ game_is_active = true
 # Main event loop.
 while game_is_active
   mover = thisgamerunner.game.player[turn % 2]
+
+
   print "\nYour move, #{mover.designation}: "
   move = STDIN.getch.to_i
 
@@ -21,18 +23,4 @@ while game_is_active
     puts "No way, Player #{mover.designation}. Illegal move. Try again."
     move = STDIN.getch.to_i
   end
-
-  thisgamerunner.print_color_grid
-
-  if (thisgamerunner.game.check_winner)
-      print "\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
-      game_is_active = false
-  end
-
-  if (turn >= 9 && game_is_active)
-    print "\n**** Tie game. ***\n"
-    game_is_active = false
-  end
-
-  turn = turn + 1
 end
