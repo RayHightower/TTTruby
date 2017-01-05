@@ -31,9 +31,19 @@ describe GameRunner do
     end
 
     it "can tell if X has won the game" do
+      player = @players[0]
       winning_moves_for_x = StringIO.new('15293')
+
+      while !@thisgamerunner.game.check_winner do
+        move = winning_moves_for_x.getc.to_i
+        @thisgamerunner.game.add_move(player, move)
+      end
+
       expect(@thisgamerunner.game.check_winner).to eq true
     end
 
+    it "can determine whether the game is over" do
+
+    end
   end
 end
