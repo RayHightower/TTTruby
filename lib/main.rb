@@ -1,30 +1,30 @@
 #! /usr/bin/env ruby
 # Entry point for the TTT game. Instantiates the Game object.
-require_relative './game'
+require_relative './gamerunner'
 
 # Setup for main event loop.
-thisgame = Game.new
+thisgamerunner = GameRunner.new
 
 puts "\nWelcome to Tic Tac Toe!\nYou know the rules. Here's the grid.\n"
-thisgame.print_color_grid
+thisgamerunner.print_color_grid
 
 turn = 1
 game_is_active = true
 
 # Main event loop.
 while game_is_active
-  mover = player[turn % 2]
+  mover = thisgamerunner.game.player[turn % 2]
   print "\nYour move, #{mover.designation}: "
   move = STDIN.getch.to_i
 
-  while !thisgame.add_move(mover, move)
+  while !thisgamerunner.game.add_move(mover, move)
     puts "No way, Player #{mover.designation}. Illegal move. Try again."
     move = STDIN.getch.to_i
   end
 
-  thisgame.print_color_grid
+  thisgamerunner.print_color_grid
 
-  if (thisgame.check_winner)
+  if (thisgamerunner.game.check_winner)
       print "\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
       game_is_active = false
   end
