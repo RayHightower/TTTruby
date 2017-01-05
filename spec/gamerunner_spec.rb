@@ -3,18 +3,22 @@ require 'gamerunner'
 describe Gamerunner do
   context "entry point for the TTT game" do
     before do
-      @game = Game.new
-      @player = [Player.new("X"), Player.new("O")]
+      # Do we really need to set anything up in this case?
     end
 
-    it "creates a game with two players" do
-      thisgame = Game.new
-      player_bench = [Player.new("X"), Player.new("O")]
-      expect(player_bench[0].designation).to eq "X"
+    it "creates a game with player named 'X'" do
+      thisgamerunner = Gamerunner.new
+      expect(thisgamerunner.game.player[0].designation).to eq "X"
+    end
+
+    it "creates a game with player named 'O'" do
+      thisgamerunner = Gamerunner.new
+      expect(thisgamerunner.game.player[1].designation).to eq "O"
     end
 
     it "receives a move and stores it" do
-
+      moves = StringIO.new('123456789')
+      expect(true).to eq false
     end
 
   end
