@@ -8,5 +8,8 @@ class GameRunner
     @game.player = [Player.new("X"), Player.new("O")]
   end
 
+  def get_status
+    @game.get_status
+  end
 
 end
