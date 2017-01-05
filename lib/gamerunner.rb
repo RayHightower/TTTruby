@@ -35,12 +35,13 @@ class GameRunner
 
     if (self.game.check_winner)
         print "\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
-        game_is_active = false
+        return false   # game_is_active = false
     end
 
     if (@turn >= 9 && game_is_active)
       print "\n**** Tie game. ***\n"
       game_is_active = false
+      return false
     end
 
     while !self.game.add_move(mover, move)
@@ -49,5 +50,6 @@ class GameRunner
     end
 
     @turn = @turn + 1
+    return true
   end
 end
