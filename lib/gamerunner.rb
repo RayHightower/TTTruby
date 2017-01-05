@@ -2,10 +2,12 @@ require_relative './game'
 
 class GameRunner
   attr_accessor :game
+  attr_reader :turn
 
   def initialize
     @game = Game.new
     @game.player = [Player.new("X"), Player.new("O")]
+    @turn = 1
 
     puts "\nWelcome to Tic Tac Toe!\nYou know the rules. Here's the grid.\n"
     self.print_color_grid
@@ -24,21 +26,28 @@ class GameRunner
   end
 
   # What happens when we take a turn? This method manages the process.
-  def next_turn(player)
+  def next_turn(mover)
     self.print_color_grid
-    move = self.get_move
-    @game.add_move(player, move)
+    print "\nYour move, #{mover.designation}: "
+    move = STDIN.getch.to_i
+
+    @game.add_move(mover, move)
 
     if (thisgamerunner.game.check_winner)
         print "\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
         game_is_active = false
     end
 
-    if (turn >= 9 && game_is_active)
+    if (@turn >= 9 && game_is_active)
       print "\n**** Tie game. ***\n"
       game_is_active = false
     end
 
-    turn = turn + 1
+    while !self.game.add_move(mover, move)
+      puts "No way, Player #{mover.designation}. Illegal move. Try again."
+      move = STDIN.getch.to_i
+    end
+
+    @turn = @turn + 1
   end
 end
