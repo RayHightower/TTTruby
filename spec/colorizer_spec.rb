@@ -11,7 +11,7 @@ describe Colorizer do
     end
 
     it "accepts text plus a color code and returns an escape string that can be printed in color" do
-      print Colorizer.colorize("\nThis sentence should be yellow.\n", 93)
+      print colorize("\nThis sentence should be yellow.\n", 93)
     end
   end
 end

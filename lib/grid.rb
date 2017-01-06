@@ -36,12 +36,12 @@ class Grid
       return false
     end
 
-    if @cell[location] != location  # if this cell is empty
-      return false # because the cell is already occupied
+    if @cell[location] != location  # if this is already occupied
+      return false
     end
 
     @cell[location] = designation
-    return true # because we successfully added the move
+    return true # because the move is legal and we added it
   end
 
 end
