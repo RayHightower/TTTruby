@@ -11,7 +11,7 @@ class GameRunner
     @is_active = true
 
     puts "\nWelcome to Tic Tac Toe!\nYou know the rules. Here's the grid.\n"
-    self.print_color_grid
+    @game.print_color_grid
   end
 
   def get_status
@@ -28,7 +28,6 @@ class GameRunner
 
   # What happens when we take a turn? This method manages the process.
   def next_turn
-    self.print_color_grid
     mover = @game.player[@turn % 2]
     print "\nYour move, #{mover.designation}: "
     move = STDIN.getch.to_i
