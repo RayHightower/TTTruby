@@ -1,6 +1,7 @@
-require_relative './colorizer' # TODO: Make this work right.
+require_relative './colorizer'
 
 class Grid
+  include Colorizer # A module for color!
 
   def initialize
     @cell = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
@@ -8,10 +9,6 @@ class Grid
 
   def contents
     @cell
-  end
-
-  def colorize(text, color_code)
-    "\e[#{color_code}m#{text}\e[0m"
   end
 
   def print_color_grid
