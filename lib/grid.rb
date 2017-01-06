@@ -1,3 +1,5 @@
+require_relative './colorizer' # TODO: Make this work right.
+
 class Grid
 
   def initialize

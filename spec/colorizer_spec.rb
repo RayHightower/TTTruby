@@ -1,4 +1,4 @@
-require 'colorize'
+require 'colorizer'
 
 describe Colorizer do
   context "apply color to text" do
@@ -11,7 +11,7 @@ describe Colorizer do
     end
 
     it "accepts text plus a color code and returns an escape string that can be printed in color" do
-      print colorize("\nThis sentence should be yellow.\n", 93)
+      print Colorizer.colorize("\nThis sentence should be yellow.\n", 93)
     end
   end
 end
