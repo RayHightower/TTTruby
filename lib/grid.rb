@@ -14,15 +14,6 @@ class Grid
     "\e[#{color_code}m#{text}\e[0m"
   end
 
-  def print_grid
-    print "\n #{@cell[1]} | #{@cell[2]} | #{@cell[3]}"
-    print "\n-----------\n"
-    print " #{@cell[4]} | #{@cell[5]} | #{@cell[6]}"
-    print "\n-----------\n"
-    print " #{@cell[7]} | #{@cell[8]} | #{@cell[9]}"
-    print "\n"
-  end
-
   def print_color_grid
     print "\n"
     for location in 1..9 do
