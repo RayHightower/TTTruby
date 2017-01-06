@@ -1,9 +1,9 @@
 require 'colorizer'
 
 describe Colorizer do
+ include Colorizer
   context "apply color to text" do
     before do
-      include Colorizer
 
     end
 
