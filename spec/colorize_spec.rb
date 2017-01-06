@@ -1,13 +1,17 @@
 require 'colorize'
 
 describe Colorize do
-  context "apply color to the grid based on the player that is moving" do
+  context "apply color to text" do
     before do
 
     end
 
     it "passes this test no matter what" do
       expect true
+    end
+
+    it "accepts text plus a color code and returns an escape string that can be printed in color" do
+      print colorize("\nThis sentence should be yellow.\n", 93)
     end
   end
 end

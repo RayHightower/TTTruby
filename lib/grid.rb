@@ -52,5 +52,3 @@ class Grid
   end
 
 end
-
-
