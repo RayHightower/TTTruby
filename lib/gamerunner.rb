@@ -27,8 +27,9 @@ class GameRunner
   end
 
   # What happens when we take a turn? This method manages the process.
-  def next_turn(mover)
+  def next_turn
     self.print_color_grid
+    mover = @game.player[@turn % 2]
     print "\nYour move, #{mover.designation}: "
     move = STDIN.getch.to_i
 

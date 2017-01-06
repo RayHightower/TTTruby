@@ -42,6 +42,12 @@ describe GameRunner do
       expect(@thisgamerunner.game.check_winner).to eq true
     end
 
+    it "alternates players with each turn" do
+      @thisgamerunner
+
+
+    end
+
     it "can take the next turn when you tell it to do so" do
       player = @players[0]
       current_status = @thisgamerunner.get_status
