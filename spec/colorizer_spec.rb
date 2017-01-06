@@ -1,7 +1,9 @@
 require 'colorizer'
 
 describe Colorizer do
- include Colorizer
+
+  include Colorizer # Gotta include the modlue
+
   context "apply color to text" do
     before do
 
