@@ -1,5 +1,4 @@
 #! /usr/bin/env ruby
-# Entry point for the TTT game. Instantiates the GameRunner object.
 require_relative './gamerunner'
 
 thisgame = GameRunner.new
