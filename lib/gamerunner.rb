@@ -2,12 +2,13 @@ require_relative './game'
 
 class GameRunner
   attr_accessor :game
-  attr_reader :turn
+  attr_reader :turn, :is_active
 
   def initialize
     @game = Game.new
     @game.player = [Player.new("X"), Player.new("O")]
     @turn = 1
+    @is_active = true
 
     puts "\nWelcome to Tic Tac Toe!\nYou know the rules. Here's the grid.\n"
     self.print_color_grid
@@ -35,13 +36,12 @@ class GameRunner
 
     if (self.game.check_winner)
         print "\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
-        return false   # game_is_active = false
+        @is_active = false
     end
 
     if (@turn >= 9 && game_is_active)
       print "\n**** Tie game. ***\n"
-      game_is_active = false
-      return false
+      @is_active = false
     end
 
     while !self.game.add_move(mover, move)
@@ -50,6 +50,5 @@ class GameRunner
     end
 
     @turn = @turn + 1
-    return true
   end
 end
