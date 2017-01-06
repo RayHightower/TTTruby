@@ -43,7 +43,7 @@ class GameRunner
       @is_active = false
     end
 
-    if (@turn >= 9 && game_is_active)
+    if (@turn >= 9 && @is_active)
       print "\n**** Tie game. ***\n"
       @game.print_color_grid
       @is_active = false
