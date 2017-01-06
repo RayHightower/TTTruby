@@ -51,7 +51,7 @@ describe GameRunner do
     it "can take the next turn when you tell it to do so" do
       player = @players[0]
       current_status = @thisgamerunner.get_status
-      @thisgamerunner.next_turn(player)
+      @thisgamerunner.next_turn
       next_status = @thisgamerunner.get_status
       expect(current_status).not_to eq next_status
     end

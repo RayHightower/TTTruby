@@ -33,7 +33,10 @@ class GameRunner
     print "\nYour move, #{mover.designation}: "
     move = STDIN.getch.to_i
 
-    @game.add_move(mover, move)
+    while !@game.add_move(mover, move)
+      puts "No way, Player #{mover.designation}. Illegal move. Try again."
+      move = STDIN.getch.to_i
+    end
 
     if (self.game.check_winner)
         print "\n\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
@@ -45,11 +48,7 @@ class GameRunner
       @is_active = false
     end
 
-    while !self.game.add_move(mover, move)
-      puts "No way, Player #{mover.designation}. Illegal move. Try again."
-      move = STDIN.getch.to_i
-    end
-
+    self.print_color_grid
     @turn = @turn + 1
   end
 end
