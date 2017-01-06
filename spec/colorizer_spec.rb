@@ -1,6 +1,6 @@
 require 'colorize'
 
-describe Colorize do
+describe Colorizer do
   context "apply color to text" do
     before do
 
