@@ -38,16 +38,18 @@ class GameRunner
     end
 
     if (self.game.check_winner)
-        print "\n\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
-        @is_active = false
+      @game.print_color_grid
+      print "\n\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
+      @is_active = false
     end
 
     if (@turn >= 9 && game_is_active)
       print "\n**** Tie game. ***\n"
+      @game.print_color_grid
       @is_active = false
     end
 
-    self.print_color_grid
+    @game.print_color_grid
     @turn = @turn + 1
   end
 end
