@@ -34,23 +34,26 @@ class GameRunner
     end
   end
 
+  def check_winner
+    if (@game.check_winner)
+      @game.print_color_grid
+      print "\n\e[#{93}m#{"\n*** Player #{@mover.designation} wins! ***\n"}\e[0m"
+      @is_active = false
+    end
+  end
+
   # What happens when we take a turn? This method manages the process.
   def next_turn
-    mover = @game.player[@turn % 2]
-    print "\nYour move, #{mover.designation}: "
+    @mover = @game.player[@turn % 2]
+    print "\nYour move, #{@mover.designation}: "
     move = STDIN.getch.to_i
 
-    while !@game.add_move(mover, move)
-      puts "No way, Player #{mover.designation}. Illegal move. Try again."
+    while !@game.add_move(@mover, move)
+      puts "No way, Player #{@mover.designation}. Illegal move. Try again."
       move = STDIN.getch.to_i
     end
 
-    if (@game.check_winner)
-      @game.print_color_grid
-      print "\n\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
-      @is_active = false
-    end
-
+    check_winner
     check_tie_game
 
     @game.print_color_grid
