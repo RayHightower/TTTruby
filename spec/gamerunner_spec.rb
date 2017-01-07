@@ -49,7 +49,6 @@ describe GameRunner do
     end
 
     it "can take the next turn when you tell it to do so" do
-      player = @players[0]
       current_status = @thisgamerunner.get_status
       @thisgamerunner.next_turn
       next_status = @thisgamerunner.get_status
