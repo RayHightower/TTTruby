@@ -45,7 +45,7 @@ class GameRunner
       move = STDIN.getch.to_i
     end
 
-    if (self.game.check_winner)
+    if (@game.check_winner)
       @game.print_color_grid
       print "\n\e[#{93}m#{"\n*** Player #{mover.designation} wins! ***\n"}\e[0m"
       @is_active = false
