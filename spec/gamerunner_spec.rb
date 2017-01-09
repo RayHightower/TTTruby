@@ -44,7 +44,7 @@ describe GameRunner do
 
     it "alternates players with each turn" do
       mover1 = @thisgamerunner.mover
-      @thisgamerunner.next_turns
+      @thisgamerunner.next_turn
       mover2 = @thisgamerunner.mover
       expect(mover1).not_to eq mover2
     end

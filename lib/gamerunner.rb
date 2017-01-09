@@ -2,13 +2,14 @@ require_relative './game'
 
 class GameRunner
   attr_accessor :game
-  attr_reader :turn, :is_active
+  attr_reader :turn, :is_active, :mover
 
   def initialize
     @game = Game.new
     @game.player = [Player.new("X"), Player.new("O")]
     @turn = 1
     @is_active = true
+    @mover = @game.player[@turn % 2]
 
     puts "\nWelcome to Tic Tac Toe!\nYou know the rules. Here's the grid.\n"
     @game.print_color_grid
