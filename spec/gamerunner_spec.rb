@@ -43,9 +43,10 @@ describe GameRunner do
     end
 
     it "alternates players with each turn" do
-      @thisgamerunner
-
-
+      mover1 = @thisgamerunner.mover
+      @thisgamerunner.next_turns
+      mover2 = @thisgamerunner.mover
+      expect(mover1).not_to eq mover2
     end
 
     it "can take the next turn when you tell it to do so" do
@@ -55,8 +56,5 @@ describe GameRunner do
       expect(current_status).not_to eq next_status
     end
 
-    it "can determine whether the game is over" do
-
-    end
   end
 end
