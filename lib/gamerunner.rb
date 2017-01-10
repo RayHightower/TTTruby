@@ -56,7 +56,8 @@ class GameRunner
     check_winner
     check_tie_game
 
-    print_color_grid
+    if @is_active then print_color_grid end
+
     @turn = @turn + 1
     @mover = @game.player[@turn % 2]
   end
