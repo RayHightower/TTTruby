@@ -30,14 +30,12 @@ class GameRunner
   def check_tie_game
     if (@turn >= 9 && @is_active)
       print "\n**** Tie game. ***\n"
-      @game.print_color_grid
       @is_active = false
     end
   end
 
   def check_winner
     if (@game.check_winner)
-      @game.print_color_grid
       print "\n\e[#{93}m#{"\n*** Player #{@mover.designation} wins! ***\n"}\e[0m"
       @is_active = false
     end
@@ -56,7 +54,7 @@ class GameRunner
     check_winner
     check_tie_game
 
-    if @is_active then print_color_grid end
+    print_color_grid
 
     @turn = @turn + 1
     @mover = @game.player[@turn % 2]
