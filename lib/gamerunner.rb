@@ -24,7 +24,7 @@ class GameRunner
   end
 
   def get_move
-    STDIN.getch.to_i
+    STDIN.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
   end
 
   def check_tie_game
@@ -56,7 +56,7 @@ class GameRunner
     check_winner
     check_tie_game
 
-    @game.print_color_grid
+    print_color_grid
     @turn = @turn + 1
     @mover = @game.player[@turn % 2]
   end
