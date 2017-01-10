@@ -49,11 +49,11 @@ describe GameRunner do
       expect(mover1).not_to eq mover2
     end
 
-    it "can take the next turn when you tell it to do so" do
-      current_status = @thisgamerunner.get_status
+    it "changes the state of the grid with each turn" do
+      grid_state_1 = @thisgamerunner.get_status
       @thisgamerunner.next_turn
-      next_status = @thisgamerunner.get_status
-      expect(current_status).not_to eq next_status
+      grid_state_2 = @thisgamerunner.get_status
+      expect(grid_state_1).not_to eq grid_state_2
     end
 
   end
