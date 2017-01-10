@@ -21,7 +21,7 @@ class Grid
       end
       print " "
 
-      if (location % 3 == 0 && location % 9 != 0) then print "\n-----------\n" 
+      if (location % 3 == 0 && location % 9 != 0) then print "\n-----------\n"
       elsif (location % 9 != 0) then print "|"
       end
     end

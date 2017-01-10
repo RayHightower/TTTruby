@@ -24,7 +24,7 @@ class GameRunner
   end
 
   def get_move
-
+    STDIN.getch.to_i
   end
 
   def check_tie_game
@@ -45,13 +45,12 @@ class GameRunner
 
   # What happens when we take a turn? This method manages the process.
   def next_turn
-    @mover = @game.player[@turn % 2]
     print "\nYour move, #{@mover.designation}: "
-    move = STDIN.getch.to_i
+    move = get_move
 
     while !@game.add_move(@mover, move)
       puts "No way, Player #{@mover.designation}. Illegal move. Try again."
-      move = STDIN.getch.to_i
+      move = get_move
     end
 
     check_winner
@@ -59,5 +58,6 @@ class GameRunner
 
     @game.print_color_grid
     @turn = @turn + 1
+    @mover = @game.player[@turn % 2]
   end
 end
