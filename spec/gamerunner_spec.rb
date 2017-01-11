@@ -7,6 +7,9 @@ describe GameRunner do
       @thisgamerunner = GameRunner.new
       @players = @thisgamerunner.game.player
       @bunch_of_moves = StringIO.new('123456789')
+      $stdin = @bunch_of_moves
+      @fake_console = StringIO.new
+      $stdout = @fake_console
     end
 
     it "creates a game with player named 'X'" do
@@ -55,6 +58,5 @@ describe GameRunner do
       grid_state_2 = @thisgamerunner.get_status
       expect(grid_state_1).not_to eq grid_state_2
     end
-
   end
 end

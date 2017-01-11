@@ -12,7 +12,7 @@ class GameRunner
     @mover = @game.player[@turn % 2]
 
     puts "\nWelcome to Tic Tac Toe!\nYou know the rules. Here's the grid.\n"
-    @game.print_color_grid
+    print_color_grid
   end
 
   def get_status
