@@ -69,5 +69,11 @@ describe Grid do
       designation = "O"
       expect(@thisgrid.add_move(designation, location)).to eq true
     end
+
+    it "will quit the game if the move is 'Q'" do
+      move = "Q"
+      keepgoing = @thisgrid.add_move("X","Q")
+      expect(keepgoing).to eq false
+    end
   end
 end

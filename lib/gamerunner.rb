@@ -10,7 +10,9 @@ class GameRunner
     @turn = 1
     @is_active = true
     @mover = @game.player[@turn % 2]
+  end
 
+  def start_game
     puts "\nWelcome to Tic Tac Toe!\nYou know the rules. Here's the grid.\n"
     print_color_grid
   end
@@ -41,16 +43,19 @@ class GameRunner
     end
   end
 
+  def add_good_move
+    while !@game.add_move(@mover, move)
+      puts "No way, Player #{@mover.designation}. Illegal move. Try again."
+      move = get_move
+    end
+  end
+
   # What happens when we take a turn? This method manages the process.
   def next_turn
     print "\nYour move, #{@mover.designation}: "
     move = get_move
 
-    while !@game.add_move(@mover, move)
-      puts "No way, Player #{@mover.designation}. Illegal move. Try again."
-      move = get_move
-    end
-
+    add_good_move
     check_winner
     check_tie_game
 
