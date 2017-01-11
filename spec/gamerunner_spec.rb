@@ -9,7 +9,7 @@ describe GameRunner do
       @bunch_of_moves = StringIO.new('123456789')
       $stdin = @bunch_of_moves
       @fake_console = StringIO.new
-      $stdout = @fake_console
+      # $stdout = @fake_console
     end
 
     it "creates a game with player named 'X'" do
@@ -53,9 +53,12 @@ describe GameRunner do
     end
 
     it "changes the state of the grid with each turn" do
+      $stdin = @bunch_of_moves
       grid_state_1 = @thisgamerunner.get_status
+      puts "\ngrid_state_1 = #{grid_state_1}"
       @thisgamerunner.next_turn
       grid_state_2 = @thisgamerunner.get_status
+      puts "\ngrid_state_1 = #{grid_state_1}"
       expect(grid_state_1).not_to eq grid_state_2
     end
   end
