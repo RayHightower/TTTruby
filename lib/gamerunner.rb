@@ -43,7 +43,7 @@ class GameRunner
     end
   end
 
-  def add_good_move
+  def add_good_move(move)
     while !@game.add_move(@mover, move)
       puts "No way, Player #{@mover.designation}. Illegal move. Try again."
       move = get_move
@@ -55,7 +55,7 @@ class GameRunner
     print "\nYour move, #{@mover.designation}: "
     move = get_move
 
-    add_good_move
+    add_good_move(move)
     check_winner
     check_tie_game
 
