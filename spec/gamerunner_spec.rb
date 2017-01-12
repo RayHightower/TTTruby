@@ -8,8 +8,7 @@ describe GameRunner do
       @players = @thisgamerunner.game.player
       @bunch_of_moves = StringIO.new('123456789')
       $stdin = @bunch_of_moves
-      @fake_console = StringIO.new
-      $stdout = @fake_console
+      $stdout = StringIO.new
     end
 
     it "creates a game with player named 'X'" do
