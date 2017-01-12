@@ -55,6 +55,11 @@ class GameRunner
     print "\nYour move, #{@mover.designation}: "
     move = get_move
 
+    if move == 'Q'
+      @is_active = false
+      return
+    end
+
     add_good_move(move)
     check_winner
     check_tie_game

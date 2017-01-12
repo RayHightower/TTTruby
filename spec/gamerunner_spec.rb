@@ -33,9 +33,11 @@ describe GameRunner do
     end
 
     it "will quit the game if the move is 'Q'" do
-      move = "Q"
+      quit_string = StringIO.new
+      quit_string.puts("Q")
+      $stdin = quit_string
       @thisgamerunner.next_turn
-      expect(@is_active).to eq false
+      expect(@thisgamerunner.is_active).to eq false
     end
 
     it "can tell if X has won the game" do
