@@ -9,7 +9,7 @@ describe GameRunner do
       @bunch_of_moves = StringIO.new('123456789')
       $stdin = @bunch_of_moves
       @fake_console = StringIO.new
-      # $stdout = @fake_console
+      $stdout = @fake_console
     end
 
     it "creates a game with player named 'X'" do
@@ -31,6 +31,12 @@ describe GameRunner do
       @thisgamerunner.game.add_move(player, move)
       currentgrid = @thisgamerunner.get_status
       expect(currentgrid).to eq [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
+    end
+
+    it "will quit the game if the move is 'Q'" do
+      move = "Q"
+      @thisgamerunner.next_turn
+      expect(@is_active).to eq false
     end
 
     it "can tell if X has won the game" do
