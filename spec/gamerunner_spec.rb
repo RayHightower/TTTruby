@@ -8,7 +8,7 @@ describe GameRunner do
       @players = @thisgamerunner.game.player
       @bunch_of_moves = StringIO.new('123456789')
       $stdin = @bunch_of_moves
-      $stdout = StringIO.new
+      # $stdout = StringIO.new
     end
 
     it "creates a game with player named 'X'" do
@@ -35,6 +35,7 @@ describe GameRunner do
     it "will quit the game if the move is 'Q'" do
       quit_string = StringIO.new
       quit_string.puts("Q")
+      quit_string.rewind
       $stdin = quit_string
       @thisgamerunner.next_turn
       expect(@thisgamerunner.is_active).to eq false

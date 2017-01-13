@@ -55,7 +55,9 @@ class GameRunner
     print "\nYour move, #{@mover.designation}: "
     move = get_move
 
-    if move == 'Q'
+    print "\nThe move is #{move}.\n"
+
+    if move == 'Q'.to_i
       @is_active = false
       return
     end
