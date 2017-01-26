@@ -10,6 +10,7 @@ class GameRunner
     @turn = 1
     @is_active = true
     @mover = @game.player[@turn % 2]
+    start_game
   end
 
   def start_game

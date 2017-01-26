@@ -16,4 +16,7 @@ Experiment with TTT in Ruby.
 To run the program from the root directory, do one of the following:
 
 * `$ ruby ./lib/main.rb`
+
+- OR -
+
 * `$ ./ttt`
