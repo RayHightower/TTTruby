@@ -31,5 +31,10 @@ describe ArtificialPlayer do
       expect(move).to eq 3
     end
 
+    it "returns a winning move when given a potential winning board for the current player" do
+
+    end
+
+
   end
 end
