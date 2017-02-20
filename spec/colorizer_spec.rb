@@ -14,7 +14,6 @@ describe Colorizer do
     end
 
     it "accepts text plus a color code and returns an escape string that can be printed in color" do
-      print colorize("\nThis sentence should be yellow.\n", 93)
       # How do we test something like this other than by looking at it?
     end
   end

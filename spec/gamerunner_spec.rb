@@ -3,12 +3,13 @@ require 'gamerunner'
 describe GameRunner do
   context "entry point for the TTT game" do
     before do
+      @bunch_of_input_moves = StringIO.new('123456789')
+      @bunch_of_output = StringIO.new
+      $stdin = @bunch_of_input_moves
+      $stdout = @bunch_of_output
       # Do we really need to set anything up in this case?
       @thisgamerunner = GameRunner.new
       @players = @thisgamerunner.game.player
-      @bunch_of_moves = StringIO.new('123456789')
-      $stdin = @bunch_of_moves
-      # $stdout = StringIO.new
     end
 
     it "creates a game with player named 'X'" do
@@ -26,7 +27,7 @@ describe GameRunner do
 
     it "receives a move and stores it" do
       player = @players[0]
-      move = @bunch_of_moves.getc.to_i
+      move = @bunch_of_input_moves.getc.to_i
       @thisgamerunner.game.add_move(player, move)
       currentgrid = @thisgamerunner.get_status
       expect(currentgrid).to eq [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
@@ -61,12 +62,12 @@ describe GameRunner do
     end
 
     it "changes the state of the grid with each turn" do
-      $stdin = @bunch_of_moves
+      $stdin = @bunch_of_input_moves
       grid_state_1 = @thisgamerunner.get_status
-      puts "\ngrid_state_1 = #{grid_state_1}"
+      # puts "\ngrid_state_1 = #{grid_state_1}"
       @thisgamerunner.next_turn
       grid_state_2 = @thisgamerunner.get_status
-      puts "\ngrid_state_1 = #{grid_state_1}"
+      # puts "\ngrid_state_1 = #{grid_state_1}"
       expect(grid_state_1).not_to eq grid_state_2
     end
   end
