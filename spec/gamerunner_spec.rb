@@ -13,7 +13,6 @@ describe GameRunner do
     end
 
     it "changes the state of the grid with each turn" do
-      $stdin = @bunch_of_input_moves
       grid_state_1 = @thisgamerunner.get_status
       # puts "\ngrid_state_1 = #{grid_state_1}"
       @thisgamerunner.next_turn
