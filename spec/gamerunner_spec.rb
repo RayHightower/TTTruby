@@ -68,7 +68,7 @@ describe GameRunner do
       @thisgamerunner.next_turn
       grid_state_2 = @thisgamerunner.get_status
       # puts "\ngrid_state_1 = #{grid_state_1}"
-      expect(grid_state_1).not_to eq grid_state_2
+      expect(grid_state_1 == grid_state_2).to eq false
     end
   end
 end
