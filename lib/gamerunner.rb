@@ -27,7 +27,7 @@ class GameRunner
   end
 
   def get_move
-    STDIN.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
+    $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
   end
 
   def check_tie_game
