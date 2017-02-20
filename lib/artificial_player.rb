@@ -11,7 +11,6 @@ class ArtificialPlayer<Player
 
     current_grid[1..-1].each do |cell|
       if current_grid[cell.to_i] == cell # if the cell is empty
-        puts "\n**** self.designation = #{self.designation} ****\n"
         return cell.to_i
       end
     end
