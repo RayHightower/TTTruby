@@ -22,8 +22,8 @@ describe Player do
     end
 
     it "can accomodate carbon-based or silicon-based players" do
-      new_player = Player.new("X", :silicon)
-      expect(new_player.type == :silicon).to_eq true
+      new_player = Player.new("X", :droid)
+      expect(new_player.type == :droid).to eq true
     end
   end
 end

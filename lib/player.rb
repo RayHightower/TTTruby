@@ -1,15 +1,18 @@
 class Player
 
-  attr_accessor :designation, :name
+  attr_accessor :designation, :name, :type
 
-  def initialize(designation)
+  def initialize(designation, type=:human)
     @designation = designation
     @name = "Random Name"
+    @type = type
   end
 
   def get_move
     # If this is a human player, get the move from the console.
-    $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
+    if self.type == :human
+      $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
+    end
 
     # If this is an artificial player, get the move from the AI algorithm.
 
