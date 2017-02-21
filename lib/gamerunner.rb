@@ -60,6 +60,7 @@ class GameRunner
 
     if move == 'Q'.to_i
       @is_active = false
+      print "\n***** Game halted by user. *****\n"
       return
     end
 
