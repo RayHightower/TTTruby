@@ -20,5 +20,10 @@ describe Player do
       @player[1].designation = "O"
       expect(@player[1].designation).to eq "O"
     end
+
+    it "can accomodate carbon-based or silicon-based players" do
+      new_player = Player.new("X", :silicon)
+      expect(new_player.type == :silicon).to_eq true
+    end
   end
 end

@@ -73,4 +73,10 @@ class GameRunner
     @turn = @turn + 1
     @mover = @game.player[@turn % 2]
   end
+
+  # Put minimax here.
+  def minimax(player, grid)
+
+  end
+
 end

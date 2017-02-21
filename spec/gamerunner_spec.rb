@@ -6,9 +6,13 @@ describe GameRunner do
       @bunch_of_input_moves = StringIO.new('123456789')
       @bunch_of_output = StringIO.new
       $stdin = @bunch_of_input_moves
-      # $stdout = @bunch_of_output
+      $stdout = @bunch_of_output
       @thisgamerunner = GameRunner.new
       @players = @thisgamerunner.game.player
+    end
+
+    it "can choose a move using AI" do
+
     end
 
     it "changes the state of the grid with each turn" do
