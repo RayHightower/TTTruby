@@ -9,7 +9,6 @@ class Player
   end
 
   def get_move
-    # If this is a human player, get the move from the console.
     if self.type == :human
       $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
     end
