@@ -6,8 +6,7 @@ describe GameRunner do
       @bunch_of_input_moves = StringIO.new('123456789')
       @bunch_of_output = StringIO.new
       $stdin = @bunch_of_input_moves
-      $stdout = @bunch_of_output
-      # Do we really need to set anything up in this case?
+      # $stdout = @bunch_of_output
       @thisgamerunner = GameRunner.new
       @players = @thisgamerunner.game.player
     end
