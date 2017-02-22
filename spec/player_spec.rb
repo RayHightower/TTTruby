@@ -7,10 +7,6 @@ describe Player do
       @player = [Player.new("X"), Player.new("O")]
     end
 
-    it "passes this test no matter what happens" do
-      true
-    end
-
     it "chooses letter 'X' for the first player" do
       @player[0].designation = "X"
       expect(@player[0].designation).to eq "X"
@@ -21,9 +17,14 @@ describe Player do
       expect(@player[1].designation).to eq "O"
     end
 
-    it "can accomodate carbon-based or silicon-based players" do
+    it "can accomodate human players and droids" do
       new_player = Player.new("X", :droid)
       expect(new_player.type == :droid).to eq true
+    end
+
+    it "grabs a move from the AI if the player is a droid" do
+      new_player = Player.new("X", :droid)
+
     end
   end
 end

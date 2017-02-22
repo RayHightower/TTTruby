@@ -11,17 +11,13 @@ class Player
   def get_move
     if self.type == :human
       $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
+      return
     end
 
-    # If this is an artificial player, get the move from the AI algorithm.
+    if self.type == :droid
 
+    end
   end
 
-# This method does absolutely nothing!!!
-#   def get_move
-#     move = 9 # gets.chomp
-#     puts "Okay #{self.designation}, your move is #{move}."
-#     return move
-#   end
 
 end
