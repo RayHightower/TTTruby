@@ -24,6 +24,28 @@ describe Player do
 
     it "grabs a move from the AI if the player is a droid" do
       new_player = Player.new("X", :droid)
+    end
+
+    it "returns an integer when given a board" do
+      current_grid = Grid.new
+      current_grid = [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
+      current_player = ArtificialPlayer.new("O")
+      ideal_moves = [ 2, 3, 4, 5, 6, 7, 8, 9 ]
+      move = current_player.minimax(current_grid)
+      expect(ideal_moves.include? move).to eq true
+    end
+
+    it "returns a non-losing move when given a potential winning board for the opposing player" do
+      current_grid = Grid.new
+      current_grid = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
+      current_player = ArtificialPlayer.new("O")
+      move = current_player.minimax(current_grid)
+      expect(move).to eq 3
+    end
+
+    it "returns a winning move when given a potential winning board for the current player" do
+
+    end
 
     end
   end
