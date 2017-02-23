@@ -1,3 +1,5 @@
+require_relative './grid'
+
 class Player
 
   attr_accessor :designation, :name, :type
@@ -18,6 +20,4 @@ class Player
 
     end
   end
-
-
 end
