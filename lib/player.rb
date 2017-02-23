@@ -34,9 +34,12 @@ class Player
           return cell.to_i
         end
       end
+    else
+      return 3
     end
 
     # if this is not a terminal node, then dig deeper down the tree
+    #
 
   end
 
