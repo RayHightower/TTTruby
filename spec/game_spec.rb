@@ -7,7 +7,7 @@ describe Game do
       @game = Game.new
       @player = [Player.new("X"), Player.new("O")]
       @fake_console = StringIO.new
-      $stdout = @fake_console
+      # $stdout = @fake_console
     end
 
     it "inits the game" do
