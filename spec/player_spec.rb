@@ -1,7 +1,7 @@
 require 'player'
 
 describe Player do
-  context "TTT players" do
+  context "TTT player" do
 
     before do
       @player = [Player.new("X"), Player.new("O")]
@@ -25,7 +25,8 @@ describe Player do
     it "grabs a move from the AI if the player is a droid" do
       current_grid = Grid.new
       current_player = Player.new("X", :droid)
-      current_player.get_move(current_player, current_grid)
+      move = current_player.get_move(current_grid)
+      expect(move.class == Fixnum).to eq true
     end
 
     it "returns an integer when given a board" do
@@ -33,7 +34,7 @@ describe Player do
       current_grid = [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
       current_player = Player.new("O", :droid)
       ideal_moves = [ 2, 3, 4, 5, 6, 7, 8, 9 ]
-      move = current_player.minimax(current_grid)
+      move = current_player.get_move(current_grid)
       expect(ideal_moves.include? move).to eq true
     end
 
@@ -41,7 +42,7 @@ describe Player do
       current_grid = Grid.new
       current_grid = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
       current_player = Player.new("O", :droid)
-      move = current_player.minimax(current_grid)
+      move = current_player.get_move(current_grid)
       expect(move).to eq 3
     end
 
