@@ -7,10 +7,10 @@ class Player
   # :type = :human or :android
   # :name = Player's name in the real world, if they want to share it
 
-  def initialize(designation, type=:human)
+  def initialize(designation, type=:human, name="Random Name")
     @designation = designation
-    @name = "Random Name"
     @type = type
+    @name = name
   end
 
   def get_move(current_grid)
