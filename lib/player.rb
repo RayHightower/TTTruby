@@ -17,7 +17,11 @@ class Player
     end
 
     if self.type == :droid
-      return 9
+      minimax(self, current_grid)
     end
+  end
+
+  def minimax(current_player, current_grid)
+    3
   end
 end
