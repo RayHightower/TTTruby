@@ -23,8 +23,9 @@ describe Player do
     end
 
     it "grabs a move from the AI if the player is a droid" do
-      new_player = Player.new("X", :droid)
-      new_player.get_move
+      current_grid = Grid.new
+      current_player = Player.new("X", :droid)
+      current_player.get_move(current_player, current_grid)
     end
 
     it "returns an integer when given a board" do

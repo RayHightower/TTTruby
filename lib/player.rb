@@ -10,14 +10,14 @@ class Player
     @type = type
   end
 
-  def get_move
+  def get_move(current_player, current_grid)
     if self.type == :human
       $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
       return
     end
 
     if self.type == :droid
-
+      # return 9
     end
   end
 end
