@@ -25,15 +25,29 @@ class Player
   end
 
   def minimax(current_player, current_grid)
-    # if this is a terminal node, then return utility value
-    current_grid[1..-1].each do |cell|
-      if current_grid[cell.to_i] == cell # if the cell is empty
-        return cell.to_i
+    # Determine how many turns remain by looking at the number of empty cells.
+    depth = 9 - empty_cells(current_grid)
+
+    if depth == 9 # if this is a terminal node, then return utility value
+      current_grid[1..-1].each do |cell|
+        if current_grid[cell.to_i] == cell # if the cell is empty
+          return cell.to_i
+        end
       end
     end
 
     # if this is not a terminal node, then dig deeper down the tree
 
+  end
+
+  def empty_cells(grid)
+    empty_count = 0
+    grid[1..-1].each do |cell|
+      if grid[cell.to_i] == cell # if the cell is empty
+        empty_count +=1
+      end
+    end
+    return empty_count
   end
 
   def utility(state)
