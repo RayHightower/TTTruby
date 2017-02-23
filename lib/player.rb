@@ -2,7 +2,10 @@ require_relative './grid'
 
 class Player
 
-  attr_accessor :designation, :name, :type
+  attr_accessor :designation, :type, :name
+  # :designation = X or O
+  # :type = :human or :android
+  # :name = Player's name in the real world, if they want to share it
 
   def initialize(designation, type=:human)
     @designation = designation

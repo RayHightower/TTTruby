@@ -110,7 +110,7 @@ describe Game do
       @game.grid.add_move("X", 5)
       @game.grid.add_move("O", 9)
       @game.print_color_grid
-      # What assertion (other than looking at the printout) works here?
+      # What assertion (other than looking at the printout) works for checking color printing?
     end
   end
 end
