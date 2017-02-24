@@ -3,6 +3,8 @@ require_relative './colorizer'
 class Grid
   include Colorizer # A module for color!
 
+  attr_accessor :contents
+
   def initialize
     @cell = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
   end

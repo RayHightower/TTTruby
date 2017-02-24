@@ -31,7 +31,7 @@ describe Player do
 
     it "returns an integer when given a board" do
       current_grid = Grid.new
-      current_grid = [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
+      current_grid.contents = [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
       current_player = Player.new("O", :droid)
       ideal_moves = [ 2, 3, 4, 5, 6, 7, 8, 9 ]
       move = current_player.get_move(current_grid)
@@ -40,7 +40,7 @@ describe Player do
 
     it "returns a non-losing move when given a potential winning board for the opposing player" do
       current_grid = Grid.new
-      current_grid = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
+      current_grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
       current_player = Player.new("O", :droid)
       move = current_player.get_move(current_grid)
       expect(move).to eq 3
