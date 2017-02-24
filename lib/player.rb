@@ -25,6 +25,8 @@ class Player
   end
 
   def minimax(current_player, current_grid)
+    best_score = 0
+    best_move = 0
 
     puts "\n\n***** moves_remaining(current_grid) = #{moves_remaining(current_grid)} ******\n\n"
 
@@ -35,6 +37,8 @@ class Player
         end
       end
     else # if this is not a terminal node, then dig deeper down the tree
+      # deeper_grid = current_grid.dup
+      # score = minimax(other_player, deeper_grid)
       return 3
     end
   end
