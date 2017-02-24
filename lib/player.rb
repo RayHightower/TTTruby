@@ -17,16 +17,20 @@ class Player
     if self.type == :human
       move = $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
       return move
-    end
-
-    if self.type == :droid
-      minimax(self, current_grid)
+    elsif self.type == :droid
+      depth = 9 - moves_remaining(current_grid)
+      minimax(self, current_grid, depth)
     end
   end
 
-  def minimax(current_player, current_grid)
+  def minimax(current_player, current_grid, depth)
     best_score = 0
     best_move = 0
+    not_self = "Z"
+
+    return 5
+
+    player_toggle = [self.designation, not_self]
 
     puts "\n\n***** moves_remaining(current_grid) = #{moves_remaining(current_grid)} ******\n\n"
 
@@ -38,7 +42,7 @@ class Player
       end
     else # if this is not a terminal node, then dig deeper down the tree
       # deeper_grid = current_grid.dup
-      # score = minimax(other_player, deeper_grid)
+      # score = minimax(player_toggle(turn % 2), deeper_grid)
       return 3
     end
   end
