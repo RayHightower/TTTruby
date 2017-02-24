@@ -15,8 +15,8 @@ class Player
 
   def get_move(current_grid)
     if self.type == :human
-      $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
-      return
+      move = $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
+      return move
     end
 
     if self.type == :droid

@@ -27,8 +27,7 @@ class GameRunner
   end
 
   def get_move
-    ##### What the fuck, Hightower???
-    @mover.get_move(@game.grid)
+    @mover.get_move(get_status)
     # $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
   end
 
@@ -75,10 +74,4 @@ class GameRunner
     @turn = @turn + 1
     @mover = @game.player[@turn % 2]
   end
-
-  # Put minimax here.
-  def minimax(player, grid)
-
-  end
-
 end
