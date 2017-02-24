@@ -27,6 +27,7 @@ class GameRunner
   end
 
   def get_move
+    # This calls the get_move method in the Player class.
     @mover.get_move(get_status)
   end
 
