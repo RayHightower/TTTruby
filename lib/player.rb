@@ -34,13 +34,9 @@ class Player
           return cell.to_i
         end
       end
-    else
+    else # if this is not a terminal node, then dig deeper down the tree
       return 3
     end
-
-    # if this is not a terminal node, then dig deeper down the tree
-    #
-
   end
 
   def moves_remaining(grid)
