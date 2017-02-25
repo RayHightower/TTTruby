@@ -5,12 +5,10 @@ class Player
   attr_accessor :designation, :type, :name
   # :designation = X or O
   # :type = :human or :android
-  # :name = Player's name in the real world, if they want to share it
 
   def initialize(designation, type=:human, name="Random Name")
     @designation = designation
     @type = type
-    @name = name
   end
 
   def get_move(current_grid)
@@ -20,8 +18,8 @@ class Player
     elsif self.type == :droid
       depth = 9 - moves_remaining(current_grid)
       minimax(self, current_grid, depth)
-    end
-  end
+        end
+      end
 
   def minimax(current_player, current_grid, depth)
     best_score = 0
