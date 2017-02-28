@@ -7,13 +7,6 @@ describe Player do
       @player = [Player.new("X"), Player.new("O")]
     end
 
-    # This test feels funky because it's testing a method that exists in the grid class.
-    it "calculates the number of moves remaining on any given grid" do
-      test_grid = Grid.new
-      test_grid.contents = [ 0, "O", 2, 3, 4, "X", 6, 7, "X", 9 ]
-      expect(test_grid.moves_remaining(test_grid)).to eq 6
-    end
-
     it "chooses letter 'X' for the first player" do
       @player[0].designation = "X"
       expect(@player[0].designation).to eq "X"

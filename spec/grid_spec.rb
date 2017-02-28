@@ -13,6 +13,12 @@ describe Grid do
       expect(sample_grid.contents).to eq [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
+    it "calculates the number of moves remaining on any given grid" do
+      test_grid = Grid.new
+      test_grid.contents = [ 0, "O", 2, 3, 4, "X", 6, 7, "X", 9 ]
+      expect(test_grid.moves_remaining).to eq 6
+    end
+
     it "prints the grid in color" do
       @thisgrid.add_move("X", 5)
       @thisgrid.add_move("O", 9)

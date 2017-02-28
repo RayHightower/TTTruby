@@ -30,9 +30,9 @@ class Player
 
     player_toggle = [self.designation, not_self]
 
-    puts "\n\n***** moves_remaining(current_grid) = #{moves_remaining(current_grid)} ******\n\n"
+    puts "\n\n***** current_grid.moves_remaining  = #{current_grid.moves_remaining} ******\n\n"
 
-    if moves_remaining(current_grid) == 1 # if this is a terminal node, then return utility value
+    if current_grid.moves_remaining == 1 # if this is a terminal node, then return utility value
       current_grid.contents[1..-1].each do |cell|
         if current_grid.contents[cell.to_i] == cell # if the cell is empty
           return cell.to_i

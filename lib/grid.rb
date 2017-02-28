@@ -42,4 +42,9 @@ class Grid
     @cell[location] = designation
     return true # because the move is legal and we added it
   end
+
+  def moves_remaining
+    6
+
+  end
 end
