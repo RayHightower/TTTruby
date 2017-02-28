@@ -18,8 +18,8 @@ class Player
     elsif self.type == :droid
       depth = 9 - moves_remaining(current_grid)
       minimax(self, current_grid, depth)
-        end
-      end
+    end
+  end
 
   def minimax(current_player, current_grid, depth)
     best_score = 0
