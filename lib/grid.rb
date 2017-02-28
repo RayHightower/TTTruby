@@ -7,6 +7,7 @@ class Grid
 
   def initialize
     @cell = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+    # @cell = [ 0, "O", 2, 3, 4, "X", 6, 7, "X", 9 ]
   end
 
   def contents
@@ -47,7 +48,7 @@ class Grid
     empty_count = 0
     puts "self.contents = #{self.contents}"
     self.contents[1..-1].each do |cell|
-      if self.contents[cell.to_i] == cell.to_i # if the cell is empty
+      if self.contents[cell.to_i] == cell # if the cell is empty
         puts "cell.to_i = #{cell.to_i} and self.contents[cell.to_i] = #{self.contents[cell.to_i]}"
         empty_count +=1
       end

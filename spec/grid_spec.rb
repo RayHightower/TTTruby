@@ -15,7 +15,9 @@ describe Grid do
 
     it "calculates the number of moves remaining on any given grid" do
       test_grid = Grid.new
-      test_grid.contents = [ 0, "O", 2, 3, 4, "X", 6, 7, "X", 9 ]
+      test_grid.add_move("X", 5)
+      test_grid.add_move("O", 1)
+      test_grid.add_move("X", 8)
       expect(test_grid.moves_remaining).to eq 6
     end
 
