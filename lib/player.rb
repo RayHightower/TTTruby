@@ -16,7 +16,7 @@ class Player
       move = $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
       return move
     elsif self.type == :droid
-      depth = 9 - moves_remaining(current_grid)
+      depth = 9 - current_grid.moves_remaining
       minimax(self, current_grid, depth)
     end
   end

@@ -44,7 +44,14 @@ class Grid
   end
 
   def moves_remaining
-    6
-
+    empty_count = 0
+    puts "self.contents = #{self.contents}"
+    self.contents[1..-1].each do |cell|
+      if self.contents[cell.to_i] == cell.to_i # if the cell is empty
+        puts "cell.to_i = #{cell.to_i} and self.contents[cell.to_i] = #{self.contents[cell.to_i]}"
+        empty_count +=1
+      end
+    end
+    return empty_count
   end
 end
