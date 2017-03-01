@@ -24,7 +24,7 @@ describe Grid do
     it "prints the grid in color" do
       @thisgrid.add_move("X", 5)
       @thisgrid.add_move("O", 9)
-      @thisgrid.print_color_grid
+      # @thisgrid.print_color_grid
       # What assertion (other than looking at the printout) works here?
     end
 

@@ -45,16 +45,6 @@ class Player
     end
   end
 
-  def moves_remaining(grid)
-    empty_count = 0
-    grid.contents[1..-1].each do |cell|
-      if grid.contents[cell.to_i] == cell # if the cell is empty
-        empty_count +=1
-      end
-    end
-    return empty_count
-  end
-
   def utility(state)
 
   end
