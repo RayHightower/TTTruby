@@ -54,4 +54,14 @@ class Grid
     end
     return empty_count
   end
+
+  def empty_cell_list
+    empty_cells = []
+    self.contents[1..-1].each do |cell|
+      if self.contents[cell.to_i] == cell # if the cell is empty
+        empty_cells << cell  # add its designation to the list
+      end
+    end
+    return empty_cells
+  end
 end

@@ -21,6 +21,14 @@ describe Grid do
       expect(test_grid.moves_remaining).to eq 6
     end
 
+    it "returns an array containing the designations of empty cells" do
+      test_grid = Grid.new
+      test_grid.add_move("X", 5)
+      test_grid.add_move("O", 1)
+      test_grid.add_move("X", 8)
+      expect(test_grid.empty_cell_list).to eq [ 2, 3, 4, 6, 7, 9]
+    end
+
     it "prints the grid in color" do
       @thisgrid.add_move("X", 5)
       @thisgrid.add_move("O", 9)

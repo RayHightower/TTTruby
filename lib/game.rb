@@ -40,5 +40,4 @@ class Game
 
     return winner
   end
-
 end
