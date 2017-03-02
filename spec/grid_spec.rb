@@ -26,7 +26,8 @@ describe Grid do
       test_grid.add_move("X", 5)
       test_grid.add_move("O", 1)
       test_grid.add_move("X", 8)
-      expect(test_grid.empty_cell_list).to eq [ 2, 3, 4, 6, 7, 9]
+      test_grid.add_move("O", 3)
+      expect(test_grid.empty_cell_list).to eq [ 2, 4, 6, 7, 9]
     end
 
     it "prints the grid in color" do
