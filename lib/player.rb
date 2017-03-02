@@ -13,11 +13,12 @@ class Player
 
   def get_move(current_grid)
     if self.type == :human
-      move = $stdin.getch.to_i  # Eventually we want to get the move from somewhere other than the console.
+      move = $stdin.getch.to_i  # Humans provide moves via the console.
       return move
-    elsif self.type == :droid
+    elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       depth = 9 - current_grid.moves_remaining
-      minimax(self, current_grid, depth)
+      move = minimax(self, current_grid, depth)
+      return move
     end
   end
 
@@ -26,7 +27,7 @@ class Player
     best_move = 0
     not_self = "Z"
 
-    return 5
+    # return 5
 
     player_toggle = [self.designation, not_self]
 
