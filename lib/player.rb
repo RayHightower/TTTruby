@@ -4,7 +4,7 @@ class Player
 
   attr_accessor :designation, :type, :name
   # :designation = X or O
-  # :type = :human or :android
+  # :type = :human or :droid
 
   def initialize(designation, type=:human, name="Random Name")
     @designation = designation
@@ -46,7 +46,7 @@ class Player
     end
   end
 
-  def utility(state)
-
+  def score(grid) # Given a grid, did I win (+1), lose (-1), or draw (0)?
+    1
   end
 end

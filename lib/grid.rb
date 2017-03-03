@@ -48,8 +48,7 @@ class Grid
     empty_count = 0
     self.contents[1..-1].each do |cell|
       if self.contents[cell.to_i] == cell # if the cell is empty
-        # puts "self.contents[#{cell.to_i}] = #{self.contents[cell.to_i]}"
-        empty_count +=1
+        empty_count +=1 # count one more
       end
     end
     return empty_count

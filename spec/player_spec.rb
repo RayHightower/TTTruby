@@ -22,6 +22,28 @@ describe Player do
       expect(new_player.type == :droid).to eq true
     end
 
+    it "returns score = 1 when :droid has won" do
+      player = Player.new("O", :droid)
+      grid = Grid.new
+      grid.add_move("O", 1)
+      grid.add_move("O", 2)
+      grid.add_move("O", 3)
+      grid.add_move("X", 5)
+      grid.add_move("X", 8)
+      expect(player.score(grid)).to eq 1
+    end
+
+    it "returns score = -1 when :droid has lost" do
+      player = Player.new("O", :droid)
+      grid = Grid.new
+      grid.add_move("O", 1)
+      grid.add_move("O", 2)
+      grid.add_move("O", 3)
+      grid.add_move("X", 5)
+      grid.add_move("X", 8)
+      expect(player.score(grid)).to eq -1
+    end
+
     it "grabs a move from the console if the player is a human" do
       $stdin = StringIO.new("2543798")
       current_grid = Grid.new
