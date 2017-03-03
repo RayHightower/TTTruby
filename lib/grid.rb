@@ -7,7 +7,6 @@ class Grid
 
   def initialize
     @cell = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
-    # @cell = [ 0, "O", 2, 3, 4, "X", 6, 7, "X", 9 ]
   end
 
   def contents

@@ -28,8 +28,6 @@ describe Player do
       grid.add_move("O", 1)
       grid.add_move("O", 2)
       grid.add_move("O", 3)
-      grid.add_move("X", 5)
-      grid.add_move("X", 8)
       expect(player.score(grid)).to eq 1
     end
 
