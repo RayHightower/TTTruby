@@ -42,6 +42,21 @@ describe Player do
       expect(player.score(grid)).to eq (-1)
     end
 
+    it "retuns score = 0 when :droid is in a tie game" do
+      player = Player.new("O", :droid)
+      grid = Grid.new
+      grid.add_move("O", 1)
+      grid.add_move("X", 2)
+      grid.add_move("O", 3)
+      grid.add_move("X", 4)
+      grid.add_move("O", 5)
+      grid.add_move("X", 6)
+      grid.add_move("X", 7)
+      grid.add_move("O", 8)
+      grid.add_move("X", 9)
+      expect(player.score(grid)).to eq (0)
+    end
+
     it "grabs a move from the console if the player is a human" do
       $stdin = StringIO.new("2543798")
       current_grid = Grid.new

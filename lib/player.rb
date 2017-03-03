@@ -46,7 +46,7 @@ class Player
     end
   end
 
-  def score(grid) # Given a grid, did I win (+1), lose (-1), or draw (0)?
+  def score(grid) # Given a terminal grid, did I win (+1), lose (-1), or draw (0)?
     score = 0
     puts "\ngrid.who_won == #{grid.who_won}\n"
 
