@@ -78,6 +78,22 @@ describe Grid do
       expect(grid.who_won).to eq "O"
     end
 
+    it "tells us when O wins on the forward-slash diagonal" do
+      grid = Grid.new
+      grid.add_move("O", 3)
+      grid.add_move("O", 5)
+      grid.add_move("O", 7)
+      expect(grid.who_won).to eq "O"
+    end
+
+    it "tells us when O wins on the back-slash diagonal" do
+      grid = Grid.new
+      grid.add_move("O", 1)
+      grid.add_move("O", 5)
+      grid.add_move("O", 9)
+      expect(grid.who_won).to eq "O"
+    end
+
     it "prints the grid in color" do
       @thisgrid.add_move("X", 5)
       @thisgrid.add_move("O", 9)

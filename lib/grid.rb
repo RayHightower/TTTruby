@@ -75,8 +75,8 @@ class Grid
     (self.contents[2] == "O" && self.contents[2] == self.contents[5] && self.contents[5] == self.contents[8]) ? winner = "O" : nil
     (self.contents[3] == "O" && self.contents[3] == self.contents[6] && self.contents[6] == self.contents[9]) ? winner = "O" : nil
 
-    (self.contents[1] == "O" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "O" : nil
-    (self.contents[1] == "O" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "O" : nil
+    (self.contents[1] == "O" && self.contents[1] == self.contents[5] && self.contents[5] == self.contents[9]) ? winner = "O" : nil
+    (self.contents[3] == "O" && self.contents[3] == self.contents[5] && self.contents[5] == self.contents[7]) ? winner = "O" : nil
 
     # (self.grid.contents[1] == "X" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = true : false
     # (self.contents[4] == self.contents[5] && self.contents[5] == self.contents[6]) ? winner = true : false
