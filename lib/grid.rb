@@ -67,16 +67,27 @@ class Grid
   def who_won   # A grid can look at itself and see who won.
     winner = nil
 
-    (@grid.contents[1] == @grid.contents[2] && @grid.contents[2] == @grid.contents[3]) ? winner = true : false
-    (@grid.contents[4] == @grid.contents[5] && @grid.contents[5] == @grid.contents[6]) ? winner = true : false
-    (@grid.contents[7] == @grid.contents[8] && @grid.contents[8] == @grid.contents[9]) ? winner = true : false
+    (self.contents[1] == "O" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "O" : nil
+    (self.contents[4] == "O" && self.contents[4] == self.contents[5] && self.contents[5] == self.contents[6]) ? winner = "O" : nil
+    (self.contents[7] == "O" && self.contents[7] == self.contents[8] && self.contents[8] == self.contents[9]) ? winner = "O" : nil
 
-    (@grid.contents[1] == @grid.contents[4] && @grid.contents[4] == @grid.contents[7]) ? winner = true : false
-    (@grid.contents[2] == @grid.contents[5] && @grid.contents[5] == @grid.contents[8]) ? winner = true : false
-    (@grid.contents[3] == @grid.contents[6] && @grid.contents[6] == @grid.contents[9]) ? winner = true : false
+    (self.contents[1] == "O" && self.contents[1] == self.contents[4] && self.contents[4] == self.contents[7]) ? winner = "O" : nil
+    (self.contents[2] == "O" && self.contents[2] == self.contents[5] && self.contents[5] == self.contents[8]) ? winner = "O" : nil
+    (self.contents[3] == "O" && self.contents[3] == self.contents[6] && self.contents[6] == self.contents[9]) ? winner = "O" : nil
 
-    (@grid.contents[1] == @grid.contents[5] && @grid.contents[5] == @grid.contents[9]) ? winner = true : false
-    (@grid.contents[3] == @grid.contents[5] && @grid.contents[5] == @grid.contents[7]) ? winner = true : false
+    (self.contents[1] == "O" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "O" : nil
+    (self.contents[1] == "O" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "O" : nil
+
+    # (self.grid.contents[1] == "X" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = true : false
+    # (self.contents[4] == self.contents[5] && self.contents[5] == self.contents[6]) ? winner = true : false
+    # (self.contents[7] == self.contents[8] && self.contents[8] == self.contents[9]) ? winner = true : false
+
+    # (self.contents[1] == self.contents[4] && self.contents[4] == self.contents[7]) ? winner = true : false
+    # (self.contents[2] == self.contents[5] && self.contents[5] == self.contents[8]) ? winner = true : false
+    # (self.contents[3] == self.contents[6] && self.contents[6] == self.contents[9]) ? winner = true : false
+
+    # (self.contents[1] == self.contents[5] && self.contents[5] == self.contents[9]) ? winner = true : false
+    # (self.contents[3] == self.contents[5] && self.contents[5] == self.contents[7]) ? winner = true : false
 
     return winner
   end
