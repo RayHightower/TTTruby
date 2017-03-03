@@ -47,6 +47,13 @@ class Player
   end
 
   def score(grid) # Given a grid, did I win (+1), lose (-1), or draw (0)?
-    1
+    score = 0
+    puts "\ngrid.who_won == #{grid.who_won}\n"
+
+    if grid.who_won == self.designation then score = 1
+    elsif grid.who_won != nil then score = -1
+    end
+
+    return score
   end
 end
