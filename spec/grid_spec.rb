@@ -94,68 +94,68 @@ describe Grid do
       expect(grid.who_won).to eq "O"
     end
 
-    it "tells us when O wins on the first row" do
+    it "tells us when X wins on the first row" do
       grid = Grid.new
-      grid.add_move("O", 1)
-      grid.add_move("O", 2)
-      grid.add_move("O", 3)
-      expect(grid.who_won).to eq "O"
+      grid.add_move("X", 1)
+      grid.add_move("X", 2)
+      grid.add_move("X", 3)
+      expect(grid.who_won).to eq "X"
     end
 
-    it "tells us when O wins on the second row" do
+    it "tells us when X wins on the second row" do
       grid = Grid.new
-      grid.add_move("O", 4)
-      grid.add_move("O", 5)
-      grid.add_move("O", 6)
-      expect(grid.who_won).to eq "O"
+      grid.add_move("X", 4)
+      grid.add_move("X", 5)
+      grid.add_move("X", 6)
+      expect(grid.who_won).to eq "X"
     end
 
-    it "tells us when O wins on the third row" do
+    it "tells us when X wins on the third row" do
       grid = Grid.new
-      grid.add_move("O", 7)
-      grid.add_move("O", 8)
-      grid.add_move("O", 9)
-      expect(grid.who_won).to eq "O"
+      grid.add_move("X", 7)
+      grid.add_move("X", 8)
+      grid.add_move("X", 9)
+      expect(grid.who_won).to eq "X"
     end
 
-    it "tells us when O wins on the first column" do
+    it "tells us when X wins on the first column" do
       grid = Grid.new
-      grid.add_move("O", 1)
-      grid.add_move("O", 4)
-      grid.add_move("O", 7)
-      expect(grid.who_won).to eq "O"
+      grid.add_move("X", 1)
+      grid.add_move("X", 4)
+      grid.add_move("X", 7)
+      expect(grid.who_won).to eq "X"
     end
 
-    it "tells us when O wins on the second column" do
+    it "tells us when X wins on the second column" do
       grid = Grid.new
-      grid.add_move("O", 2)
-      grid.add_move("O", 5)
-      grid.add_move("O", 8)
-      expect(grid.who_won).to eq "O"
+      grid.add_move("X", 2)
+      grid.add_move("X", 5)
+      grid.add_move("X", 8)
+      expect(grid.who_won).to eq "X"
     end
 
-    it "tells us when O wins on the third column" do
+    it "tells us when X wins on the third column" do
       grid = Grid.new
-      grid.add_move("O", 3)
-      grid.add_move("O", 6)
-      grid.add_move("O", 9)
-      expect(grid.who_won).to eq "O"
+      grid.add_move("X", 3)
+      grid.add_move("X", 6)
+      grid.add_move("X", 9)
+      expect(grid.who_won).to eq "X"
     end
 
-    it "tells us when O wins on the forward-slash diagonal" do
+    it "tells us when X wins on the forward-slash diagonal" do
       grid = Grid.new
-      grid.add_move("O", 3)
-      grid.add_move("O", 5)
-      grid.add_move("O", 7)
-      expect(grid.who_won).to eq "O"
+      grid.add_move("X", 3)
+      grid.add_move("X", 5)
+      grid.add_move("X", 7)
+      expect(grid.who_won).to eq "X"
     end
 
-    it "tells us when O wins on the back-slash diagonal" do
+    it "tells us when X wins on the back-slash diagonal" do
       grid = Grid.new
-      grid.add_move("O", 1)
-      grid.add_move("O", 5)
-      grid.add_move("O", 9)
-      expect(grid.who_won).to eq "O"
+      grid.add_move("X", 1)
+      grid.add_move("X", 5)
+      grid.add_move("X", 9)
+      expect(grid.who_won).to eq "X"
     end
 
     it "prints the grid in color" do
