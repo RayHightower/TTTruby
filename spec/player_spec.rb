@@ -7,6 +7,11 @@ describe Player do
       @player = [Player.new("X"), Player.new("O")]
     end
 
+    it "can toggle between X and O during the recursion" do
+      player = Player.new("X", :droid)
+      expect(player.toggle(player.designation)).to eq "O"
+    end
+
     it "chooses letter 'X' for the first player" do
       @player[0].designation = "X"
       expect(@player[0].designation).to eq "X"

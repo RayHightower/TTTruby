@@ -22,6 +22,11 @@ class Player
     end
   end
 
+  def toggle(designation)
+    (designation == "X") ? toggled = "O" : togggled = "X"
+    return toggled
+  end
+
   def minimax(current_player, current_grid, depth)
     best_score = 0
     best_move = 0
