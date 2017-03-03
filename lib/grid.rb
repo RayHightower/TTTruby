@@ -78,6 +78,17 @@ class Grid
     (self.contents[1] == "O" && self.contents[1] == self.contents[5] && self.contents[5] == self.contents[9]) ? winner = "O" : nil
     (self.contents[3] == "O" && self.contents[3] == self.contents[5] && self.contents[5] == self.contents[7]) ? winner = "O" : nil
 
+    (self.contents[1] == "X" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "X" : nil
+    (self.contents[4] == "X" && self.contents[4] == self.contents[5] && self.contents[5] == self.contents[6]) ? winner = "X" : nil
+    (self.contents[7] == "X" && self.contents[7] == self.contents[8] && self.contents[8] == self.contents[9]) ? winner = "X" : nil
+
+    (self.contents[1] == "X" && self.contents[1] == self.contents[4] && self.contents[4] == self.contents[7]) ? winner = "X" : nil
+    (self.contents[2] == "X" && self.contents[2] == self.contents[5] && self.contents[5] == self.contents[8]) ? winner = "X" : nil
+    (self.contents[3] == "X" && self.contents[3] == self.contents[6] && self.contents[6] == self.contents[9]) ? winner = "X" : nil
+
+    (self.contents[1] == "X" && self.contents[1] == self.contents[5] && self.contents[5] == self.contents[9]) ? winner = "X" : nil
+    (self.contents[3] == "X" && self.contents[3] == self.contents[5] && self.contents[5] == self.contents[7]) ? winner = "X" : nil
+
     return winner
   end
 end
