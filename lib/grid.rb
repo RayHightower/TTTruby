@@ -63,4 +63,11 @@ class Grid
     end
     return empty_cells
   end
+
+  def who_won   # A grid can look at itself and see who won.
+    winner = nil
+
+
+    return winner
+  end
 end
