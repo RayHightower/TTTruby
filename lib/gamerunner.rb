@@ -39,7 +39,7 @@ class GameRunner
   end
 
   def check_winner
-    if (@game.check_winner)
+    if (@game.grid.who_won != nil)
       print "\n\e[#{93}m#{"\n*** Player #{@mover.designation} wins! ***\n"}\e[0m"
       @is_active = false
     end

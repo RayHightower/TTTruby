@@ -51,10 +51,12 @@ describe Game do
     end
 
     it "checks for a 1st row horizontal winnner" do
-      @game.add_move(@player[1], 1)
-      @game.add_move(@player[1], 2)
-      @game.add_move(@player[1], 3)
-      expect(@game.check_winner).to eq true
+      player = Player.new("X")
+      game = Game.new
+      game.add_move(player, 1)
+      game.add_move(player, 2)
+      game.add_move(player, 3)
+      expect(game.grid.who_won).to eq player.designation
     end
 
     it "checks for a 2nd row horizontal winnner" do

@@ -27,16 +27,8 @@ class Game
 
     winner = false
 
-    (@grid.contents[1] == @grid.contents[2] && @grid.contents[2] == @grid.contents[3]) ? winner = true : false
-    (@grid.contents[4] == @grid.contents[5] && @grid.contents[5] == @grid.contents[6]) ? winner = true : false
-    (@grid.contents[7] == @grid.contents[8] && @grid.contents[8] == @grid.contents[9]) ? winner = true : false
-
-    (@grid.contents[1] == @grid.contents[4] && @grid.contents[4] == @grid.contents[7]) ? winner = true : false
-    (@grid.contents[2] == @grid.contents[5] && @grid.contents[5] == @grid.contents[8]) ? winner = true : false
-    (@grid.contents[3] == @grid.contents[6] && @grid.contents[6] == @grid.contents[9]) ? winner = true : false
-
-    (@grid.contents[1] == @grid.contents[5] && @grid.contents[5] == @grid.contents[9]) ? winner = true : false
-    (@grid.contents[3] == @grid.contents[5] && @grid.contents[5] == @grid.contents[7]) ? winner = true : false
+    if @grid.who_won == "X" || @grid.who_won == "O" then winner = true
+    end
 
     return winner
   end
