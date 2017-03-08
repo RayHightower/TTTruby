@@ -4,9 +4,9 @@ class GameRunner
   attr_accessor :game
   attr_reader :turn, :is_active, :mover
 
-  def initialize
+  def initialize(type=:human)
     @game = Game.new
-    @game.player = [Player.new("X"), Player.new("O")]
+    @game.player = [Player.new("X"), Player.new("O", type)]
     @turn = 1
     @is_active = true
     @mover = @game.player[@turn % 2]

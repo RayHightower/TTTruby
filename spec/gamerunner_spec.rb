@@ -15,6 +15,11 @@ describe GameRunner do
 
     end
 
+    it "can start the game with human vs droid" do
+      game_with_droid = GameRunner.new(:droid)
+      expect(game_with_droid.game.player[2].type).to eq :droid
+    end
+
     it "changes the state of the grid with each turn" do
       grid_state_1 = @thisgamerunner.get_status.dup
       # puts "\ngrid_state_1 = #{grid_state_1}"

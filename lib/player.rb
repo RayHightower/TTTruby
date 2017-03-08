@@ -29,9 +29,11 @@ class Player
   end
 
   def minimax(current_player, current_grid, depth)
-    best_score = 0
-    best_move = 0
-    other_player = "Z"
+    best_score = 0        # Might need to live in get_move?
+    best_move = 0         # Might need to live in get_move?
+    other_player = "Z"    # Might need to live in get_move?
+
+    # minimax should only return scores?
 
     player_toggle = [self.designation, other_player]
 
