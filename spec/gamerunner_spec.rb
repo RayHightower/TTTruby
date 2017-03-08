@@ -58,12 +58,12 @@ describe GameRunner do
       player = @players[0]
       winning_moves_for_x = StringIO.new('15293')
 
-      while !@thisgamerunner.game.check_winner do
+      while !@thisgamerunner.game.grid.who_won do
         move = winning_moves_for_x.getc.to_i
         @thisgamerunner.game.add_move(player, move)
       end
 
-      expect(@thisgamerunner.game.check_winner).to eq true
+      expect(@thisgamerunner.game.grid.who_won).to eq "X"
     end
 
     it "alternates players with each turn" do
