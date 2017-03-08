@@ -55,5 +55,4 @@ class Player
 
     return score
   end
-
 end
