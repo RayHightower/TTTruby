@@ -33,6 +33,7 @@ describe Game do
     end
 
     it "will not allow a move to an occupied cell" do
+      mover = @player[1]
       move = 5
       mover = @player[0]
       @game.add_move(mover, move)
@@ -45,74 +46,8 @@ describe Game do
       move = 5
       mover = @player[0]
       @game.add_move(mover, move)
-      mover = @player[1]
       reaction = @game.add_move(mover, move)
       expect(reaction).to eq false
-    end
-
-    it "checks for a 1st row horizontal winnner" do
-      player = Player.new("X")
-      game = Game.new
-      game.add_move(player, 1)
-      game.add_move(player, 2)
-      game.add_move(player, 3)
-      expect(game.grid.who_won).to eq player.designation
-    end
-
-    it "checks for a 2nd row horizontal winnner" do
-      @game.add_move(@player[1], 4)
-      @game.add_move(@player[1], 5)
-      @game.add_move(@player[1], 6)
-      expect(@game.check_winner).to eq true
-    end
-
-    it "checks for a 3rd row horizontal winnner" do
-      @game.add_move(@player[1], 7)
-      @game.add_move(@player[1], 8)
-      @game.add_move(@player[1], 9)
-      expect(@game.check_winner).to eq true
-    end
-
-    it "checks for a 1st column vertical winnner" do
-      @game.add_move(@player[1], 1)
-      @game.add_move(@player[1], 4)
-      @game.add_move(@player[1], 7)
-      expect(@game.check_winner).to eq true
-    end
-
-    it "checks for a 2nd column vertical winnner" do
-      @game.add_move(@player[1], 2)
-      @game.add_move(@player[1], 5)
-      @game.add_move(@player[1], 8)
-      expect(@game.check_winner).to eq true
-    end
-
-    it "checks for a 3rd column vertical winnner" do
-      @game.add_move(@player[1], 3)
-      @game.add_move(@player[1], 6)
-      @game.add_move(@player[1], 9)
-      expect(@game.check_winner).to eq true
-    end
-
-    it "checks for a / diagonal winnner" do
-      @game.add_move(@player[1], 3)
-      @game.add_move(@player[1], 5)
-      @game.add_move(@player[1], 7)
-      expect(@game.check_winner).to eq true
-    end
-
-    it "checks for a \ diagonal winnner" do
-      @game.add_move(@player[1], 1)
-      @game.add_move(@player[1], 5)
-      @game.add_move(@player[1], 9)
-      expect(@game.check_winner).to eq true
-    end
-
-    it "prints player designations in color" do
-      @game.grid.add_move("X", 5)
-      @game.grid.add_move("O", 9)
-      @game.print_color_grid
-      # What assertion (other than looking at the printout) works for checking color printing?
     end
   end
 end

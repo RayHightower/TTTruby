@@ -22,14 +22,4 @@ class Game
   def add_move(mover, move)
     @grid.add_move(mover.designation, move)
   end
-
-  def check_winner
-
-    winner = false
-
-    if @grid.who_won == "X" || @grid.who_won == "O" then winner = true
-    end
-
-    return winner
-  end
 end
