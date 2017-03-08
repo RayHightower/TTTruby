@@ -17,16 +17,6 @@ describe Player do
       expect(player.toggle(player.designation)).to eq "X"
     end
 
-    it "chooses letter 'X' for the first player" do
-      @player[0].designation = "X"
-      expect(@player[0].designation).to eq "X"
-    end
-
-    it "chooses letter 'O' for the second player" do
-      @player[1].designation = "O"
-      expect(@player[1].designation).to eq "O"
-    end
-
     it "can accomodate human players and droids" do
       new_player = Player.new("X", :droid)
       expect(new_player.type == :droid).to eq true
