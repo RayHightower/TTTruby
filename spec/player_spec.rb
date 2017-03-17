@@ -90,7 +90,7 @@ describe Player do
       expect(ideal_moves.include? move).to eq true
     end
 
-    it "returns a non-losing move when given a potential winning board for the opposing player" do
+    it "returns a blocking move when given a potential winning board for the opposing player" do
       grid = Grid.new
       grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
       player = Player.new("O", :droid)
