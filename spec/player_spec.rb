@@ -17,6 +17,16 @@ describe Player do
       expect(player.toggle(player.designation)).to eq "X"
     end
 
+    it "returns a random available square via minimax" do
+      player = Player.new("O", :droid)
+      grid = Grid.new
+      grid.add_move("O", 1)
+      grid.add_move("X", 2)
+      grid.add_move("O", 3)
+      grid.add_move("X", 9)
+      expect(player.get_move(grid)).to eq 4
+    end
+
     it "can accomodate human players and droids" do
       new_player = Player.new("X", :droid)
       expect(new_player.type == :droid).to eq true
