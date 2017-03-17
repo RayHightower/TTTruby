@@ -17,7 +17,7 @@ describe GameRunner do
 
     it "can start the game with human vs droid" do
       game_with_droid = GameRunner.new(:droid)
-      expect(game_with_droid.game.player[2].type).to eq :droid
+      expect(game_with_droid.game.player[1].type).to eq :droid
     end
 
     it "changes the state of the grid with each turn" do
