@@ -44,7 +44,9 @@ class Player
     else # if this is not a terminal node, then dig deeper down the tree
       # deeper_grid = current_grid.dup
       # score = minimax(player_toggle(turn % 2), deeper_grid)
-      return 5
+      random_legal_move = current_grid.empty_cell_list.sample
+      puts "empty_cell_list = #{current_grid.empty_cell_list}"
+      return random_legal_move
     end
   end
 

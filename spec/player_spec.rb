@@ -24,7 +24,8 @@ describe Player do
       grid.add_move("X", 2)
       grid.add_move("O", 3)
       grid.add_move("X", 9)
-      expect(player.get_move(grid)).to eq 4
+      allowed = grid.empty_cell_list
+      expect(allowed.include? player.get_move(grid)).to eq true
     end
 
     it "can accomodate human players and droids" do
@@ -81,19 +82,19 @@ describe Player do
     end
 
     it "returns an integer when given a board" do
-      current_grid = Grid.new
-      current_grid.contents = [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
-      current_player = Player.new("O", :droid)
+      grid = Grid.new
+      grid.contents = [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
+      player = Player.new("O", :droid)
       ideal_moves = [ 2, 3, 4, 5, 6, 7, 8, 9 ]
-      move = current_player.get_move(current_grid)
+      move = player.get_move(grid)
       expect(ideal_moves.include? move).to eq true
     end
 
     it "returns a non-losing move when given a potential winning board for the opposing player" do
-      current_grid = Grid.new
-      current_grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
-      current_player = Player.new("O", :droid)
-      move = current_player.get_move(current_grid)
+      grid = Grid.new
+      grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
+      player = Player.new("O", :droid)
+      move = player.get_move(grid)
       expect(move).to eq 5
     end
 
