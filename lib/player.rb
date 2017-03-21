@@ -38,8 +38,8 @@ class Player
     player_toggle = [self.designation, other_player]
 
     # puts "\n\n***** current_grid.moves_remaining  = #{current_grid.moves_remaining} ******\n\n"
+    if current_grid.terminal # if this is a terminal node, then return utility value
 
-    if current_grid.terminal? # if this is a terminal node, then return utility value
       then return current_grid.empty_cell_list
     else # if this is not a terminal node, then dig deeper down the tree
       # deeper_grid = current_grid.dup

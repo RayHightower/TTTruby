@@ -98,12 +98,6 @@ describe Player do
       expect(move).to eq 5
     end
 
-    it "can tell if we have reached a terminal grid" do
-      grid = Grid.new
-      grid.contents = [ 0, "X", "O", "X", "O", "O", "X", "X", "X", "O" ]
-      expect(grid.terminal?).to eq true
-    end
-
     it "returns a winning move when given a potential winning board for the current player" do
 
     end
