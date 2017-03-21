@@ -12,13 +12,16 @@ class Player
   end
 
   def get_move(current_grid)
+    best_score = 0        # Might need to live in get_move?
+    best_move = 0         # Might need to live in get_move?
+
     if self.type == :human
-      move = $stdin.getch.to_i  # Humans provide moves via the console.
-      return move
+      best_move = $stdin.getch.to_i  # Humans provide moves via the console.
+      return best_move
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       depth = 9 - current_grid.moves_remaining
-      move = minimax(self, current_grid, depth)
-      return move
+      best_move = minimax(self, current_grid, depth)
+      return best_move
     end
   end
 
@@ -29,10 +32,7 @@ class Player
   end
 
   def minimax(current_player, current_grid, depth)
-    best_score = 0        # Might need to live in get_move?
-    best_move = 0         # Might need to live in get_move?
     other_player = "Z"    # Might need to live in get_move?
-
     # minimax should only return scores?
 
     player_toggle = [self.designation, other_player]
