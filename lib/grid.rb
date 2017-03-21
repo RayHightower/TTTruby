@@ -90,4 +90,9 @@ class Grid
 
     return winner
   end
+
+  def terminal? # A grid can look at itself and know that it's terminal.
+    
+  end
+
 end
