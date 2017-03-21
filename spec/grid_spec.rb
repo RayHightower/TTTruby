@@ -16,13 +16,17 @@ describe Grid do
     it "can look at a terminal grid and know that it's terminal" do
       grid = Grid.new
       grid.contents = [ 0, "X", "O", "X", "O", "O", "X", "X", "X", "O" ]
-      expect(grid.terminal?).to eq true
+      puts "\ngrid.moves_remaining = #{grid.moves_remaining}\n"
+      puts "\ngrid.empty_cell_list = #{grid.empty_cell_list}\n"
+      expect(grid.terminal).to eq true
     end
 
     it "can look at a non-terminal grid and know that it's non-terminal" do
       grid = Grid.new
       grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
-      expect(grid.terminal?).to eq false
+      puts "\ngrid.moves_remaining = #{grid.moves_remaining}\n"
+      puts "\ngrid.empty_cell_list = #{grid.empty_cell_list}\n"
+      expect(grid.terminal).to eq false
     end
 
     it "calculates the number of moves remaining on any given grid" do

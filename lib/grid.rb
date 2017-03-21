@@ -63,8 +63,9 @@ class Grid
     return empty_cells
   end
 
-  def terminal? # A grid can look at itself and know that it's terminal.
+  def terminal # A grid can look at itself and know that it's terminal.
     puts "\nself.moves_remaining = #{self.moves_remaining}\n"
+    puts "\nself.empty_cell_list = #{self.empty_cell_list}\n"
     if self.moves_remaining >= 1 then return false end
     return true
   end
