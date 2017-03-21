@@ -29,6 +29,14 @@ describe Grid do
       expect(grid.terminal?).to eq true
     end
 
+    it "can look at a winning grid and know that it's terminal" do
+      grid = Grid.new
+      grid.add_move("O", 1)
+      grid.add_move("O", 2)
+      grid.add_move("O", 3)
+      expect(grid.terminal?).to eq true
+    end
+
     it "can look at a non-terminal grid and know that it's non-terminal" do
       grid = Grid.new
       grid.add_move("X", 1)

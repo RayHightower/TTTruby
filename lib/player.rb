@@ -31,15 +31,17 @@ class Player
     end
   end
 
-  def minimax(current_player, current_grid, depth)
+  def minimax(current_player_designation, current_grid, depth)
     if current_grid.terminal? # if this is a terminal node, then return utility value
       then return score(current_grid)
     else # if this is not a terminal node, then dig deeper down the tree
-      # deeper_grid = current_grid.dup
-      # score = minimax(player_toggle(turn % 2), deeper_grid)
-      random_legal_move = current_grid.empty_cell_list.sample
-      puts "\nempty_cell_list = #{current_grid.empty_cell_list}\n"
-      return random_legal_move
+      deeper_grid = current_grid.dup
+      depth = 9 - current_grid.moves_remaining
+      location = deeper_grid.empty_cell_list.sample
+      deeper_grid.add_move(current_player_designation, location)
+      current_score = -minimax(toggle(current_player_designation), deeper_grid, depth)
+      # puts "\nempty_cell_list = #{current_grid.empty_cell_list}\n"
+      return current_score
     end
   end
 

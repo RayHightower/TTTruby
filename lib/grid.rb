@@ -64,10 +64,10 @@ class Grid
   end
 
   def terminal? # A grid can look at itself and know that it's terminal.
-    puts "\nself.moves_remaining = #{self.moves_remaining}\n"
-    puts "\nself.empty_cell_list = #{self.empty_cell_list}\n"
-    if self.moves_remaining >= 1 then return false end
-    return true
+    terminal_state = true
+    (self.who_won == nil) ? terminal_state = false : nil
+    (self.moves_remaining < 1) ? terminal_state = true : nil
+    return terminal_state
   end
 
   def who_won   # A grid can look at itself and see who won.
