@@ -15,7 +15,6 @@ describe Grid do
 
     it "can look at a terminal grid and know that it's terminal" do
       grid = Grid.new
-      # grid.contents = [ 0, "X", "O", "X", "O", "O", "X", "X", "X", "O" ]
       grid.add_move("X", 1)
       grid.add_move("O", 2)
       grid.add_move("X", 3)
