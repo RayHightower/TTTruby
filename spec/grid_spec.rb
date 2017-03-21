@@ -5,7 +5,7 @@ describe Grid do
 
     before do
       @thisgrid = Grid.new
-      $stdout = StringIO.new
+      # $stdout = StringIO.new
     end
 
     it "creates the initial TTT grid" do
@@ -13,10 +13,16 @@ describe Grid do
       expect(sample_grid.contents).to eq [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
-    it "can tell if we have reached a terminal grid" do
+    it "can look at a terminal grid and know that it's terminal" do
       grid = Grid.new
       grid.contents = [ 0, "X", "O", "X", "O", "O", "X", "X", "X", "O" ]
       expect(grid.terminal?).to eq true
+    end
+
+    it "can look at a non-terminal grid and know that it's non-terminal" do
+      grid = Grid.new
+      grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
+      expect(grid.terminal?).to eq false
     end
 
     it "calculates the number of moves remaining on any given grid" do
