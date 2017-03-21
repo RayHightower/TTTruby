@@ -27,19 +27,18 @@ describe Grid do
       grid.add_move("O", 9)
       puts "\ngrid.moves_remaining = #{grid.moves_remaining}\n"
       puts "\ngrid.empty_cell_list = #{grid.empty_cell_list}\n"
-      expect(grid.terminal).to eq true
+      expect(grid.terminal?).to eq true
     end
 
     it "can look at a non-terminal grid and know that it's non-terminal" do
       grid = Grid.new
-      grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
       grid.add_move("X", 1)
       grid.add_move("X", 2)
       grid.add_move("O", 4)
       grid.add_move("O", 9)
       puts "\ngrid.moves_remaining = #{grid.moves_remaining}\n"
       puts "\ngrid.empty_cell_list = #{grid.empty_cell_list}\n"
-      expect(grid.terminal).to eq false
+      expect(grid.terminal?).to eq false
     end
 
     it "calculates the number of moves remaining on any given grid" do
