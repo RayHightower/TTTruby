@@ -5,7 +5,7 @@ describe Grid do
 
     before do
       @thisgrid = Grid.new
-      # $stdout = StringIO.new
+      $stdout = StringIO.new
     end
 
     it "creates the initial TTT grid" do
