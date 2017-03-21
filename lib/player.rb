@@ -45,7 +45,7 @@ class Player
       # deeper_grid = current_grid.dup
       # score = minimax(player_toggle(turn % 2), deeper_grid)
       random_legal_move = current_grid.empty_cell_list.sample
-      puts "empty_cell_list = #{current_grid.empty_cell_list}"
+      puts "\nempty_cell_list = #{current_grid.empty_cell_list}\n"
       return random_legal_move
     end
   end
