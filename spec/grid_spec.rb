@@ -15,7 +15,16 @@ describe Grid do
 
     it "can look at a terminal grid and know that it's terminal" do
       grid = Grid.new
-      grid.contents = [ 0, "X", "O", "X", "O", "O", "X", "X", "X", "O" ]
+      # grid.contents = [ 0, "X", "O", "X", "O", "O", "X", "X", "X", "O" ]
+      grid.add_move("X", 1)
+      grid.add_move("O", 2)
+      grid.add_move("X", 3)
+      grid.add_move("O", 4)
+      grid.add_move("O", 5)
+      grid.add_move("X", 6)
+      grid.add_move("X", 7)
+      grid.add_move("X", 8)
+      grid.add_move("O", 9)
       puts "\ngrid.moves_remaining = #{grid.moves_remaining}\n"
       puts "\ngrid.empty_cell_list = #{grid.empty_cell_list}\n"
       expect(grid.terminal).to eq true
@@ -24,6 +33,10 @@ describe Grid do
     it "can look at a non-terminal grid and know that it's non-terminal" do
       grid = Grid.new
       grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
+      grid.add_move("X", 1)
+      grid.add_move("X", 2)
+      grid.add_move("O", 4)
+      grid.add_move("O", 9)
       puts "\ngrid.moves_remaining = #{grid.moves_remaining}\n"
       puts "\ngrid.empty_cell_list = #{grid.empty_cell_list}\n"
       expect(grid.terminal).to eq false
