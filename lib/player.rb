@@ -12,14 +12,15 @@ class Player
   end
 
   def get_move(current_grid)
-    best_move = 0    # best_move as determined by minimax
-    move_options = current_grid.empty_cell_list
-    scores = []
-
     if self.type == :human
       move = $stdin.getch.to_i  # Humans provide moves via the console.
       return move
+
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
+      best_move = 0    # best_move as determined by minimax
+      move_options = current_grid.empty_cell_list
+      scores = []
+
       depth = 9 - current_grid.empty_cell_list.count
 
       move_options.each do |move_option|
