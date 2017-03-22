@@ -11,35 +11,36 @@ class Player
     @type = type
   end
 
+  def toggle(designation)    # To toggle between the two players.
+    if (designation == "X") then return "O"
+    elsif (designation == "O") then return "X"
+    end
+  end
+
   def get_move(current_grid)
-    if self.type == :human
-      move = $stdin.getch.to_i  # Humans provide moves via the console.
+    if self.type == :human  # Humans provide moves via the console.
+      move = $stdin.getch.to_i
       return move
 
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
-      best_move = 0    # best_move as determined by minimax
+      best_move = 5    # best_move as determined by minimax
       move_options = current_grid.empty_cell_list
       scores = []
 
       depth = 9 - current_grid.empty_cell_list.count
 
-      move_options.each do |move_option|
+      puts "\n*** move_options = #{move_options} and depth = #{depth} ***\n"
+      move_options.each do |fake_move|
         clone_grid = current_grid.clone
-        clone_grid.add_move(self.designation, move_option)
-        scores[move_option] = minimax(self.designation, current_grid, depth)
-        puts "\nscores[#{move_option}] = #{scores[move_option]} and depth = #{depth}\n"
+        clone_grid.add_move(self.designation, fake_move)
+        scores[fake_move] = minimax(self.designation, current_grid, depth)
+        puts "scores[#{fake_move}] = #{scores[fake_move]} and depth = #{depth}"
       end
 
       # best_move = minimax(self, current_grid, depth)
-      best_move = 8 # scores.each_with_index.max[1]
+      # best_move = scores.each_with_index.max[1]
       # puts "\nbest_move = [#{scores.each_with_index.max[1]}]\n"
       return best_move
-    end
-  end
-
-  def toggle(designation)
-    if (designation == "X") then return "O"
-    elsif (designation == "O") then return "X"
     end
   end
 

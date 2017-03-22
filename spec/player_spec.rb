@@ -26,7 +26,7 @@ describe Player do
       grid.add_move("X", 9)
       allowed = grid.empty_cell_list
       legal_move = player.get_move(grid)
-      puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
+      # puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
       expect(allowed.include? legal_move).to eq true
     end
 
@@ -97,7 +97,7 @@ describe Player do
       grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
       player = Player.new("O", :droid)
       move = player.get_move(grid)
-      # expect(move).to eq 5
+      expect(move).to eq 5
     end
 
     it "returns a winning move when given a potential winning board for the current player" do
