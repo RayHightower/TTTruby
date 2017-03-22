@@ -24,7 +24,7 @@ class Player
 
       move_options.each do |move_option|
         scores[move_option] = 1 # minimax(self.designation, current_grid, depth)
-        puts "\nscores[#{move_option}] = #{scores[move_option]}\n"
+        puts "\nscores[#{move_option}] = #{scores[move_option]} and depth = #{depth}\n"
       end
 
       # best_move = minimax(self, current_grid, depth)
