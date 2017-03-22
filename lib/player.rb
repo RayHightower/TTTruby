@@ -46,9 +46,10 @@ class Player
   def minimax(current_player_designation, current_grid, depth)
     if current_grid.terminal? # if this is a terminal node, then return utility value
       then return score(current_grid, current_player_designation)
+
     else # if this is not a terminal node, then dig deeper down the tree
       deeper_grid = current_grid.dup
-      fake_move = deeper_grid.empty_cell_list.sample
+      fake_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
       deeper_grid.add_move(current_player_designation, fake_move)
       depth = 9 - current_grid.empty_cell_list.count
       current_score = -minimax(toggle(current_player_designation), deeper_grid, depth)
