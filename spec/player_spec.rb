@@ -1,7 +1,7 @@
 require 'player'
 
 describe Player do
-  context "TTT player" do
+  context "test for" do
 
     before do
       @player = [Player.new("X"), Player.new("O")]
