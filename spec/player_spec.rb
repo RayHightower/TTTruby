@@ -17,7 +17,7 @@ describe Player do
       expect(player.toggle(player.designation)).to eq "X"
     end
 
-    it "returns a random available square via minimax" do
+    it "returns a legal move via minimax" do
       player = Player.new("O", :droid)
       grid = Grid.new
       grid.add_move("O", 1)
@@ -25,7 +25,9 @@ describe Player do
       grid.add_move("O", 3)
       grid.add_move("X", 9)
       allowed = grid.empty_cell_list
-      expect(allowed.include? player.get_move(grid)).to eq true
+      legal_move = player.get_move(grid)
+      puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
+      expect(allowed.include? legal_move).to eq true
     end
 
     it "can accomodate human players and droids" do
@@ -39,7 +41,7 @@ describe Player do
       grid.add_move("O", 1)
       grid.add_move("O", 2)
       grid.add_move("O", 3)
-      expect(player.score(grid)).to eq 1
+      expect(player.score(grid, player.designation)).to eq 1
     end
 
     it "returns score = -1 when :droid has lost" do
@@ -48,7 +50,7 @@ describe Player do
       grid.add_move("X", 1)
       grid.add_move("X", 2)
       grid.add_move("X", 3)
-      expect(player.score(grid)).to eq (-1)
+      expect(player.score(grid, player.designation)).to eq (-1)
     end
 
     it "retuns score = 0 when :droid is in a tie game" do
@@ -63,7 +65,7 @@ describe Player do
       grid.add_move("X", 7)
       grid.add_move("O", 8)
       grid.add_move("X", 9)
-      expect(player.score(grid)).to eq (0)
+      expect(player.score(grid, player.designation)).to eq (0)
     end
 
     it "grabs a move from the console if the player is a human" do

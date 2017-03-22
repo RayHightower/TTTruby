@@ -25,13 +25,13 @@ class Player
       move_options.each do |move_option|
         clone_grid = current_grid.clone
         clone_grid.add_move(self.designation, move_option)
-        scores[move_option] = score(clone_grid) # minimax(self.designation, current_grid, depth)
+        scores[move_option] = minimax(self.designation, current_grid, depth)
         puts "\nscores[#{move_option}] = #{scores[move_option]} and depth = #{depth}\n"
       end
 
       # best_move = minimax(self, current_grid, depth)
-      best_move = scores.each_with_index.max[1]
-      puts "\nbest_move = [#{scores.each_with_index.max[1]}]\n"
+      best_move = 8 # scores.each_with_index.max[1]
+      # puts "\nbest_move = [#{scores.each_with_index.max[1]}]\n"
       return best_move
     end
   end
@@ -44,7 +44,7 @@ class Player
 
   def minimax(current_player_designation, current_grid, depth)
     if current_grid.terminal? # if this is a terminal node, then return utility value
-      then return score(current_grid)
+      then return score(current_grid, current_player_designation)
     else # if this is not a terminal node, then dig deeper down the tree
       deeper_grid = current_grid.dup
       fake_move = deeper_grid.empty_cell_list.sample
@@ -55,10 +55,10 @@ class Player
     end
   end
 
-  def score(grid) # Given a terminal grid, did I win (+1), lose (-1), or draw (0)?
+  def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+1), lose (-1), or draw (0)?
     score = 0
 
-    if grid.who_won == self.designation then score = 1
+    if grid.who_won == evaluated_player then score = 1
     elsif grid.who_won != nil then score = -1
     end
 
