@@ -25,7 +25,7 @@ class Player
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       best_move = 5    # best_move will be determined by minimax
       move_options = current_grid.empty_cell_list
-      scorecard = []
+      scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
       depth = 9 - current_grid.empty_cell_list.count
 
@@ -37,7 +37,8 @@ class Player
         puts "scorecard[#{fake_move}] = #{scorecard[fake_move]} and depth = #{depth}"
       end
 
-      # best_move = scorecard.each_with_index.max[1]
+      puts "scorecard = #{scorecard}"
+      best_move = scorecard.each_with_index.max[1]
       puts "best_move = #{best_move}\n"
       return best_move
     end

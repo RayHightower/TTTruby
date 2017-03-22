@@ -85,7 +85,7 @@ describe Player do
 
     it "returns an integer when given a board" do
       grid = Grid.new
-      grid.contents = [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
+      grid.add_move("X", 1)
       player = Player.new("O", :droid)
       ideal_moves = [ 2, 3, 4, 5, 6, 7, 8, 9 ]
       move = player.get_move(grid)
@@ -94,10 +94,14 @@ describe Player do
 
     it "returns a blocking move when given a potential winning board for the opposing player" do
       grid = Grid.new
-      grid.contents = [ 0, "X", "X", 3, "O", 5, 6, 7, 8, "O" ]
+      grid.add_move("X", 1)
+      grid.add_move("O", 4)
+      grid.add_move("X", 2)
+      grid.add_move("O", 9)
+      grid.add_move("X", 7)
       player = Player.new("O", :droid)
       move = player.get_move(grid)
-      expect(move).to eq 5
+      expect(move).to eq 3
     end
 
     it "returns a winning move when given a potential winning board for the current player" do
