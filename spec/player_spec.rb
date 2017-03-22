@@ -1,7 +1,7 @@
 require 'player'
 
 describe Player do
-  context "test for" do
+  context "both human and droid" do
 
     before do
       @player = [Player.new("X"), Player.new("O")]
@@ -17,6 +17,30 @@ describe Player do
       expect(player.toggle(player.designation)).to eq "X"
     end
 
+    it "can accomodate human players and droids" do
+      new_player = Player.new("X", :droid)
+      expect(new_player.type == :droid).to eq true
+    end
+  end
+
+  context "human" do
+    it "grabs a move from the console if the player is a human" do
+      $stdin = StringIO.new("2543798")
+      current_grid = Grid.new
+      current_player = Player.new("X", :human)
+      move = current_player.get_move(current_grid)
+      expect(move == 2).to eq true
+    end
+  end
+
+  context "droid" do
+    it "grabs a move from the AI if the player is a droid" do
+      current_grid = Grid.new
+      current_player = Player.new("X", :droid)
+      move = current_player.get_move(current_grid)
+      expect(move.class == Fixnum).to eq true
+    end
+
     it "returns a legal move via minimax" do
       player = Player.new("O", :droid)
       grid = Grid.new
@@ -28,11 +52,6 @@ describe Player do
       legal_move = player.get_move(grid)
       # puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
       expect(allowed.include? legal_move).to eq true
-    end
-
-    it "can accomodate human players and droids" do
-      new_player = Player.new("X", :droid)
-      expect(new_player.type == :droid).to eq true
     end
 
     it "returns score = 1 when :droid has won" do
@@ -53,7 +72,7 @@ describe Player do
       expect(player.score(grid, player.designation)).to eq (-1)
     end
 
-    it "retuns score = 0 when :droid is in a tie game" do
+    it "retuns score = 0 when grid shows a tie game" do
       player = Player.new("O", :droid)
       grid = Grid.new
       grid.add_move("O", 1)
@@ -66,21 +85,6 @@ describe Player do
       grid.add_move("O", 8)
       grid.add_move("X", 9)
       expect(player.score(grid, player.designation)).to eq (0)
-    end
-
-    it "grabs a move from the console if the player is a human" do
-      $stdin = StringIO.new("2543798")
-      current_grid = Grid.new
-      current_player = Player.new("X", :human)
-      move = current_player.get_move(current_grid)
-      expect(move == 2).to eq true
-    end
-
-    it "grabs a move from the AI if the player is a droid" do
-      current_grid = Grid.new
-      current_player = Player.new("X", :droid)
-      move = current_player.get_move(current_grid)
-      expect(move.class == Fixnum).to eq true
     end
 
     it "returns an integer when given a board" do
