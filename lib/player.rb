@@ -25,7 +25,7 @@ class Player
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       best_move = 5    # best_move as determined by minimax
       move_options = current_grid.empty_cell_list
-      scores = []
+      scorecard = []
 
       depth = 9 - current_grid.empty_cell_list.count
 
@@ -33,13 +33,12 @@ class Player
       move_options.each do |fake_move|
         clone_grid = current_grid.clone
         clone_grid.add_move(self.designation, fake_move)
-        scores[fake_move] = minimax(self.designation, current_grid, depth)
-        puts "scores[#{fake_move}] = #{scores[fake_move]} and depth = #{depth}"
+        scorecard[fake_move] = minimax(self.designation, clone_grid, depth)
+        puts "scorecard[#{fake_move}] = #{scorecard[fake_move]} and depth = #{depth}"
       end
 
-      # best_move = minimax(self, current_grid, depth)
-      # best_move = scores.each_with_index.max[1]
-      # puts "\nbest_move = [#{scores.each_with_index.max[1]}]\n"
+      # best_move = scorecard.each_with_index.max[1]
+      puts "best_move = #{best_move}\n"
       return best_move
     end
   end
