@@ -23,7 +23,7 @@ class Player
       return move
 
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
-      best_move = 5    # best_move as determined by minimax
+      best_move = 5    # best_move will be determined by minimax
       move_options = current_grid.empty_cell_list
       scorecard = []
 
