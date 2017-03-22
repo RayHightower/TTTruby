@@ -12,15 +12,20 @@ class Player
   end
 
   def get_move(current_grid)
-    best_score = 0        # Might need to live in get_move?
-    best_move = 0         # Might need to live in get_move?
+    best_score = 0
+    best_move = 0
+    score_array = current_grid.empty_cell_list
 
     if self.type == :human
       move = $stdin.getch.to_i  # Humans provide moves via the console.
       return move
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       depth = 9 - current_grid.moves_remaining
-      best_move = minimax(self, current_grid, depth)
+      score_array.each do |move_option|
+
+      end
+      # best_move = minimax(self, current_grid, depth)
+      best_move = score_array.each_with_index.max[1]
       return best_move
     end
   end
@@ -36,11 +41,10 @@ class Player
       then return score(current_grid)
     else # if this is not a terminal node, then dig deeper down the tree
       deeper_grid = current_grid.dup
-      depth = 9 - current_grid.moves_remaining
-      location = deeper_grid.empty_cell_list.sample
-      deeper_grid.add_move(current_player_designation, location)
+      depth = 9 - current_grid.empty_cell_list.count
+      fake_move = deeper_grid.empty_cell_list.sample
+      deeper_grid.add_move(current_player_designation, fake_move)
       current_score = -minimax(toggle(current_player_designation), deeper_grid, depth)
-      # puts "\nempty_cell_list = #{current_grid.empty_cell_list}\n"
       return current_score
     end
   end
