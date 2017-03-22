@@ -37,7 +37,7 @@ describe GameRunner do
 
     it "stores the state of the game" do
       currentgrid = @thisgamerunner.get_status
-      expect(currentgrid).to eq [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+      expect(currentgrid.contents).to eq [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
     it "receives a move and stores it" do
@@ -45,7 +45,7 @@ describe GameRunner do
       move = @bunch_of_input_moves.getc.to_i
       @thisgamerunner.game.add_move(player, move)
       currentgrid = @thisgamerunner.get_status
-      expect(currentgrid).to eq [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
+      expect(currentgrid.contents).to eq [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
     it "will quit the game if the move is 'Q'" do
