@@ -23,7 +23,9 @@ class Player
       depth = 9 - current_grid.empty_cell_list.count
 
       move_options.each do |move_option|
-        scores[move_option] = 1 # minimax(self.designation, current_grid, depth)
+        clone_grid = current_grid.clone
+        clone_grid.add_move(self.designation, move_option)
+        scores[move_option] = score(clone_grid) # minimax(self.designation, current_grid, depth)
         puts "\nscores[#{move_option}] = #{scores[move_option]} and depth = #{depth}\n"
       end
 
