@@ -34,14 +34,14 @@ describe Player do
   end
 
   context "droid" do
-    it "grabs a move from the AI if the player is a droid" do
+    it "grabs a move from the AI, not the console" do
       current_grid = Grid.new
       current_player = Player.new("X", :droid)
       move = current_player.get_move(current_grid)
       expect(move.class == Fixnum).to eq true
     end
 
-    it "returns a legal move via minimax" do
+    it "makes a legal move when given a grid with existing moves" do
       player = Player.new("O", :droid)
       grid = Grid.new
       grid.add_move("O", 1)
@@ -50,7 +50,7 @@ describe Player do
       grid.add_move("X", 9)
       allowed = grid.empty_cell_list
       legal_move = player.get_move(grid)
-      # puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
+      puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
       expect(allowed.include? legal_move).to eq true
     end
 
@@ -85,15 +85,6 @@ describe Player do
       grid.add_move("O", 8)
       grid.add_move("X", 9)
       expect(player.score(grid, player.designation)).to eq (0)
-    end
-
-    it "returns an integer when given a board" do
-      grid = Grid.new
-      grid.add_move("X", 1)
-      player = Player.new("O", :droid)
-      ideal_moves = [ 2, 3, 4, 5, 6, 7, 8, 9 ]
-      move = player.get_move(grid)
-      expect(ideal_moves.include? move).to eq true
     end
 
     it "returns a blocking move when given a potential winning board for the opposing player" do
