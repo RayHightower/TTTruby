@@ -38,9 +38,9 @@ class Player
         puts "scorecard[#{fake_move}] = #{scorecard[fake_move]} and depth = #{depth}"
       end
 
-      puts "scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.contents}"
+      puts "get_move: scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.contents}"
       best_move = scorecard.each_with_index.max[1]
-      puts "best_move = #{best_move}\n"
+      puts "get_move: best_move = #{best_move}\n"
       return best_move
     end
   end
