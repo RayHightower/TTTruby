@@ -32,13 +32,13 @@ class Player
       puts "\n*** move_options = #{move_options} and depth = #{depth} ***\n"
       move_options.each do |fake_move|
         clone_grid = current_grid.clone
-        puts "\nlatest clone_grid.contents = #{clone_grid.contents}, fake_move = #{fake_move}\n"
+        puts "\nlatest clone_grid.contents = #{clone_grid.print_color_grid}, fake_move = #{fake_move}\n"
         clone_grid.add_move(self.designation, fake_move)
         scorecard[fake_move] = minimax(self.designation, clone_grid, depth)
         puts "scorecard[#{fake_move}] = #{scorecard[fake_move]} and depth = #{depth}"
       end
 
-      puts "get_move: scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.contents}"
+      puts "get_move: scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.print_color_grid}\n"
       best_move = scorecard.each_with_index.max[1]
       puts "get_move: best_move = #{best_move}\n"
       return best_move
