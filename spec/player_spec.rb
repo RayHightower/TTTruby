@@ -75,15 +75,15 @@ describe Player do
     it "retuns score = 0 when grid shows a tie game" do
       player = Player.new("O", :droid)
       grid = Grid.new
-      grid.add_move("O", 1)
-      grid.add_move("X", 2)
-      grid.add_move("O", 3)
-      grid.add_move("X", 4)
-      grid.add_move("O", 5)
-      grid.add_move("X", 6)
-      grid.add_move("X", 7)
-      grid.add_move("O", 8)
-      grid.add_move("X", 9)
+      grid.add_move("O", 1)  # OXO
+      grid.add_move("X", 2)  # XOX
+      grid.add_move("O", 3)  # XOX
+      grid.add_move("X", 4)  #
+      grid.add_move("O", 5)  #
+      grid.add_move("X", 6)  #
+      grid.add_move("X", 7)  #
+      grid.add_move("O", 8)  #
+      grid.add_move("X", 9)  #
       expect(player.score(grid, player.designation)).to eq (0)
     end
 
