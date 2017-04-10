@@ -130,6 +130,7 @@ describe Player do
       grid.add_move("X", 7)  # X
       grid.add_move("O", 4)  #
       grid.add_move("X", 5)
+      grid.add_move("O", 2)
       player = Player.new("X", :droid)
       move = player.get_move(grid)
       expect(move).to eq 9
