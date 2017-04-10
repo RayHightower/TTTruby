@@ -111,7 +111,28 @@ describe Player do
       expect(move).to eq 9
     end
 
+    it "returns a blocking vertical move when given a potential winning board for the opposing player" do
+      grid = Grid.new
+      grid.add_move("X", 1)  # X O
+      grid.add_move("O", 3)  # OX
+      grid.add_move("X", 7)  # X O
+      grid.add_move("O", 4)  #
+      grid.add_move("X", 5)
+      player = Player.new("X", :droid)
+      move = player.get_move(grid)
+      expect(move).to eq 6
+    end
+
     it "returns a winning move when given a potential winning board for the current player" do
+      grid = Grid.new
+      grid.add_move("X", 1)  # XOO
+      grid.add_move("O", 3)  # OX
+      grid.add_move("X", 7)  # X
+      grid.add_move("O", 4)  #
+      grid.add_move("X", 5)
+      player = Player.new("X", :droid)
+      move = player.get_move(grid)
+      expect(move).to eq 9
 
     end
   end
