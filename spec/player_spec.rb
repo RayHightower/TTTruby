@@ -44,9 +44,9 @@ describe Player do
     it "makes a legal move when given a grid with existing moves" do
       player = Player.new("O", :droid)
       grid = Grid.new
-      grid.add_move("O", 1)
-      grid.add_move("X", 2)
-      grid.add_move("O", 3)
+      grid.add_move("O", 1)  # OXO
+      grid.add_move("X", 2)  #
+      grid.add_move("O", 3)  #   X
       grid.add_move("X", 9)
       allowed = grid.empty_cell_list
       legal_move = player.get_move(grid)
@@ -57,18 +57,18 @@ describe Player do
     it "returns score = 1 when :droid has won" do
       player = Player.new("O", :droid)
       grid = Grid.new
-      grid.add_move("O", 1)
-      grid.add_move("O", 2)
-      grid.add_move("O", 3)
+      grid.add_move("O", 1)  # OOO
+      grid.add_move("O", 2)  #
+      grid.add_move("O", 3)  #
       expect(player.score(grid, player.designation)).to eq 1
     end
 
     it "returns score = -1 when :droid has lost" do
       player = Player.new("O", :droid)
       grid = Grid.new
-      grid.add_move("X", 1)
-      grid.add_move("X", 2)
-      grid.add_move("X", 3)
+      grid.add_move("X", 1)  # XXX
+      grid.add_move("X", 2)  #
+      grid.add_move("X", 3)  #
       expect(player.score(grid, player.designation)).to eq (-1)
     end
 
