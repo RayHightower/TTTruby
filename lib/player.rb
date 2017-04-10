@@ -25,7 +25,7 @@ class Player
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       best_move = 0    # best_move will be determined by minimax
       move_options = current_grid.empty_cell_list
-      scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
 
       depth = 9 - current_grid.empty_cell_list.count
 
@@ -35,7 +35,7 @@ class Player
         puts "\nlatest clone_grid.contents = #{clone_grid.print_color_grid}, fake_move = #{fake_move}\n"
         clone_grid.add_move(self.designation, fake_move)
         scorecard[fake_move] = minimax(self.designation, clone_grid, depth)
-        puts "scorecard[#{fake_move}] = #{scorecard[fake_move]} and depth = #{depth}"
+        puts "player = #{self.designation}, scorecard[#{fake_move}] = #{scorecard[fake_move]}, depth = #{depth}"
       end
 
       puts "get_move: scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.print_color_grid}\n"
@@ -49,7 +49,7 @@ class Player
     if current_grid.terminal? # if this is a terminal node, then return utility value
       then return score(current_grid, current_player_designation)
 
-    else # if this is not a terminal node, then dig deeper down the tree
+    else # if this is not a terminal node, then recurse down the tree
       deeper_grid = current_grid.dup
       fake_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
       deeper_grid.add_move(toggle(current_player_designation), fake_move)
