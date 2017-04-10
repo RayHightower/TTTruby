@@ -87,7 +87,7 @@ describe Player do
       expect(player.score(grid, player.designation)).to eq (0)
     end
 
-    it "returns a blocking move when given a potential winning board for the opposing player" do
+    it "returns a blocking horizontal move when given a potential winning board for the opposing player" do
       grid = Grid.new
       grid.add_move("X", 1)  # XX
       grid.add_move("O", 4)  # O
@@ -97,6 +97,18 @@ describe Player do
       player = Player.new("O", :droid)
       move = player.get_move(grid)
       expect(move).to eq 3
+    end
+
+    it "returns a blocking diagonal move when given a potential winning board for the opposing player" do
+      grid = Grid.new
+      grid.add_move("X", 1)  # X O
+      grid.add_move("O", 3)  # OX
+      grid.add_move("X", 7)  # X
+      grid.add_move("O", 4)  #
+      grid.add_move("X", 5)
+      player = Player.new("O", :droid)
+      move = player.get_move(grid)
+      expect(move).to eq 9
     end
 
     it "returns a winning move when given a potential winning board for the current player" do
