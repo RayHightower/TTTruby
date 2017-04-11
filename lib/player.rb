@@ -17,7 +17,8 @@ class Player
     end
   end
 
-  # Which method is easier to manage, toggle or flipflop?
+  # Which method is easier to manage, toggle() or flipflop?
+  # I think toggle() is better because it can deal with a string without wrestling with the whole Player object.
   def flipflop
     if (self.designation == "X") then return "O"
     elsif (self.designation == "O") then return "X"
