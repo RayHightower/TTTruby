@@ -17,6 +17,13 @@ class Player
     end
   end
 
+  # Which method is easier to manage, toggle or flipflop?
+  def flipflop
+    if (self.designation == "X") then return "O"
+    elsif (self.designation == "O") then return "X"
+    end
+  end
+
   def get_move(current_grid)
     if self.type == :human  # Humans provide moves via the console.
       move = $stdin.getch.to_i
