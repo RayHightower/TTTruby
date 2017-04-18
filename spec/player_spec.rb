@@ -58,6 +58,9 @@ describe Player do
       grid.add_move("X", 2)  #
       grid.add_move("O", 3)  #   X
       grid.add_move("X", 9)
+      puts "\n*****************************************\n"
+      grid.print_color_grid
+      puts "\n*****************************************\n"
       allowed = grid.empty_cell_list
       legal_move = player.get_move(grid)
       puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
