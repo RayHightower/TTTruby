@@ -33,21 +33,24 @@ class Player
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       best_move = 0    # best_move will be determined by minimax
       move_options = current_grid.empty_cell_list
-      scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
+      # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
+      scorecard = [-99, -99, -99, -99, -99, -99, -99, -99, -99, -99]  # Score each of the available moves and choose the highest scoring move.
+      # Start by making all of the moves so awful (-99) that :droid won't consider them.
 
       depth = 9 - current_grid.empty_cell_list.count
 
       puts "\n*** move_options = #{move_options} and depth = #{depth} ***\n"
       move_options.each do |fake_move|
         clone_grid = current_grid.clone
-        puts "\nlatest clone_grid.contents = #{clone_grid.print_color_grid}, fake_move = #{fake_move}\n"
+        # puts "\nlatest clone_grid.contents = #{clone_grid.print_color_grid}, fake_move = #{fake_move}\n"
         clone_grid.add_move(self.designation, fake_move)
         scorecard[fake_move] = minimax(self.designation, clone_grid, depth)
         puts "player = #{self.designation}, scorecard[#{fake_move}] = #{scorecard[fake_move]}, depth = #{depth}"
       end
 
-      puts "get_move: scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.print_color_grid}\n"
-      best_move = scorecard.each_with_index.max[1]
+      # puts "get_move: scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.print_color_grid}\n"
+      puts "get_move: scorecard = #{scorecard}"
+      best_move = move_options.each_with_index.max[1]
       puts "get_move: best_move = #{best_move}\n"
       return best_move
     end

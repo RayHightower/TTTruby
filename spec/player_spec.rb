@@ -62,6 +62,7 @@ describe Player do
       grid.print_color_grid
       puts "\n*****************************************\n"
       allowed = grid.empty_cell_list
+      puts "\n allowed = #{allowed}"
       legal_move = player.get_move(grid)
       puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
       expect(allowed.include? legal_move).to eq true
