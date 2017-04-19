@@ -41,9 +41,9 @@ class Player
       puts "\n*** Starting the move_options loop. move_options = #{move_options} and depth = #{depth} ***\n"
       move_options.each do |fake_move|
         fake_grid = Marshal.load(Marshal.dump(current_grid))
-        puts "\nlatest fake_grid.contents = #{fake_grid.print_color_grid}, fake_move = #{fake_move}, self.designation = #{self.designation}\n"
         fake_grid.add_move(self.designation, fake_move)
         scorecard[fake_move] = minimax(self.designation, fake_grid, depth)
+        puts "\nlatest fake_grid.contents = #{fake_grid.print_color_grid}, fake_move = #{fake_move}, self.designation = #{self.designation}\n"
         puts "player = #{self.designation}, scorecard[#{fake_move}] = #{scorecard[fake_move]}, depth = #{depth}"
       end
 
@@ -63,7 +63,7 @@ class Player
       deeper_grid = Marshal.load(Marshal.dump(current_grid))
       fake_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
       deeper_grid.add_move(toggle(current_player_designation), fake_move)
-      depth = 9 - current_grid.empty_cell_list.count
+      depth = 9 - deeper_grid.empty_cell_list.count
       current_score = -minimax(toggle(current_player_designation), deeper_grid, depth)
       return current_score
     end
