@@ -33,7 +33,6 @@ class Player
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       best_move = 0    # best_move will be determined by minimax
       move_options = current_grid.empty_cell_list
-      # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
       scorecard = [-99, -99, -99, -99, -99, -99, -99, -99, -99, -99]  # Score each of the available moves and choose the highest scoring move.
       # Start by making all of the moves so awful (-99) that :droid won't consider them.
 

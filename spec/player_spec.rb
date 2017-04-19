@@ -105,9 +105,9 @@ describe Player do
       grid = Grid.new
       grid.add_move("X", 1)  # XX
       grid.add_move("O", 4)  # O
-      grid.add_move("X", 2)  # X O
+      grid.add_move("X", 7)  # X O
       grid.add_move("O", 9)  #
-      grid.add_move("X", 7)
+      grid.add_move("X", 2)
       player = Player.new("O", :droid)
       move = player.get_move(grid)
       expect(move).to eq 3
