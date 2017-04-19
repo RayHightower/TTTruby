@@ -50,7 +50,7 @@ class Player
 
       # puts "get_move: scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.print_color_grid}\n"
       puts "get_move: scorecard = #{scorecard}"
-      best_move = move_options.each_with_index.max[1]
+      best_move = scorecard.each_with_index.max[1]
       puts "get_move: best_move = #{best_move}\n"
       return best_move
     end
