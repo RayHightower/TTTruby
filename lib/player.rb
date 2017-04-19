@@ -33,6 +33,7 @@ class Player
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       best_move = 0    # best_move will be determined by minimax
       scorecard = [-99, -99, -99, -99, -99, -99, -99, -99, -99, -99]  # Score each of the available moves and choose the highest scoring move.
+      current_player_designation = self.designation
       move_options = current_grid.empty_cell_list
       # Start by making all of the moves so awful (-99) that :droid won't consider them.
 
@@ -41,8 +42,9 @@ class Player
       puts "\n*** Starting the move_options loop. move_options = #{move_options} and depth = #{depth} ***\n"
       move_options.each do |fake_move|
         fake_grid = Marshal.load(Marshal.dump(current_grid))
-        fake_grid.add_move(self.designation, fake_move)
-        scorecard[fake_move] = minimax(self.designation, fake_grid, depth)
+        fake_grid.add_move(current_player_designation, fake_move)
+        scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth)
+        puts "\ncurrent_player_designation = #{current_player_designation}, toggle(current_player_designation) = #{toggle(current_player_designation)}\n"
         puts "\nlatest fake_grid.contents = #{fake_grid.print_color_grid}, fake_move = #{fake_move}, self.designation = #{self.designation}\n"
         puts "player = #{self.designation}, scorecard[#{fake_move}] = #{scorecard[fake_move]}, depth = #{depth}"
       end
