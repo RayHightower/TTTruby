@@ -40,6 +40,7 @@ class Player
         puts "\ncurrent_player_designation = #{current_player_designation}, toggle(current_player_designation) = #{toggle(current_player_designation)}\n"
         puts "scorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}, depth = #{depth}"
         puts "latest fake_grid.contents = #{fake_grid.contents}, fake_move = #{fake_move}, self.designation = #{self.designation}\n"
+
         fake_grid.print_color_grid # remove this when the algorithm works!
         puts "\n"
       end
