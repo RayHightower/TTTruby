@@ -38,7 +38,7 @@ class Player
 
       depth = 9 - current_grid.empty_cell_list.count
 
-      puts "\n*** move_options = #{move_options} and depth = #{depth} ***\n"
+      puts "\n*** Starting the move_options loop. move_options = #{move_options} and depth = #{depth} ***\n"
       move_options.each do |fake_move|
         clone_grid = current_grid.clone
         # puts "\nlatest clone_grid.contents = #{clone_grid.print_color_grid}, fake_move = #{fake_move}\n"

@@ -58,13 +58,13 @@ describe Player do
       grid.add_move("X", 2)  #
       grid.add_move("O", 3)  #   X
       grid.add_move("X", 9)
-      puts "\n*****************************************\n"
-      grid.print_color_grid
-      puts "\n*****************************************\n"
+      # puts "\n*****************************************\n"
+      # grid.print_color_grid
+      # puts "\n*****************************************\n"
       allowed = grid.empty_cell_list
-      puts "\n allowed = #{allowed}"
+      # puts "\n allowed = #{allowed}"
       legal_move = player.get_move(grid)
-      puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
+      # puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
       expect(allowed.include? legal_move).to eq true
     end
 
