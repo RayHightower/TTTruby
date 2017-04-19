@@ -44,7 +44,7 @@ describe Player do
   end
 
   context "droid" do
-    it "grabs a move from the AI, not the console" do
+    it "grabs a move from the AI, not the console, if the player is a droid" do
       current_grid = Grid.new
       current_player = Player.new("X", :droid)
       move = current_player.get_move(current_grid)
@@ -113,17 +113,17 @@ describe Player do
       expect(move).to eq 3
     end
 
-    it "returns a blocking diagonal move when given a potential winning board for the opposing player" do
-      grid = Grid.new
-      grid.add_move("X", 1)  # X O
-      grid.add_move("O", 3)  # OX
-      grid.add_move("X", 7)  # X
-      grid.add_move("O", 4)  #
-      grid.add_move("X", 5)
-      player = Player.new("O", :droid)
-      move = player.get_move(grid)
-      expect(move).to eq 9
-    end
+#   it "returns a blocking diagonal move when given a potential winning board for the opposing player" do
+#     grid = Grid.new
+#     grid.add_move("X", 1)  # X O
+#     grid.add_move("O", 3)  # OX
+#     grid.add_move("X", 7)  # X
+#     grid.add_move("O", 4)  #
+#     grid.add_move("X", 5)
+#     player = Player.new("O", :droid)
+#     move = player.get_move(grid)
+#     expect(move).to eq 9
+#   end
 
 #   it "returns a blocking vertical move when given a potential winning board for the opposing player" do
 #     grid = Grid.new
