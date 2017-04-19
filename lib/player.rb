@@ -36,10 +36,12 @@ class Player
       move_options.each do |fake_move|
         fake_grid = Marshal.load(Marshal.dump(current_grid))
         fake_grid.add_move(current_player_designation, fake_move)
-        scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth)
+        scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth)  # Go to the bottom of the tree.
         puts "\ncurrent_player_designation = #{current_player_designation}, toggle(current_player_designation) = #{toggle(current_player_designation)}\n"
-        puts "\nlatest fake_grid.contents = #{fake_grid.print_color_grid}, fake_move = #{fake_move}, self.designation = #{self.designation}\n"
-        puts "player = #{self.designation}, scorecard[#{fake_move}] = #{scorecard[fake_move]}, depth = #{depth}"
+        puts "scorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}, depth = #{depth}"
+        puts "latest fake_grid.contents = #{fake_grid.contents}, fake_move = #{fake_move}, self.designation = #{self.designation}\n"
+        fake_grid.print_color_grid # remove this when the algorithm works!
+        puts "\n"
       end
 
       # puts "get_move: scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.print_color_grid}\n"
@@ -52,26 +54,28 @@ class Player
 
   def minimax(current_player_designation, current_grid, depth)
     if current_grid.terminal? # if this is a terminal node, then return utility value
-      then return score(current_grid, current_player_designation)
+      then return score(current_grid, current_player_designation, depth)
 
     else # if this is not a terminal node, then recurse down the tree
       deeper_grid = Marshal.load(Marshal.dump(current_grid))
       fake_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
-      deeper_grid.add_move(toggle(current_player_designation), fake_move)
-      depth = 9 - deeper_grid.empty_cell_list.count
-      current_score = -minimax(toggle(current_player_designation), deeper_grid, depth)
+      other_player_designation = toggle(current_player_designation)
+      deeper_grid.add_move(other_player_designation, fake_move)
+      depth = depth + 1
+      puts "minimax method. deeper_grid = #{deeper_grid.print_color_grid}, depth = #{depth}"
+      current_score = -minimax(other_player_designation, deeper_grid, depth)
       return current_score
     end
   end
 
-  def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+1), lose (-1), or draw (0)?
+  def score(grid, evaluated_player, depth) # Given a terminal grid, did "evaluated_player" win (+1), lose (-1), or draw (0)?
     score = 0
 
-    if grid.who_won == evaluated_player then score = 1
-    elsif grid.who_won != nil then score = -1
+    if grid.who_won == evaluated_player then score = 99
+    elsif grid.who_won != nil then score = -99
     end
 
-    puts "\nscoring for evaluated_player = #{evaluated_player}, grid.contents = #{grid.contents}, score = #{score}\n"
+    puts "\nscore method: scoring for evaluated_player = #{evaluated_player}, grid.contents = #{grid.contents}, score = #{score}, depth = #{depth}\n"
     return score
   end
 end
