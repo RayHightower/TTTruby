@@ -76,6 +76,7 @@ class Player
     elsif grid.who_won != nil then score = -1
     end
 
+    puts "\nscoring for evaluated_player = #{evaluated_player}, grid.contents = #{grid.contents}, score = #{score}\n"
     return score
   end
 end
