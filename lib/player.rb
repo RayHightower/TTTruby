@@ -63,7 +63,7 @@ class Player
       other_player_designation = toggle(current_player_designation)
       deeper_grid.add_move(other_player_designation, fake_move)
       depth = depth + 1
-      puts "minimax method. deeper_grid = #{deeper_grid.print_color_grid}, depth = #{depth}"
+      puts "MINIMAX method. deeper_grid = #{deeper_grid.contents}, depth = #{depth}"
       current_score = -minimax(other_player_designation, deeper_grid, depth)
       return current_score
     end
@@ -76,7 +76,7 @@ class Player
     elsif grid.who_won != toggle(evaluated_player) then score = -99
     end
 
-    puts "\nscore method: scoring for evaluated_player = #{evaluated_player}, grid.contents = #{grid.contents}, score = #{score}, depth = #{depth}\n"
+    puts "\nSCORE method: scoring for evaluated_player = #{evaluated_player}\ngrid.contents = #{grid.contents}, score = #{score}, depth = #{depth}\n\n"
     return score
   end
 end
