@@ -32,11 +32,15 @@ class Player
 
       depth = 9 - current_grid.empty_cell_list.count
 
-      puts "\n*** Starting the move_options loop. move_options = #{move_options} and depth = #{depth} ***"
+      puts "\n\n*** Starting the move_options loop. move_options = #{move_options} and depth = #{depth} ***"
       move_options.each do |fake_move|
         fake_grid = Marshal.load(Marshal.dump(current_grid))
+        puts "\nfake_grid BEFORE adding #{current_player_designation}'s fake_move (#{fake_move}) = #{fake_grid.contents}"
         fake_grid.add_move(current_player_designation, fake_move)
+        puts "\nfake_grid AFTER adding #{current_player_designation}'s fake_move (#{fake_move}) = #{fake_grid.contents}"
+
         scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth)  # Go to the bottom of the tree.
+
         puts "\ncurrent_player_designation = #{current_player_designation}, toggle(current_player_designation) = #{toggle(current_player_designation)}\n"
         puts "scorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}, depth = #{depth}"
         puts "latest fake_grid.contents = #{fake_grid.contents}, fake_move = #{fake_move}, self.designation = #{self.designation}\n"
@@ -45,7 +49,6 @@ class Player
         puts "\n"
       end
 
-      # puts "get_move: scorecard = #{scorecard}, player = #{self.designation}, current_grid.contents = #{current_grid.print_color_grid}\n"
       puts "get_move: scorecard = #{scorecard}"
       best_move = scorecard.each_with_index.max[1]
       puts "get_move: best_move = #{best_move}\n"
