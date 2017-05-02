@@ -73,7 +73,7 @@ class Player
     score = 0
 
     if grid.who_won == evaluated_player then score = 99
-    elsif grid.who_won != toggle(evaluated_player) then score = -99
+    elsif grid.who_won != nil then score = -99
     end
 
     puts "\nscore method: scoring for evaluated_player = #{evaluated_player}, grid.contents = #{grid.contents}, score = #{score}, depth = #{depth}\n"
