@@ -108,6 +108,9 @@ describe Player do
       grid.add_move("X", 7)  # X O
       grid.add_move("O", 9)  #
       grid.add_move("X", 2)
+      puts "Printing the grid before we run minimax.\n"
+      grid.print_color_grid
+      puts "\n*** Grid has been printed. Now starting minimax. ***\n"
       player = Player.new("O", :droid)
       move = player.get_move(grid)
       expect(move).to eq 3
