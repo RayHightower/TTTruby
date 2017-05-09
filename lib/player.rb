@@ -72,7 +72,7 @@ class Player
       other_player_designation = toggle(current_player_designation)
       deeper_grid.add_move(other_player_designation, fake_move)
       depth = depth + 1
-      puts "MINIMAX method. deeper_grid = #{deeper_grid.contents}, depth = #{depth}"
+      puts "MINIMAX method. depth = #{depth}, deeper_grid = #{deeper_grid.contents}"
       current_score = -minimax(other_player_designation, deeper_grid, depth)
       return current_score
     end
