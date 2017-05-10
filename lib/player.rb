@@ -47,7 +47,7 @@ class Player
         fake_grid.add_move(current_player_designation, fake_move)
         puts "\nfake_grid AFTER adding #{current_player_designation}'s fake_move (#{fake_move}) = #{fake_grid.contents}"
 
-        scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth)  # Go to the bottom of the tree.
+        scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth) # Go to the bottom of the tree.
 
         puts "\ncurrent_player_designation = #{current_player_designation}, toggle(current_player_designation) = #{toggle(current_player_designation)}\n"
         puts "scorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}, depth = #{depth}"
