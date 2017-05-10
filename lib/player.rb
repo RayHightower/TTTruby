@@ -30,8 +30,10 @@ class Player
 
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       best_move = 0    # best_move will be determined by minimax
-      scorecard = [-99, -99, -99, -99, -99, -99, -99, -99, -99, -99]  # Score each of the available moves and choose the highest scoring move.
+      # scorecard = [-99, -99, -99, -99, -99, -99, -99, -99, -99, -99]  # Score each of the available moves and choose the highest scoring move.
       # Start by making all of the moves so awful (-99) that :droid won't consider them.
+      scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
+      # Start by making all of the moves neutral (0) that :droid won't consider them.
 
       current_player_designation = self.designation
       move_options = current_grid.empty_cell_list
@@ -72,8 +74,8 @@ class Player
       other_player_designation = toggle(current_player_designation)
       deeper_grid.add_move(other_player_designation, fake_move)
       depth = depth + 1
-      puts "MINIMAX method. depth = #{depth}, deeper_grid = #{deeper_grid.contents}"
       current_score = -minimax(other_player_designation, deeper_grid, depth)
+      puts "MINIMAX method. depth = #{depth}, deeper_grid = #{deeper_grid.contents}, \ncurrent_player_designation = #{current_player_designation}, current_score = #{current_score}\n\n"
       return current_score
     end
   end
