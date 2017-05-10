@@ -38,7 +38,7 @@ class Player
       current_player_designation = self.designation
       move_options = current_grid.empty_cell_list
 
-      depth = 9 - current_grid.empty_cell_list.count
+      depth = 9 - move_options.count
 
       puts "\n\n*** Starting the move_options loop. move_options = #{move_options} and depth = #{depth} ***"
       move_options.each do |fake_move|
