@@ -151,7 +151,6 @@ describe Player do
 #     player = Player.new("X", :droid)
 #     move = player.get_move(grid)
 #     expect(move).to eq 9
-
 #   end
 
   end
