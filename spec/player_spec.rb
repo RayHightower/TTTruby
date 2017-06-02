@@ -39,13 +39,13 @@ describe Player do
   end
 
   context "human" do
-#   it "grabs a move from the console if the player is a human" do
-#     $stdin = StringIO.new("2543798")
-#     current_grid = Grid.new
-#     current_player = Player.new("X", :human)
-#     move = current_player.get_move(current_grid)
-#     expect(move == 2).to eq true
-#   end
+    it "grabs a move from the console if the player is a human" do
+      $stdin = StringIO.new("2543798")
+      current_grid = Grid.new
+      current_player = Player.new("X", :human)
+      move = current_player.get_move(current_grid)
+      expect(move == 2).to eq true
+    end
   end
 
   context "droid" do
