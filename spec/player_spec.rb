@@ -27,6 +27,11 @@ describe Player do
       expect(player.flipflop).to eq "X"
     end
 
+    it "can toggle between X and O more than once" do
+      player = Player.new("X", :droid)
+      expect(player.opposite.opposite == player.designation).to eq true
+    end
+
     it "can accomodate human players and droids" do
       new_player = Player.new("X", :droid)
       expect(new_player.type == :droid).to eq true
@@ -152,6 +157,5 @@ describe Player do
 #     move = player.get_move(grid)
 #     expect(move).to eq 9
 #   end
-
   end
 end
