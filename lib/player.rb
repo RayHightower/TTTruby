@@ -1,5 +1,13 @@
 require_relative './grid'
 
+class String
+  def flipxo
+    if (self == "X") then return "O"
+    elsif (self == "O") then return "X"
+    end
+  end
+end
+
 class Player
 
   attr_accessor :designation, :type, :name
@@ -16,6 +24,8 @@ class Player
     elsif (designation == "O") then return Player.new("X", :droid)
     end
   end
+
+
 
   def get_move(current_grid)
     if self.type == :human  # Humans provide moves via the console.
@@ -51,7 +61,7 @@ class Player
     else # if this is not a terminal node, then recurse down the tree
       deeper_grid = current_grid.dupe
       fake_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
-      other_player_designation = toggle(current_player_designation)
+      other_player_designation = current_player_designation.toggle
       deeper_grid.add_move(other_player_designation, fake_move)
       depth = depth + 1
       current_score = -minimax(other_player_designation, deeper_grid, depth)
