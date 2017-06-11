@@ -17,19 +17,9 @@ describe Player do
       expect(player.toggle(player.designation)).to eq "X"
     end
 
-    it "can flipflop between X and O during recursion" do
-      player = Player.new("X", :droid)
-      expect(player.flipflop).to eq "O"
-    end
-
-    it "can flipflop between O and X during recursion" do
-      player = Player.new("O", :droid)
-      expect(player.flipflop).to eq "X"
-    end
-
     it "can toggle between X and O more than once" do
       player = Player.new("X", :droid)
-      expect(player.flipflop.flipflop == player.designation).to eq true
+      expect(toggle(toggle(player.designation)) == player.designation).to eq true
     end
 
     it "can accomodate human players and droids" do

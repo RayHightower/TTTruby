@@ -17,12 +17,6 @@ class Player
     end
   end
 
-  def flipflop   # Do we really need two ways to toggle between X and O?
-    if (self.designation == "X") then return "O"
-    elsif (self.designation == "O") then return "X"
-    end
-  end
-
   def get_move(current_grid)
     if self.type == :human  # Humans provide moves via the console.
       move = $stdin.getch.to_i
