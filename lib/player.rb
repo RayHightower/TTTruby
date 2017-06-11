@@ -27,20 +27,20 @@ class Player
 
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
       best_move = 0    # best_move will be determined by minimax
-      scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
-      # Start by making all of the moves neutral (0) that :droid won't consider them.
-
       current_player_designation = self.designation
       move_options = current_grid.empty_cell_list
 
       depth = 9 - move_options.count
 
+      scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
+      # Start by making all of the moves neutral (0) that :droid won't consider them.
+
       move_options.each do |fake_move|
         fake_grid = current_grid.dupe
         fake_grid.add_move(current_player_designation, fake_move)
-        puts "**** BEFORE minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscore = #{scorecard[fake_move]}, scorecard = #{scorecard}\n"
+        puts "\n**** BEFORE minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n"
         scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth) # Go to the bottom of the tree.
-        puts "**** AFTER minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscore = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n\n"
+        puts "**** AFTER minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n\n"
       end
 
       best_move = scorecard.each_with_index.max[1]
