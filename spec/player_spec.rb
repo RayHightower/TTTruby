@@ -72,29 +72,29 @@ describe Player do
       expect(move).to eq 8
     end
 
-#   it "grabs a move from the AI, not the console, if the player is a droid" do
-#     current_grid = Grid.new
-#     current_player = Player.new("X", :droid)
-#     move = current_player.get_move(current_grid)
-#     expect(move.class == Fixnum).to eq true
-#   end
+    it "grabs a move from the AI, not the console, if the player is a droid" do
+      current_grid = Grid.new
+      current_player = Player.new("X", :droid)
+      move = current_player.get_move(current_grid)
+      expect(move.class == Fixnum).to eq true
+    end
 
-#   it "makes a legal move when given a grid with existing moves" do
-#     player = Player.new("O", :droid)
-#     grid = Grid.new
-#     grid.add_move("O", 1)  # OXO
-#     grid.add_move("X", 2)  #
-#     grid.add_move("O", 3)  #   X
-#     grid.add_move("X", 9)
-#     # puts "\n*****************************************\n"
-#     # grid.print_color_grid
-#     # puts "\n*****************************************\n"
-#     allowed = grid.empty_cell_list
-#     # puts "\n allowed = #{allowed}"
-#     legal_move = player.get_move(grid)
-#     # puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
-#     expect(allowed.include? legal_move).to eq true
-#   end
+    it "makes a legal move when given a grid with existing moves" do
+      player = Player.new("O", :droid)
+      grid = Grid.new
+      grid.add_move("O", 1)  # OXO
+      grid.add_move("X", 2)  #
+      grid.add_move("O", 3)  #   X
+      grid.add_move("X", 9)
+      # puts "\n*****************************************\n"
+      # grid.print_color_grid
+      # puts "\n*****************************************\n"
+      allowed = grid.empty_cell_list
+      # puts "\n allowed = #{allowed}"
+      legal_move = player.get_move(grid)
+      # puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
+      expect(allowed.include? legal_move).to eq true
+    end
 
 #   it "returns score = 1 when :droid has won" do
 #     player = Player.new("O", :droid)
