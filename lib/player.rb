@@ -49,7 +49,7 @@ class Player
   end
 
   def minimax(designation, current_grid, depth)
-    puts "\nEntering minimax(#{designation}, #{current_grid.contents}, depth = #{depth})\n"
+    puts "Entering minimax(#{designation}, #{current_grid.contents}, depth = #{depth})\n"
     if current_grid.terminal? then # if this is a terminal node, then return utility value
       this_score = score(current_grid, designation)
       puts "*** this_score = #{this_score} ***\n"
@@ -58,7 +58,7 @@ class Player
     else # if this is not a terminal node, then recurse down the tree
       deeper_grid = current_grid.dupe
       fake_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
-      other_player_designation = current_player_designation.flipxo
+      other_player_designation = designation.flipxo
       deeper_grid.add_move(other_player_designation, fake_move)
       depth = depth + 1
       current_score = -minimax(other_player_designation, deeper_grid, depth)
@@ -66,11 +66,11 @@ class Player
     end
   end
 
-  def score(grid, evaluated_player_designation) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
+  def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
-    if grid.who_won == evaluated_player_designation then score = 99
-    elsif grid.who_won == evaluated_player_designation.flipxo then score = -99
+    if grid.who_won == evaluated_player then score = 99
+    elsif grid.who_won == evaluated_player.flipxo then score = -99
     end
 
     return score
