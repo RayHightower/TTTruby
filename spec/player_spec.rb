@@ -12,24 +12,9 @@ describe Player do
       expect(sample_designation.flipxo).to eq "O"
     end
 
-    it "can handle an incorrorect designation when flipping strings" do
+    it "can handle an incorrect designation when flipping strings" do
       sample_designation = "Q"
       expect(sample_designation.flipxo).to eq "Invalid"
-    end
-
-    it "can toggle between X and O during the recursion" do
-      player = Player.new("X", :droid)
-      expect(player.toggle.designation).to eq "O"
-    end
-
-    it "can toggle between O and X during the recursion" do
-      player = Player.new("O", :droid)
-      expect(player.toggle.designation).to eq "X"
-    end
-
-    it "can toggle between X and O more than once" do
-      player = Player.new("X", :droid)
-      expect(player.toggle.toggle.designation).to eq player.designation
     end
 
     it "can accomodate human players and droids" do
@@ -113,9 +98,7 @@ describe Player do
       grid.add_move("X", 7)  # X O
       grid.add_move("O", 9)  #
       grid.add_move("X", 2)
-      puts "Printing the grid before we run minimax.\n"
       # grid.print_color_grid
-      puts "\n*** Grid has been printed. Now starting minimax. ***\n"
       player = Player.new("O", :droid)
       move = player.get_move(grid)
       expect(move).to eq 3

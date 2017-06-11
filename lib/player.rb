@@ -20,12 +20,6 @@ class Player
     @type = type
   end
 
-  def toggle    # To toggle between the two players. This makes us create a whole new Player object each time.
-    if (designation == "X") then return Player.new("O", :droid)
-    elsif (designation == "O") then return Player.new("X", :droid)
-    end
-  end
-
   def get_move(current_grid)
     if self.type == :human  # Humans provide moves via the console.
       move = $stdin.getch.to_i
@@ -45,6 +39,7 @@ class Player
         fake_grid = current_grid.dupe
         fake_grid.add_move(current_player_designation, fake_move)
         scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth) # Go to the bottom of the tree.
+        puts "**** fake_grid = #{fake_grid.contents}, fake_move = #{fake_move}, score = #{scorecard[fake_move]}\n\n"
       end
 
       best_move = scorecard.each_with_index.max[1]
@@ -54,9 +49,11 @@ class Player
   end
 
   def minimax(current_player_designation, current_grid, depth)
-    puts "Entering minimax(#{current_player_designation}, #{current_grid.contents}, depth = #{depth})\n"
-    if current_grid.terminal? # if this is a terminal node, then return utility value
-      then return score(current_grid, current_player_designation)
+    puts "\nEntering minimax(#{current_player_designation}, #{current_grid.contents}, depth = #{depth})\n"
+    if current_grid.terminal? then # if this is a terminal node, then return utility value
+      this_score = score(current_grid, current_player_designation)
+      puts "*** this_score = #{this_score} ***\n"
+      return this_score
 
     else # if this is not a terminal node, then recurse down the tree
       deeper_grid = current_grid.dupe
