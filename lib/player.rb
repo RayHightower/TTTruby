@@ -39,7 +39,7 @@ class Player
         fake_grid = current_grid.dupe
         fake_grid.add_move(current_player_designation, fake_move)
         scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth) # Go to the bottom of the tree.
-        puts "**** fake_grid = #{fake_grid.contents}, fake_move = #{fake_move}, score = #{scorecard[fake_move]}\n\n"
+        puts "**** fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscore = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n"
       end
 
       best_move = scorecard.each_with_index.max[1]
@@ -48,10 +48,10 @@ class Player
     end
   end
 
-  def minimax(current_player_designation, current_grid, depth)
-    puts "\nEntering minimax(#{current_player_designation}, #{current_grid.contents}, depth = #{depth})\n"
+  def minimax(designation, current_grid, depth)
+    puts "\nEntering minimax(#{designation}, #{current_grid.contents}, depth = #{depth})\n"
     if current_grid.terminal? then # if this is a terminal node, then return utility value
-      this_score = score(current_grid, current_player_designation)
+      this_score = score(current_grid, designation)
       puts "*** this_score = #{this_score} ***\n"
       return this_score
 
