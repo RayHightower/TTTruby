@@ -13,6 +13,22 @@ describe Grid do
       expect(sample_grid.contents).to eq [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
+    it "can be duplicated with a simple method" do
+      grid = Grid.new
+      grid.add_move("X", 1)
+      grid.add_move("O", 2)
+      grid.add_move("X", 3)
+      grid.add_move("O", 4)
+      grid.add_move("O", 5)
+      grid.add_move("X", 6)
+      grid.add_move("X", 7)
+      grid.add_move("X", 8)
+      grid.add_move("O", 9)
+
+      fake_grid = grid.dupe
+      expect(fake_grid.contents).to eq grid.contents
+    end
+
     it "can look at a terminal grid and know that it's terminal" do
       grid = Grid.new
       grid.add_move("X", 1)

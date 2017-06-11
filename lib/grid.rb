@@ -70,6 +70,10 @@ class Grid
     return terminal_state
   end
 
+  def dupe
+    return Marshal.load(Marshal.dump(self))
+  end
+
   def who_won   # A grid can look at itself and see who won.
     winner = nil
 
