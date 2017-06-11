@@ -38,8 +38,9 @@ class Player
       move_options.each do |fake_move|
         fake_grid = current_grid.dupe
         fake_grid.add_move(current_player_designation, fake_move)
+        puts "**** BEFORE minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscore = #{scorecard[fake_move]}, scorecard = #{scorecard}\n"
         scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth) # Go to the bottom of the tree.
-        puts "**** fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscore = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n"
+        puts "**** AFTER minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscore = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n\n"
       end
 
       best_move = scorecard.each_with_index.max[1]
