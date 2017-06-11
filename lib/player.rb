@@ -54,6 +54,7 @@ class Player
   end
 
   def minimax(current_player_designation, current_grid, depth)
+    puts "Entering minimax(#{current_player_designation}, #{current_grid.contents}, depth = #{depth})\n"
     if current_grid.terminal? # if this is a terminal node, then return utility value
       then return score(current_grid, current_player_designation)
 
