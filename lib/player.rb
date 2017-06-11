@@ -11,9 +11,9 @@ class Player
     @type = type
   end
 
-  def toggle(designation)    # To toggle between the two players.
-    if (designation == "X") then return "O"
-    elsif (designation == "O") then return "X"
+  def toggle    # To toggle between the two players.
+    if (designation == "X") then return Player.new("O", :droid)
+    elsif (designation == "O") then return Player.new("X", :droid)
     end
   end
 
