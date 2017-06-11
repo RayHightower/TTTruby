@@ -82,12 +82,14 @@ describe Player do
     it "makes a legal move when given a grid with existing moves" do
       player = Player.new("O", :droid)
       grid = Grid.new
-      grid.add_move("O", 1)  # OXO
-      grid.add_move("X", 2)  #
-      grid.add_move("O", 3)  #   X
-      grid.add_move("X", 9)
+      grid.add_move("X", 1)  # XOX
+      grid.add_move("O", 2)  #  X
+      grid.add_move("X", 3)  #   O
+      grid.add_move("O", 9)
+      grid.add_move("X", 5)
       allowed = grid.empty_cell_list
       legal_move = player.get_move(grid)
+      puts "\n** legal_move = #{legal_move}, allowed = #{allowed}\n"
       expect(allowed.include? legal_move).to eq true
     end
 
