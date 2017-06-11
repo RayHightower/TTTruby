@@ -86,48 +86,46 @@ describe Player do
       grid.add_move("X", 2)  #
       grid.add_move("O", 3)  #   X
       grid.add_move("X", 9)
-      # puts "\n*****************************************\n"
-      # grid.print_color_grid
-      # puts "\n*****************************************\n"
       allowed = grid.empty_cell_list
-      # puts "\n allowed = #{allowed}"
       legal_move = player.get_move(grid)
-      # puts "\nallowed = #{allowed} and legal_move = #{legal_move}\n"
       expect(allowed.include? legal_move).to eq true
     end
 
-#   it "returns score = 1 when :droid has won" do
-#     player = Player.new("O", :droid)
-#     grid = Grid.new
-#     grid.add_move("O", 1)  # OOO
-#     grid.add_move("O", 2)  #
-#     grid.add_move("O", 3)  #
-#     expect(player.score(grid, player.designation)).to eq 1
-#   end
+    it "returns score = 99 when :droid has won" do
+      player = Player.new("O", :droid)
+      grid = Grid.new
+      depth = 1
+      grid.add_move("O", 1)  # OOO
+      grid.add_move("O", 2)  #
+      grid.add_move("O", 3)  #
+      expect(player.score(grid, player.designation, depth)).to eq 99
+    end
 
-#   it "returns score = -1 when :droid has lost" do
-#     player = Player.new("O", :droid)
-#     grid = Grid.new
-#     grid.add_move("X", 1)  # XXX
-#     grid.add_move("X", 2)  #
-#     grid.add_move("X", 3)  #
-#     expect(player.score(grid, player.designation)).to eq (-1)
-#   end
+    it "returns score = -99 when :droid has lost" do
+      player = Player.new("O", :droid)
+      grid = Grid.new
+      depth = 1
+      grid.add_move("X", 1)  # XXX
+      grid.add_move("X", 2)  #
+      grid.add_move("X", 3)  #
+      expect(player.score(grid, player.designation, depth)).to eq -99
+    end
 
-#   it "retuns score = 0 when grid shows a tie game" do
-#     player = Player.new("O", :droid)
-#     grid = Grid.new
-#     grid.add_move("O", 1)  # OXO
-#     grid.add_move("X", 2)  # XOX
-#     grid.add_move("O", 3)  # XOX
-#     grid.add_move("X", 4)  #
-#     grid.add_move("O", 5)  #
-#     grid.add_move("X", 6)  #
-#     grid.add_move("X", 7)  #
-#     grid.add_move("O", 8)  #
-#     grid.add_move("X", 9)  #
-#     expect(player.score(grid, player.designation)).to eq (0)
-#   end
+    it "retuns score = 0 when grid shows a tie game" do
+      player = Player.new("O", :droid)
+      grid = Grid.new
+      depth = 1
+      grid.add_move("O", 1)  # OXO
+      grid.add_move("X", 2)  # XOX
+      grid.add_move("O", 3)  # XOX
+      grid.add_move("X", 4)  #
+      grid.add_move("O", 5)  #
+      grid.add_move("X", 6)  #
+      grid.add_move("X", 7)  #
+      grid.add_move("O", 8)  #
+      grid.add_move("X", 9)  #
+      expect(player.score(grid, player.designation, depth)).to eq (0)
+    end
 
 #   it "returns a blocking horizontal move when given a potential winning board for the opposing player" do
 #     grid = Grid.new
