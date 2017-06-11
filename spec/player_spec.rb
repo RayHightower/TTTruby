@@ -1,13 +1,5 @@
 require 'player'
 
-# describe Designation do
-#   context "make things easier by monkey patching the string class" do
-#     it "can toggle between X and O using only the designations (strings) and not the whole Player object" do
-#       expect true
-#     end
-#   end
-# end
-
 describe Player do
   context "both human and droid" do
 
@@ -18,6 +10,11 @@ describe Player do
     it "can flip strings because we monkey patched the String class" do
       sample_designation = "X"
       expect(sample_designation.flipxo).to eq "O"
+    end
+
+    it "can handle an incorrorect designation when flipping strings" do
+      sample_designation = "Q"
+      expect(sample_designation.flipxo).to eq "Invalid"
     end
 
     it "can toggle between X and O during the recursion" do

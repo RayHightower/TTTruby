@@ -1,15 +1,16 @@
 require_relative './grid'
 
+
 class String
-  def flipxo
+  def flipxo # Monkey patch the string class so we can flip designations without passing the whole Player object.
     if (self == "X") then return "O"
     elsif (self == "O") then return "X"
     end
+    return "Invalid"
   end
 end
 
 class Player
-
   attr_accessor :designation, :type, :name
   # :designation = "X" or "O"
   # :type = :human or :droid
@@ -19,13 +20,11 @@ class Player
     @type = type
   end
 
-  def toggle    # To toggle between the two players.
+  def toggle    # To toggle between the two players. This makes us create a whole new Player object each time.
     if (designation == "X") then return Player.new("O", :droid)
     elsif (designation == "O") then return Player.new("X", :droid)
     end
   end
-
-
 
   def get_move(current_grid)
     if self.type == :human  # Humans provide moves via the console.
@@ -61,7 +60,7 @@ class Player
     else # if this is not a terminal node, then recurse down the tree
       deeper_grid = current_grid.dupe
       fake_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
-      other_player_designation = current_player_designation.toggle
+      other_player_designation = current_player_designation.flipxo
       deeper_grid.add_move(other_player_designation, fake_move)
       depth = depth + 1
       current_score = -minimax(other_player_designation, deeper_grid, depth)
@@ -69,11 +68,11 @@ class Player
     end
   end
 
-  def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
+  def score(grid, evaluated_player_designation) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
-    if grid.who_won == evaluated_player then score = 99
-    elsif grid.who_won == toggle(evaluated_player) then score = -99
+    if grid.who_won == evaluated_player_designation then score = 99
+    elsif grid.who_won == evaluated_player_designation.flipxo then score = -99
     end
 
     return score
