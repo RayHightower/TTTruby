@@ -38,6 +38,8 @@ class Player
         fake_grid = current_grid.dupe
         fake_grid.add_move(current_player_designation, fake_move)
         puts "\n**** BEFORE minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n"
+        current_grid.print_color_grid
+        fake_grid.print_color_grid
         scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth) # Go to the bottom of the tree.
         puts "**** AFTER minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n\n"
       end
@@ -51,7 +53,7 @@ class Player
   def minimax(designation, current_grid, depth)
     puts "Entering minimax(#{designation}, #{current_grid.contents}, depth = #{depth})\n"
     if current_grid.terminal? then # if this is a terminal node, then return utility value
-      this_score = score(current_grid, designation)
+      this_score = score(current_grid, designation, depth)
       puts "*** this_score = #{this_score} ***\n"
       return this_score
 
@@ -66,12 +68,14 @@ class Player
     end
   end
 
-  def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
+  def score(grid, evaluated_player, depth) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
     if grid.who_won == evaluated_player then score = 99
     elsif grid.who_won == evaluated_player.flipxo then score = -99
     end
+
+    score = score/depth
 
     return score
   end
