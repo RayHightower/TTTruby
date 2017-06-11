@@ -66,7 +66,7 @@ class Player
 
   def minimax(current_player_designation, current_grid, depth)
     if current_grid.terminal? # if this is a terminal node, then return utility value
-      then return score(current_grid, current_player_designation, depth)
+      then return score(current_grid, current_player_designation)
 
     else # if this is not a terminal node, then recurse down the tree
       deeper_grid = Marshal.load(Marshal.dump(current_grid))
@@ -80,11 +80,11 @@ class Player
     end
   end
 
-  def score(grid, evaluated_player, depth) # Given a terminal grid, did "evaluated_player" win (+1), lose (-1), or draw (0)?
+  def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
     if grid.who_won == evaluated_player then score = 99
-    elsif grid.who_won != toggle(evaluated_player) then score = -99
+    elsif grid.who_won == toggle(evaluated_player) then score = -99
     end
 
     puts "\nSCORE method: scoring for evaluated_player = #{evaluated_player}\ngrid.contents = #{grid.contents}, score = #{score}, depth = #{depth}\n\n"

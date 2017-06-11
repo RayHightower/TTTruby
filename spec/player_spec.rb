@@ -29,7 +29,7 @@ describe Player do
 
     it "can toggle between X and O more than once" do
       player = Player.new("X", :droid)
-      expect(player.opposite.opposite == player.designation).to eq true
+      expect(player.flipflop.flipflop == player.designation).to eq true
     end
 
     it "can accomodate human players and droids" do
