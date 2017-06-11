@@ -34,6 +34,19 @@ describe Player do
   end
 
   context "droid" do
+    it "returns a winning move when given a potential winning board for the current player" do
+      grid = Grid.new
+      grid.add_move("X", 1)  # XOO
+      grid.add_move("O", 3)  # OX
+      grid.add_move("X", 7)  # X
+      grid.add_move("O", 4)  #
+      grid.add_move("X", 5)
+      grid.add_move("O", 2)
+      player = Player.new("X", :droid)
+      move = player.get_move(grid)
+      expect(move).to eq 9
+    end
+
 #   it "grabs a move from the AI, not the console, if the player is a droid" do
 #     current_grid = Grid.new
 #     current_player = Player.new("X", :droid)
@@ -128,17 +141,5 @@ describe Player do
 #     expect(move).to eq 6
 #   end
 
-    it "returns a winning move when given a potential winning board for the current player" do
-      grid = Grid.new
-      grid.add_move("X", 1)  # XOO
-      grid.add_move("O", 3)  # OX
-      grid.add_move("X", 7)  # X
-      grid.add_move("O", 4)  #
-      grid.add_move("X", 5)
-      grid.add_move("O", 2)
-      player = Player.new("X", :droid)
-      move = player.get_move(grid)
-      expect(move).to eq 9
-    end
   end
 end

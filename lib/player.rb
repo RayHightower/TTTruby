@@ -29,7 +29,6 @@ class Player
       best_move = 0    # best_move will be determined by minimax
       current_player_designation = self.designation
       move_options = current_grid.empty_cell_list
-
       depth = 9 - move_options.count
 
       scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
