@@ -7,7 +7,7 @@ class GameRunner
   def initialize(type=:human)
     @game = Game.new
     @game.player = [Player.new("X"), Player.new("O", type)]
-    @turn = 1
+    @turn = 0
     @is_active = true
     @mover = @game.player[@turn % 2]
     start_game
