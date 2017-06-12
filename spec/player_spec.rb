@@ -34,7 +34,7 @@ describe Player do
   end
 
   context "droid" do
-    it "returns a winning move when given a potential winning board for the current player" do
+    it "returns a winning (diagonal) move when given a potential winning board for the current player" do
       grid = Grid.new
       grid.add_move("X", 1)  # XOO
       grid.add_move("O", 3)  # OX
@@ -47,7 +47,7 @@ describe Player do
       expect(move).to eq 9
     end
 
-    it "returns a winning move when given a potential winning board for the current player" do
+    it "returns a winning (horizontal) move when given a potential winning board for the current player" do
       grid = Grid.new
       grid.add_move("X", 1)  # XOO
       grid.add_move("O", 3)  # O

@@ -59,7 +59,7 @@ class Player
     else # if this is not a terminal node, then recurse down the tree
       deeper_grid = current_grid.dupe
       fake_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
-      other_player_designation = designation.flipxo
+      other_player_designation = designation.flipxo # Flip the player that moves on this fake_grid.
       deeper_grid.add_move(other_player_designation, fake_move)
       depth = depth + 1
       current_score = -minimax(other_player_designation, deeper_grid, depth)
