@@ -1,7 +1,7 @@
 require_relative './grid'
 
 class String
-  def flipxo # Monkey patch the string class so we can flip designations without passing the whole Player object.
+  def flipxo # Monkey patch the string class so we can flip designations without passing the whole Player object. Performance!
     if (self == "X") then return "O"
     elsif (self == "O") then return "X"
     end
