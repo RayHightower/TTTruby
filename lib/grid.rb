@@ -101,5 +101,4 @@ class Grid
 
     return winner
   end
-
 end
