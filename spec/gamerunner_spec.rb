@@ -20,6 +20,22 @@ describe GameRunner do
       expect(game_with_droid.game.player[1].type).to eq :droid
     end
 
+    it "stops the game after all squares have been occupied" do
+      grid = Grid.new
+      player = Player.new("O", :droid)
+      grid.add_move("X", 1)  # XOO
+      grid.add_move("O", 3)  # OXX
+      grid.add_move("X", 7)  # XXO
+      grid.add_move("O", 4)  #
+      grid.add_move("X", 5)
+      grid.add_move("O", 2)
+      grid.add_move("X", 6)
+      grid.add_move("O", 9)
+      grid.add_move("X", 8)
+      move = player.get_move(grid)
+      expect(move).to eq nil
+    end
+
     it "changes the state of the grid with each turn" do
       grid_state_1 = @thisgamerunner.get_status.dup
       @thisgamerunner.next_turn
