@@ -32,8 +32,7 @@ describe GameRunner do
       grid.add_move("X", 6)
       grid.add_move("O", 9)
       grid.add_move("X", 8)
-      move = player.get_move(grid)
-      expect(move).to eq nil
+      expect(grid.moves_remaining).to eq 0
     end
 
     it "changes the state of the grid with each turn" do

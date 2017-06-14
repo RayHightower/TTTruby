@@ -10,7 +10,6 @@ class GameRunner
     @turn = 0
     @is_active = true
     @mover = @game.player[@turn % 2]
-    @illegal_attempts = 0
     start_game
   end
 
@@ -48,9 +47,8 @@ class GameRunner
   end
 
   def add_good_move(move)
-    while (!@game.add_move(@mover, move) && (@illegal_attempts < 10))
+    while (!@game.add_move(@mover, move) && (@game.grid.moves_remaining > 0))
       puts "No way, Player #{@mover.designation}. Illegal move. Try again."
-      @illegal_attempts += 1
       move = get_move
     end
   end
