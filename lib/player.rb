@@ -31,7 +31,7 @@ class Player
       depth = 9 - move_options.count
 
       # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
-      scorecard = [-99, -99, -99, -99, -99, -99, -99, -99, -99, -99]  # Score each of the available moves and choose the highest scoring move.
+      scorecard = [-999, -999, -999, -999, -999, -999, -999, -999, -999, -999]  # Score each of the available moves and choose the highest scoring move.
       # Start by making all of the moves neutral (0) that :droid won't consider them.
 
       move_options.each do |fake_move|
@@ -72,8 +72,8 @@ class Player
   def score(grid, evaluated_player, depth) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
-    if grid.who_won == evaluated_player then score = 10
-    elsif grid.who_won == evaluated_player.flipxo then score = -10
+    if grid.who_won == evaluated_player then score = 99
+    elsif grid.who_won == evaluated_player.flipxo then score = -99
     end
 
     score = score/depth
