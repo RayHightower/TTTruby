@@ -47,7 +47,7 @@ describe Player do
       expect(move).to eq 9
     end
 
-    it "returns a winning (horizontal) move when given a potential winning board for the current player" do
+    it "returns a winning (horizontal or diagonal) move when given a potential winning board for the current player" do
       grid = Grid.new
       grid.add_move("X", 1)  # XOO
       grid.add_move("O", 3)  # O
@@ -97,24 +97,24 @@ describe Player do
       expect(allowed.include? legal_move).to eq true
     end
 
-    it "returns score = 99 when :droid has won" do
+    it "returns score = 10 when :droid has won" do
       player = Player.new("O", :droid)
       grid = Grid.new
       depth = 1
       grid.add_move("O", 1)  # OOO
       grid.add_move("O", 2)  #
       grid.add_move("O", 3)  #
-      expect(player.score(grid, player.designation, depth)).to eq 99
+      expect(player.score(grid, player.designation, depth)).to eq 10
     end
 
-    it "returns score = -99 when :droid has lost" do
+    it "returns score = -10 when :droid has lost" do
       player = Player.new("O", :droid)
       grid = Grid.new
       grid.add_move("X", 1)  # XXX
       depth = 1
       grid.add_move("X", 2)  #
       grid.add_move("X", 3)  #
-      expect(player.score(grid, player.designation, depth)).to eq -99
+      expect(player.score(grid, player.designation, depth)).to eq -10
     end
 
     it "retuns score = 0 when grid shows a tie game" do

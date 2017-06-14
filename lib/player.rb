@@ -30,13 +30,15 @@ class Player
       move_options = current_grid.empty_cell_list
       depth = 9 - move_options.count
 
-      scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
+      # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
+      scorecard = [-99, -99, -99, -99, -99, -99, -99, -99, -99, -99]  # Score each of the available moves and choose the highest scoring move.
       # Start by making all of the moves neutral (0) that :droid won't consider them.
 
       move_options.each do |fake_move|
         fake_grid = current_grid.dupe
         fake_grid.add_move(current_player_designation, fake_move)
         puts "\n**** BEFORE minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n"
+        puts "\n current_player = #{current_player_designation}. current_grid, fake_grid below...\n"
         current_grid.print_color_grid
         fake_grid.print_color_grid
         scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth) # Go to the bottom of the tree.
@@ -58,9 +60,9 @@ class Player
 
     else # if this is not a terminal node, then recurse down the tree
       deeper_grid = current_grid.dupe
-      fake_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
+      deeper_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
       other_player_designation = designation.flipxo # Flip the player that moves on this fake_grid.
-      deeper_grid.add_move(other_player_designation, fake_move)
+      deeper_grid.add_move(other_player_designation, deeper_move)
       depth = depth + 1
       current_score = -minimax(other_player_designation, deeper_grid, depth)
       return current_score
@@ -70,8 +72,8 @@ class Player
   def score(grid, evaluated_player, depth) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
-    if grid.who_won == evaluated_player then score = 99
-    elsif grid.who_won == evaluated_player.flipxo then score = -99
+    if grid.who_won == evaluated_player then score = 10
+    elsif grid.who_won == evaluated_player.flipxo then score = -10
     end
 
     score = score/depth
