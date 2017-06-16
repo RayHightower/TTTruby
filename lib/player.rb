@@ -52,10 +52,10 @@ class Player
   end
 
   def minimax(designation, current_grid, depth)
-    puts "Entering minimax(#{designation}, #{current_grid.contents}, depth = #{depth})\n"
+    puts "Entering minimax(mover = #{designation}, #{current_grid.contents}, depth = #{depth})\n"
     if current_grid.terminal? then # if this is a terminal node, then return utility value
       this_score = score(current_grid, designation, depth)
-      puts "*** this_score = #{this_score} ***\n"
+      puts "*** this_score = #{this_score}, depth = #{depth} ***\n"
       return this_score
 
     else # if this is not a terminal node, then recurse down the tree
