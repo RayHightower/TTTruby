@@ -32,7 +32,7 @@ class Player
 
       # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
       scorecard = [-999, -999, -999, -999, -999, -999, -999, -999, -999, -999]  # Score each of the available moves and choose the highest scoring move.
-      # Start by making all of the moves neutral (0) that :droid won't consider them.
+      # Start by making all of the moves awful so that :droid won't consider them.
 
       move_options.each do |fake_move|
         fake_grid = current_grid.dupe
@@ -45,7 +45,7 @@ class Player
         puts "**** AFTER minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n\n"
       end
 
-      best_move = scorecard.each_with_index.max[1]
+      best_move = scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
 
       return best_move
     end
