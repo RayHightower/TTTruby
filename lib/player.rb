@@ -76,7 +76,7 @@ class Player
     elsif grid.who_won == evaluated_player.flipxo then score = -99
     end
 
-    score = score/depth
+    # score = score/depth
 
     return score
   end
