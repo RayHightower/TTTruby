@@ -91,9 +91,9 @@ describe Player do
       new_grid = grid.dupe
       legal_move = player.get_move(grid)
       puts "\n** legal_move = #{legal_move}, allowed = #{allowed}\n"
-      grid.print_color_grid
+      # grid.print_color_grid
       grid.add_move(player.designation, legal_move)
-      grid.print_color_grid
+      # grid.print_color_grid
       expect(allowed.include? legal_move).to eq true
     end
 

@@ -25,7 +25,7 @@ class Player
       return move
 
     elsif self.type == :droid    # Droids use minimax/AI to determine their next move.
-      best_move = 0    # best_move will be determined by minimax
+      best_move = 0    # best_move for the :droid will be determined by minimax
       current_player_designation = self.designation
       move_options = current_grid.empty_cell_list
       depth = 9 - move_options.count
@@ -38,9 +38,9 @@ class Player
         fake_grid = current_grid.dupe
         fake_grid.add_move(current_player_designation, fake_move)
         puts "\n**** BEFORE minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n"
-        puts "\n current_player = #{current_player_designation}. current_grid, fake_grid below...\n"
-        current_grid.print_color_grid
-        fake_grid.print_color_grid
+        puts "\n current_player = #{current_player_designation}." # current_grid, fake_grid below...\n"
+        # current_grid.print_color_grid
+        # fake_grid.print_color_grid
         scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth) # Go to the bottom of the tree.
         puts "**** AFTER minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n\n"
       end
@@ -76,7 +76,7 @@ class Player
     elsif grid.who_won == evaluated_player.flipxo then score = -99
     end
 
-    # score = score/depth
+    score = score/depth
 
     return score
   end
