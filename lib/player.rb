@@ -52,7 +52,8 @@ class Player
   end
 
   def minimax(player_designation, current_grid, depth)
-    puts "Entering minimax(mover = #{player_designation}, #{current_grid.contents}, depth = #{depth})\n"
+    puts "\nEntering minimax(mover = #{player_designation}, #{current_grid.contents}, depth = #{depth})\n"
+    current_grid.print_color_grid
     if current_grid.terminal? then # if this is a terminal node, then return utility value
       this_score = score(current_grid, player_designation, depth)
       puts "*** this_score = #{this_score}, depth = #{depth} ***\n"
@@ -63,8 +64,7 @@ class Player
       deeper_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
       other_player_designation = player_designation.flipxo # Flip the player that moves on this fake_grid.
       deeper_grid.add_move(other_player_designation, deeper_move)
-      depth = depth + 1
-      current_score = -minimax(other_player_designation, deeper_grid, depth)
+      current_score = -minimax(other_player_designation, deeper_grid, depth+1)
       return current_score
     end
   end
