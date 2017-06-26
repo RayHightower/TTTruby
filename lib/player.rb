@@ -51,17 +51,17 @@ class Player
     end
   end
 
-  def minimax(designation, current_grid, depth)
-    puts "Entering minimax(mover = #{designation}, #{current_grid.contents}, depth = #{depth})\n"
+  def minimax(player_designation, current_grid, depth)
+    puts "Entering minimax(mover = #{player_designation}, #{current_grid.contents}, depth = #{depth})\n"
     if current_grid.terminal? then # if this is a terminal node, then return utility value
-      this_score = score(current_grid, designation, depth)
+      this_score = score(current_grid, player_designation, depth)
       puts "*** this_score = #{this_score}, depth = #{depth} ***\n"
       return this_score
 
     else # if this is not a terminal node, then recurse down the tree
       deeper_grid = current_grid.dupe
       deeper_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
-      other_player_designation = designation.flipxo # Flip the player that moves on this fake_grid.
+      other_player_designation = player_designation.flipxo # Flip the player that moves on this fake_grid.
       deeper_grid.add_move(other_player_designation, deeper_move)
       depth = depth + 1
       current_score = -minimax(other_player_designation, deeper_grid, depth)

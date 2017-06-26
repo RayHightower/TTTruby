@@ -63,7 +63,7 @@ class Grid
     return empty_cells
   end
 
-  def terminal? # A grid can look at itself and know that it's terminal.
+  def terminal? # A grid can look at itself and know that it's terminal, ie there are no legal moves left on the grid.
     terminal_state = true
     (self.who_won == nil) ? terminal_state = false : nil
     (self.moves_remaining < 1) ? terminal_state = true : nil
