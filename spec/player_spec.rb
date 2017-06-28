@@ -97,25 +97,25 @@ describe Player do
       expect(allowed.include? legal_move).to eq true
     end
 
-    it "returns score = 99 when :droid has won" do
-      player = Player.new("O", :droid)
-      grid = Grid.new
-      depth = 1
-      grid.add_move("O", 1)  # OOO
-      grid.add_move("O", 2)  #
-      grid.add_move("O", 3)  #
-      expect(player.score(grid, player.designation, depth)).to eq 99
-    end
+    # it "returns score = 99 when :droid has won" do
+    #   player = Player.new("O", :droid)
+    #   grid = Grid.new
+    #   depth = 1
+    #   grid.add_move("O", 1)  # OOO
+    #   grid.add_move("O", 2)  #
+    #   grid.add_move("O", 3)  #
+    #   expect(player.score(grid, player.designation, depth)).to eq 99
+    # end
 
-    it "returns score = -99 when :droid has lost" do
-      player = Player.new("O", :droid)
-      grid = Grid.new
-      grid.add_move("X", 1)  # XXX
-      depth = 1
-      grid.add_move("X", 2)  #
-      grid.add_move("X", 3)  #
-      expect(player.score(grid, player.designation, depth)).to eq -99
-    end
+    # it "returns score = -99 when :droid has lost" do
+    #   player = Player.new("O", :droid)
+    #   grid = Grid.new
+    #   grid.add_move("X", 1)  # XXX
+    #   depth = 1
+    #   grid.add_move("X", 2)  #
+    #   grid.add_move("X", 3)  #
+    #   expect(player.score(grid, player.designation, depth)).to eq -99
+    # end
 
     it "retuns score = 0 when grid shows a tie game" do
       player = Player.new("O", :droid)

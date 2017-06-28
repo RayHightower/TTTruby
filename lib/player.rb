@@ -72,8 +72,8 @@ class Player
   def score(grid, evaluated_player, depth) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
-    if grid.who_won == evaluated_player then score = 99
-    elsif grid.who_won == evaluated_player.flipxo then score = -99
+    if grid.who_won == evaluated_player then score = 999
+    elsif grid.who_won == evaluated_player.flipxo then score = -999
     end
 
     score = score/depth
