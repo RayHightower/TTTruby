@@ -23,14 +23,15 @@ class Player
     if self.type == :human  # Human provides a move via the console.
       move = $stdin.getch.to_i
     elsif self.type == :droid    # Droid uses minimax/AI to determine its next move.
-      move = minimax(current_player_designation, current_grid, lookahead) # scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
+      lookahead = 3 # larger lookahed means greater intelligence in the AI
+      move = minimax(self.designation, current_grid, lookahead) # scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
     end
 
     return move
   end
 
   def minimax(player_designation, current_grid, lookahead)
-#   best_move = 0    # best_move for the :droid will be determined by minimax
+    best_move = 0    # best_move for the :droid will be determined by minimax
 #   current_player_designation = self.designation
 #   move_options = current_grid.empty_cell_list
 #   depth = 9 - move_options.count
