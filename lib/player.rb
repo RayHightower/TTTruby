@@ -58,9 +58,8 @@ class Player
 
     return score
   end
-end
 
-def junk_junk
+  def junk_junk
 #   current_player_designation = self.designation
 #   move_options = current_grid.empty_cell_list
 #   depth = 9 - move_options.count
@@ -82,4 +81,6 @@ def junk_junk
 #   move = scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
 #   puts "\nEntering minimax(mover = #{player_designation}, #{current_grid.contents}, depth = #{depth})\n"
 #   current_grid.print_color_grid
+  end
 end
+
