@@ -33,8 +33,8 @@ class Player
   def minimax(player_designation, current_grid, lookahead)
     best_move = 0    # best_move for the :droid will be determined by minimax
     if (current_grid.terminal? || lookahead == 0) then # if this is a terminal node, then return utility value
-      this_score = score(current_grid, player_designation, depth)
-      puts "*** this_score = #{this_score}, depth = #{depth} ***\n"
+      this_score = score(current_grid, player_designation, lookahead)
+      puts "*** this_score = #{this_score}, lookahead = #{lookahead} ***\n"
       return this_score
 
     else # if this is not a terminal node, then recurse down the tree
@@ -47,14 +47,14 @@ class Player
     end
   end
 
-  def score(grid, evaluated_player, depth) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
+  def score(grid, evaluated_player, lookahead) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
     if grid.who_won == evaluated_player then score = 999
     elsif grid.who_won == evaluated_player.flipxo then score = -999
     end
 
-    score = score/depth
+    score = score/lookahead
 
     return score
   end
@@ -75,11 +75,11 @@ class Player
 #     puts "\n current_player = #{current_player_designation}." # current_grid, fake_grid below...\n"
 #     # current_grid.print_color_grid
 #     # fake_grid.print_color_grid
-#     scorecard[fake_move] = minimax(current_player_designation, fake_grid, depth) # Go to the bottom of the tree.
+#     scorecard[fake_move] = minimax(current_player_designation, fake_grid, lookahead) # Go to the bottom of the tree.
 #     puts "**** AFTER minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n\n"
 
 #   move = scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
-#   puts "\nEntering minimax(mover = #{player_designation}, #{current_grid.contents}, depth = #{depth})\n"
+#   puts "\nEntering minimax(mover = #{player_designation}, #{current_grid.contents}, lookahead = #{lookahead})\n"
 #   current_grid.print_color_grid
   end
 end
