@@ -47,31 +47,31 @@ describe Player do
       expect(move).to eq 9
     end
 
-#    it "returns a winning (horizontal or diagonal) move when given a potential winning board for the current player" do
-#      grid = Grid.new
-#      grid.add_move("X", 1)  # XOO
-#      grid.add_move("O", 3)  # O
-#      grid.add_move("X", 7)  # X X
-#      grid.add_move("O", 4)  #
-#      grid.add_move("X", 9)
-#      grid.add_move("O", 2)
-#      player = Player.new("X", :droid)
-#      move = player.get_move(grid)
-#      expect(move == 5 || move == 8).to eq true
-#    end
-#
-#    it "returns a winning move (O) when given a potential winning board for the current player" do
-#      grid = Grid.new
-#      grid.add_move("X", 1)  # XOX
-#      grid.add_move("O", 2)  # XO
-#      grid.add_move("X", 3)  #
-#      grid.add_move("O", 5)  #
-#      grid.add_move("X", 4)
-#      player = Player.new("O", :droid)
-#      move = player.get_move(grid)
-#      expect(move).to eq 8
-#    end
-#
+    it "returns a winning (horizontal or diagonal) move when given a potential winning board for the current player" do
+      grid = Grid.new
+      grid.add_move("X", 1)  # XOO
+      grid.add_move("O", 3)  # O
+      grid.add_move("X", 7)  # X X
+      grid.add_move("O", 4)  #
+      grid.add_move("X", 9)
+      grid.add_move("O", 2)
+      player = Player.new("X", :droid)
+      move = player.get_move(grid)
+      expect(move == 5 || move == 8).to eq true
+    end
+
+    it "returns a winning move (O) when given a potential winning board for the current player" do
+      grid = Grid.new
+      grid.add_move("X", 1)  # XOX
+      grid.add_move("O", 2)  # XO
+      grid.add_move("X", 3)  #
+      grid.add_move("O", 5)  #
+      grid.add_move("X", 4)
+      player = Player.new("O", :droid)
+      move = player.get_move(grid)
+      expect(move).to eq 8
+    end
+
 #    it "grabs a move from the AI, not the console, if the player is a droid" do
 #      current_grid = Grid.new
 #      current_player = Player.new("X", :droid)
