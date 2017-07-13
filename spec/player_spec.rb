@@ -72,13 +72,13 @@ describe Player do
       expect(move).to eq 8
     end
 
-#    it "grabs a move from the AI, not the console, if the player is a droid" do
-#      current_grid = Grid.new
-#      current_player = Player.new("X", :droid)
-#      move = current_player.get_move(current_grid)
-#      expect(move.class == Fixnum).to eq true
-#    end
-#
+    it "grabs a move from the AI, not the console, if the player is a droid" do
+      current_grid = Grid.new
+      current_player = Player.new("X", :droid)
+      move = current_player.get_move(current_grid)
+      expect(move.class == Fixnum).to eq true
+    end
+
 #    it "makes a legal move when given a grid with existing moves" do
 #      player = Player.new("O", :droid)
 #      grid = Grid.new
