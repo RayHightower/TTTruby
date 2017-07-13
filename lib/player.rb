@@ -26,7 +26,7 @@ class Player
       move_options = current_grid.empty_cell_list
       # Start by making all of the moves awful so that :droid won't consider them.
       scorecard = Array.new(10, -10)
-      lookahead = 3 # larger lookahed means greater intelligence in the AI
+      lookahead = 3 # larger lookahead means greater intelligence in the AI
       move_options.each do |cell|
         fake_grid = current_grid.dupe
         fake_grid.add_move(self.designation, cell)
@@ -41,22 +41,20 @@ class Player
   end
 
   def minimax(player_designation, current_grid, lookahead_remaining)
-    scorecard = Array.new(10, -10)
     if (current_grid.terminal? || lookahead_remaining == 0) then # if this is a terminal node, then return the score
       this_score = score(current_grid, player_designation, lookahead_remaining)
-      # puts "*** this_score = #{this_score}, current_grid.terminal? = #{current_grid.terminal?}"
-      # puts "\nlookahead_remaining = #{lookahead_remaining} ***\n"
+      puts "*** this_score = #{this_score}, current_grid.terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining} ***\n"
       return this_score
 
-    else # if this is not a terminal node, then recurse down the tree
+    else # if this is not a terminal node, then recurse down the tree to fill the scorecard.
+      scorecard = Array.new(10, -10)
       deeper_grid = current_grid.dupe
       deeper_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
       other_player_designation = player_designation.flipxo # Flip the player that moves on this fake_grid.
       deeper_grid.add_move(other_player_designation, deeper_move)
       puts "\nBefore scoring: Next move to be made by #{other_player_designation}, deeper_move = #{deeper_move}\n"
       #RETURN the MAX or MIN of what was returned vs [what]????
-      current_score = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
-      return current_score
+      scorecard[deeper_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
     end
 
     max_score = scorecard.each_with_index.max[1]
@@ -72,9 +70,8 @@ class Player
     # Return score w/greater weight placed on earlier results, less weight placed on later results.
     score = 0
 
-    lookahead_remaining = 0 # Don't even think about depth or lookahead while scoring for now.
-    if grid.who_won == evaluated_player then score = 10 + 2*lookahead_remaining
-    elsif grid.who_won == evaluated_player.flipxo then score = -10 - 2*lookahead_remaining
+    if grid.who_won == evaluated_player then score = 10
+    elsif grid.who_won == evaluated_player.flipxo then score = -10
     end
 
     return score
