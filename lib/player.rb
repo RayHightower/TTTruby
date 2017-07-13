@@ -37,7 +37,6 @@ class Player
   end
 
   def minimax(player_designation, current_grid, lookahead_remaining)
-    best_move = 0    # best_move for the :droid will be determined by minimax
     if (current_grid.terminal? || lookahead_remaining == 0) then # if this is a terminal node, then return the score
       this_score = score(current_grid, player_designation)
       puts "*** this_score = #{this_score}, lookahead_remaining = #{lookahead_remaining} ***\n"
@@ -51,8 +50,6 @@ class Player
       current_score = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1) #RETURN the MAX or MIN of what was returned vs [what]????
       return current_score
     end
-
-    return best_move
   end
 
   def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
