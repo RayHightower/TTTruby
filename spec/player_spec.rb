@@ -47,55 +47,55 @@ describe Player do
       expect(move).to eq 9
     end
 
-    it "returns a winning (horizontal or diagonal) move when given a potential winning board for the current player" do
-      grid = Grid.new
-      grid.add_move("X", 1)  # XOO
-      grid.add_move("O", 3)  # O
-      grid.add_move("X", 7)  # X X
-      grid.add_move("O", 4)  #
-      grid.add_move("X", 9)
-      grid.add_move("O", 2)
-      player = Player.new("X", :droid)
-      move = player.get_move(grid)
-      expect(move == 5 || move == 8).to eq true
-    end
-
-    it "returns a winning move (O) when given a potential winning board for the current player" do
-      grid = Grid.new
-      grid.add_move("X", 1)  # XOX
-      grid.add_move("O", 2)  # XO
-      grid.add_move("X", 3)  #
-      grid.add_move("O", 5)  #
-      grid.add_move("X", 4)
-      player = Player.new("O", :droid)
-      move = player.get_move(grid)
-      expect(move).to eq 8
-    end
-
-    it "grabs a move from the AI, not the console, if the player is a droid" do
-      current_grid = Grid.new
-      current_player = Player.new("X", :droid)
-      move = current_player.get_move(current_grid)
-      expect(move.class == Fixnum).to eq true
-    end
-
-    it "makes a legal move when given a grid with existing moves" do
-      player = Player.new("O", :droid)
-      grid = Grid.new
-      grid.add_move("X", 1)  # XOX
-      grid.add_move("O", 2)  #  X
-      grid.add_move("X", 3)  #   O
-      grid.add_move("O", 9)
-      grid.add_move("X", 5)
-      allowed = grid.empty_cell_list
-      new_grid = grid.dupe
-      legal_move = player.get_move(grid)
-      # puts "\n** legal_move = #{legal_move}, allowed = #{allowed}\n"
-      grid.print_color_grid
-      grid.add_move(player.designation, legal_move)
-      grid.print_color_grid
-      expect(allowed.include? legal_move).to eq true
-    end
+#    it "returns a winning (horizontal or diagonal) move when given a potential winning board for the current player" do
+#      grid = Grid.new
+#      grid.add_move("X", 1)  # XOO
+#      grid.add_move("O", 3)  # O
+#      grid.add_move("X", 7)  # X X
+#      grid.add_move("O", 4)  #
+#      grid.add_move("X", 9)
+#      grid.add_move("O", 2)
+#      player = Player.new("X", :droid)
+#      move = player.get_move(grid)
+#      expect(move == 5 || move == 8).to eq true
+#    end
+#
+#    it "returns a winning move (O) when given a potential winning board for the current player" do
+#      grid = Grid.new
+#      grid.add_move("X", 1)  # XOX
+#      grid.add_move("O", 2)  # XO
+#      grid.add_move("X", 3)  #
+#      grid.add_move("O", 5)  #
+#      grid.add_move("X", 4)
+#      player = Player.new("O", :droid)
+#      move = player.get_move(grid)
+#      expect(move).to eq 8
+#    end
+#
+#    it "grabs a move from the AI, not the console, if the player is a droid" do
+#      current_grid = Grid.new
+#      current_player = Player.new("X", :droid)
+#      move = current_player.get_move(current_grid)
+#      expect(move.class == Fixnum).to eq true
+#    end
+#
+#    it "makes a legal move when given a grid with existing moves" do
+#      player = Player.new("O", :droid)
+#      grid = Grid.new
+#      grid.add_move("X", 1)  # XOX
+#      grid.add_move("O", 2)  #  X
+#      grid.add_move("X", 3)  #   O
+#      grid.add_move("O", 9)
+#      grid.add_move("X", 5)
+#      allowed = grid.empty_cell_list
+#      new_grid = grid.dupe
+#      legal_move = player.get_move(grid)
+#      # puts "\n** legal_move = #{legal_move}, allowed = #{allowed}\n"
+#      grid.print_color_grid
+#      grid.add_move(player.designation, legal_move)
+#      grid.print_color_grid
+#      expect(allowed.include? legal_move).to eq true
+#    end
 
     # it "returns score = 99 when :droid has won" do
     #   player = Player.new("O", :droid)
@@ -117,34 +117,34 @@ describe Player do
     #   expect(player.score(grid, player.designation, depth)).to eq -99
     # end
 
-    it "retuns score = 0 when grid shows a tie game" do
-      player = Player.new("O", :droid)
-      grid = Grid.new
-      depth = 1
-      grid.add_move("O", 1)  # OXO
-      grid.add_move("X", 2)  # XOX
-      grid.add_move("O", 3)  # XOX
-      grid.add_move("X", 4)  #
-      grid.add_move("O", 5)  #
-      grid.add_move("X", 6)  #
-      grid.add_move("X", 7)  #
-      grid.add_move("O", 8)  #
-      grid.add_move("X", 9)  #
-      expect(player.score(grid, player.designation, depth)).to eq (0)
-    end
+    # it "retuns score = 0 when grid shows a tie game" do
+    #   player = Player.new("O", :droid)
+    #   grid = Grid.new
+    #   depth = 1
+    #   grid.add_move("O", 1)  # OXO
+    #   grid.add_move("X", 2)  # XOX
+    #   grid.add_move("O", 3)  # XOX
+    #   grid.add_move("X", 4)  #
+    #   grid.add_move("O", 5)  #
+    #   grid.add_move("X", 6)  #
+    #   grid.add_move("X", 7)  #
+    #   grid.add_move("O", 8)  #
+    #   grid.add_move("X", 9)  #
+    #   expect(player.score(grid, player.designation, depth)).to eq (0)
+    # end
 
-    it "returns a blocking horizontal move when given a potential winning board for the opposing player" do
-      grid = Grid.new
-      grid.add_move("X", 1)  # XX
-      grid.add_move("O", 4)  # O
-      grid.add_move("X", 7)  # X O
-      grid.add_move("O", 9)  #
-      grid.add_move("X", 2)
-      # grid.print_color_grid
-      player = Player.new("O", :droid)
-      move = player.get_move(grid)
-      expect(move).to eq 3
-    end
+#    it "returns a blocking horizontal move when given a potential winning board for the opposing player" do
+#      grid = Grid.new
+#      grid.add_move("X", 1)  # XX
+#      grid.add_move("O", 4)  # O
+#      grid.add_move("X", 7)  # X O
+#      grid.add_move("O", 9)  #
+#      grid.add_move("X", 2)
+#      # grid.print_color_grid
+#      player = Player.new("O", :droid)
+#      move = player.get_move(grid)
+#      expect(move).to eq 3
+#    end
 
 #   it "returns a blocking diagonal move when given a potential winning board for the opposing player" do
 #     grid = Grid.new
