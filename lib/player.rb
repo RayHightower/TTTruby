@@ -26,7 +26,6 @@ class Player
       move_options = current_grid.empty_cell_list
       # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
       # Start by making all of the moves awful so that :droid won't consider them.
-      # scorecard = [-999, -999, -999, -999, -999, -999, -999, -999, -999, -999]
       scorecard = [-10, -10, -10, -10, -10, -10, -10, -10, -10, -10]
       lookahead = 3 # larger lookahed means greater intelligence in the AI
       move_options.each do |cell|
@@ -66,10 +65,11 @@ class Player
     # Return score w/greater weight placed on earlier results, less weight placed on later results.
     score = 0
 
-    if grid.who_won == evaluated_player then score = 10
-    elsif grid.who_won == evaluated_player.flipxo then score = -10
+    lookahead_remaining = 0 # Don't even think about depth or lookahead while scoring for now.
+    if grid.who_won == evaluated_player then score = 10 + 2*lookahead_remaining
+    elsif grid.who_won == evaluated_player.flipxo then score = -10 - 2*lookahead_remaining
     end
 
-    return (score + 2*lookahead_remaining)
+    return score
   end
 end

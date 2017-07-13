@@ -88,7 +88,6 @@ describe Player do
       grid.add_move("O", 9)
       grid.add_move("X", 5)
       allowed = grid.empty_cell_list
-      new_grid = grid.dupe
       legal_move = player.get_move(grid)
       grid.add_move(player.designation, legal_move)
       expect(allowed.include? legal_move).to eq true
@@ -97,7 +96,6 @@ describe Player do
     it "returns score = +10 when :droid has won" do
       player = Player.new("O", :droid)
       grid = Grid.new
-      depth = 1
       grid.add_move("O", 1)  # OOO
       grid.add_move("O", 2)  #
       grid.add_move("O", 3)  #
@@ -109,17 +107,15 @@ describe Player do
       player = Player.new("O", :droid)
       grid = Grid.new
       grid.add_move("X", 1)  # XXX
-      depth = 1
       grid.add_move("X", 2)  #
       grid.add_move("X", 3)  #
       lookahead_remaining = 0
-      expect(player.score(grid, player.designation, lookahead_remaining)).to eq -10
+      expect(player.score(grid, player.designation, lookahead_remaining)).to eq (-10)
     end
 
     it "retuns score = 0 when grid shows a tie game" do
       player = Player.new("O", :droid)
       grid = Grid.new
-      depth = 1
       grid.add_move("O", 1)  # OXO
       grid.add_move("X", 2)  # XOX
       grid.add_move("O", 3)  # XOX
@@ -140,7 +136,7 @@ describe Player do
       grid.add_move("X", 7)  # X O
       grid.add_move("O", 9)  #
       grid.add_move("X", 2)
-      # grid.print_color_grid
+      grid.print_color_grid
       player = Player.new("O", :droid)
       move = player.get_move(grid)
       expect(move).to eq 3
