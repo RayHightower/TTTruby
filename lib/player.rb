@@ -41,7 +41,7 @@ class Player
 
   def minimax(player_designation, current_grid, lookahead_remaining)
     if (current_grid.terminal? || lookahead_remaining == 0) then # if this is a terminal node, then return the score
-      this_score = score(current_grid, player_designation)
+      this_score = score(current_grid, player_designation, lookahead_remaining)
       # puts "*** this_score = #{this_score}, current_grid.terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining} ***\n"
       return this_score
 
@@ -56,13 +56,13 @@ class Player
     end
   end
 
-  def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
+  def score(grid, evaluated_player, lookahead_remaining) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
     if grid.who_won == evaluated_player then score = 999
     elsif grid.who_won == evaluated_player.flipxo then score = -999
     end
 
-    return score
+    return (score + lookahead_remaining)
   end
 end
