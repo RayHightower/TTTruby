@@ -71,8 +71,8 @@ class Player
     # Return score w/greater weight placed on earlier results, less weight placed on later results.
     score = 0
 
-    if grid.who_won == evaluated_player then score = 10
-    elsif grid.who_won == evaluated_player.flipxo then score = -10
+    if grid.who_won == evaluated_player then score = 10 + lookahead_remaining
+    elsif grid.who_won == evaluated_player.flipxo then score = -10 - lookahead_remaining
     end
 
     return score
