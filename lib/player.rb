@@ -57,11 +57,8 @@ class Player
       scorecard[deeper_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
     end
 
-    max_score = scorecard.each_with_index.max[1]
-    min_score = scorecard.each_with_index.min[1]
-
-    if player_designation = self.designation then return max_score
-    elsif player_designation.flipxo = self.designation then return min_score
+    if player_designation = self.designation then return scorecard.each_with_index.max[1]
+    elsif player_designation.flipxo = self.designation then return scorecard.each_with_index.min[1]
     end
 
   end
