@@ -23,8 +23,14 @@ class Player
     if self.type == :human  # Human provides a move via the console.
       move = $stdin.getch.to_i
     elsif self.type == :droid    # Droid uses minimax/AI to determine its next move.
+      move_options = current_grid.empty_cell_list
+      # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
+      scorecard = [-999, -999, -999, -999, -999, -999, -999, -999, -999, -999]  # Start by making all of the moves awful so that :droid won't consider them.
       lookahead = 3 # larger lookahed means greater intelligence in the AI
-      move = minimax(self.designation, current_grid, lookahead) # scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
+      move_options.each do |cell|
+        scorecard[cell] = minimax(self.designation, current_grid, lookahead) # scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
+      end
+      move = scorecard.each_with_index.max[1]
     end
 
     return move
@@ -45,6 +51,8 @@ class Player
       current_score = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1) #RETURN the MAX or MIN of what was returned vs [what]????
       return current_score
     end
+
+    return best_move
   end
 
   def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
@@ -60,27 +68,8 @@ class Player
   end
 
   def junk_junk
-#   current_player_designation = self.designation
-#   move_options = current_grid.empty_cell_list
 #   depth = 9 - move_options.count
-
-#   # Score each of the available moves and choose the highest scoring move.
-#   # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
-#   scorecard = [-999, -999, -999, -999, -999, -999, -999, -999, -999, -999]  # Start by making all of the moves awful so that :droid won't consider them.
-
-#   move_options.each do |fake_move|
-#     fake_grid = current_grid.dupe
-#     fake_grid.add_move(current_player_designation, fake_move)
-#     puts "\n**** BEFORE minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n"
-#     puts "\n current_player = #{current_player_designation}." # current_grid, fake_grid below...\n"
-#     # current_grid.print_color_grid
-#     # fake_grid.print_color_grid
 #     scorecard[fake_move] = minimax(current_player_designation, fake_grid, lookahead_remaining) # Go to the bottom of the tree.
-#     puts "**** AFTER minimax: fake_move = #{fake_move}, fake_grid = #{fake_grid.contents}\nscorecard[#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}\n\n\n"
-
-#   move = scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
-#   puts "\nEntering minimax(mover = #{player_designation}, #{current_grid.contents}, lookahead_remaining = #{lookahead_remaining})\n"
-#   current_grid.print_color_grid
   end
 end
 
