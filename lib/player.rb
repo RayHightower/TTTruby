@@ -49,12 +49,15 @@ class Player
     else # if this is not a terminal node, then recurse down the tree to fill the scorecard.
       scorecard = Array.new(10, -10)
       deeper_grid = current_grid.dupe
-      deeper_move = deeper_grid.empty_cell_list.sample # Choose any empty cell for the next fake_move.
       other_player_designation = player_designation.flipxo # Flip the player that moves on this fake_grid.
-      deeper_grid.add_move(other_player_designation, deeper_move)
-      puts "\nBefore scoring: Next move to be made by #{other_player_designation}, deeper_move = #{deeper_move}\n"
-      #RETURN the MAX or MIN of what was returned vs [what]????
-      scorecard[deeper_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
+      move_options = deeper_grid.empty_cell_list
+
+      move_options.each do |fake_move| # Choose any empty cell for the next fake_move.
+        deeper_grid.add_move(other_player_designation, fake_move)
+        puts "\nBefore scoring: Next move to be made by #{other_player_designation}, fake_move = #{fake_move}\n"
+        scorecard[fake_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
+      end
+
     end
 
     if player_designation = self.designation then return scorecard.each_with_index.max[1]
