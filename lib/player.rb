@@ -24,9 +24,8 @@ class Player
       move = $stdin.getch.to_i
     elsif self.type == :droid    # Droid uses minimax/AI to determine its next move.
       move_options = current_grid.empty_cell_list
-      # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
       # Start by making all of the moves awful so that :droid won't consider them.
-      scorecard = [-10, -10, -10, -10, -10, -10, -10, -10, -10, -10]
+      scorecard = Array.new(10, -10)
       lookahead = 3 # larger lookahed means greater intelligence in the AI
       move_options.each do |cell|
         fake_grid = current_grid.dupe
@@ -42,6 +41,7 @@ class Player
   end
 
   def minimax(player_designation, current_grid, lookahead_remaining)
+    scorecard = Array.new(10, -10)
     if (current_grid.terminal? || lookahead_remaining == 0) then # if this is a terminal node, then return the score
       this_score = score(current_grid, player_designation, lookahead_remaining)
       # puts "*** this_score = #{this_score}, current_grid.terminal? = #{current_grid.terminal?}"
@@ -58,6 +58,13 @@ class Player
       current_score = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
       return current_score
     end
+
+    max_score = scorecard.each_with_index.max[1]
+    min_score = scorecard.each_with_index.min[1]
+
+    if player_designation = self.designation then return max_score end
+    if player_designation.flipxo = self.designation then return min_score end
+
   end
 
   def score(grid, evaluated_player, lookahead_remaining)
