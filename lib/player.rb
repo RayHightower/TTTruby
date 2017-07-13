@@ -25,13 +25,15 @@ class Player
     elsif self.type == :droid    # Droid uses minimax/AI to determine its next move.
       move_options = current_grid.empty_cell_list
       # scorecard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  # Score each of the available moves and choose the highest scoring move.
-      scorecard = [-999, -999, -999, -999, -999, -999, -999, -999, -999, -999]  # Start by making all of the moves awful so that :droid won't consider them.
+      # Start by making all of the moves awful so that :droid won't consider them.
+      # scorecard = [-999, -999, -999, -999, -999, -999, -999, -999, -999, -999]
+      scorecard = [-10, -10, -10, -10, -10, -10, -10, -10, -10, -10]
       lookahead = 3 # larger lookahed means greater intelligence in the AI
       move_options.each do |cell|
         fake_grid = current_grid.dupe
         fake_grid.add_move(self.designation, cell)
         puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
-        scorecard[cell] = minimax(self.designation, fake_grid, lookahead) # scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
+        scorecard[cell] = minimax(self.designation, fake_grid, lookahead) # scorecard.each_with_index.max[1]
       end
       puts "\nscorecard = #{scorecard}"
       move = scorecard.each_with_index.max[1]
@@ -43,7 +45,8 @@ class Player
   def minimax(player_designation, current_grid, lookahead_remaining)
     if (current_grid.terminal? || lookahead_remaining == 0) then # if this is a terminal node, then return the score
       this_score = score(current_grid, player_designation, lookahead_remaining)
-      # puts "*** this_score = #{this_score}, current_grid.terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining} ***\n"
+      # puts "*** this_score = #{this_score}, current_grid.terminal? = #{current_grid.terminal?}"
+      # puts "\nlookahead_remaining = #{lookahead_remaining} ***\n"
       return this_score
 
     else # if this is not a terminal node, then recurse down the tree
@@ -52,12 +55,15 @@ class Player
       other_player_designation = player_designation.flipxo # Flip the player that moves on this fake_grid.
       deeper_grid.add_move(other_player_designation, deeper_move)
       puts "\nBefore scoring: Next move to be made by #{other_player_designation}, deeper_move = #{deeper_move}\n"
-      current_score = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1) #RETURN the MAX or MIN of what was returned vs [what]????
+      #RETURN the MAX or MIN of what was returned vs [what]????
+      current_score = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
       return current_score
     end
   end
 
-  def score(grid, evaluated_player, lookahead_remaining) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
+  def score(grid, evaluated_player, lookahead_remaining)
+    # Given a terminal grid, did "evaluated_player" win (+10), lose (-10), or draw (0)?
+    # Return score w/greater weight placed on earlier results, less weight placed on later results.
     score = 0
 
     if grid.who_won == evaluated_player then score = 10
