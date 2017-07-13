@@ -33,7 +33,7 @@ class Player
         puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
         scorecard[cell] = minimax(self.designation, fake_grid, lookahead) # scorecard.each_with_index.max[1]
       end
-      puts "\nscorecard = #{scorecard}"
+      puts "\nget_move scorecard = #{scorecard}"
       move = scorecard.each_with_index.max[1]
     end
 
@@ -56,6 +56,7 @@ class Player
         deeper_grid.add_move(other_player_designation, fake_move)
         puts "\nBefore scoring: Next move to be made by #{other_player_designation}, fake_move = #{fake_move}\n"
         scorecard[fake_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
+        puts "\nminimax scorecard = #{scorecard}"
       end
 
     end
@@ -71,8 +72,8 @@ class Player
     # Return score w/greater weight placed on earlier results, less weight placed on later results.
     score = 0
 
-    if grid.who_won == evaluated_player then score = 10 + lookahead_remaining
-    elsif grid.who_won == evaluated_player.flipxo then score = -10 - lookahead_remaining
+    if grid.who_won == evaluated_player then score = 10 + 3*lookahead_remaining
+    elsif grid.who_won == evaluated_player.flipxo then score = -10 - 3*lookahead_remaining
     end
     puts "\n****=SCORING METHOD** score = #{score}, lookahead_remaining = #{lookahead_remaining}"
 
