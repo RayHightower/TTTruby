@@ -33,7 +33,7 @@ class Player
   def minimax(player_designation, current_grid, lookahead)
     best_move = 0    # best_move for the :droid will be determined by minimax
     if (current_grid.terminal? || lookahead == 0) then # if this is a terminal node, then return utility value
-      this_score = score(current_grid, player_designation, lookahead)
+      this_score = score(current_grid, player_designation)
       puts "*** this_score = #{this_score}, lookahead = #{lookahead} ***\n"
       return this_score
 
@@ -47,14 +47,14 @@ class Player
     end
   end
 
-  def score(grid, evaluated_player, lookahead) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
+  def score(grid, evaluated_player) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
     if grid.who_won == evaluated_player then score = 999
     elsif grid.who_won == evaluated_player.flipxo then score = -999
     end
 
-    score = score/lookahead
+    score = score
 
     return score
   end
