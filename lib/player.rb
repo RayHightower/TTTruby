@@ -33,6 +33,7 @@ class Player
         puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
         scorecard[cell] = minimax(self.designation, fake_grid, lookahead) # scorecard.each_with_index.max[1] # Should be making this choice at each level of the decision tree.
       end
+      puts "\nscorecard = #{scorecard}"
       move = scorecard.each_with_index.max[1]
     end
 
@@ -59,10 +60,10 @@ class Player
   def score(grid, evaluated_player, lookahead_remaining) # Given a terminal grid, did "evaluated_player" win (+99), lose (-99), or draw (0)?
     score = 0
 
-    if grid.who_won == evaluated_player then score = 999
-    elsif grid.who_won == evaluated_player.flipxo then score = -999
+    if grid.who_won == evaluated_player then score = 10
+    elsif grid.who_won == evaluated_player.flipxo then score = -10
     end
 
-    return (score + lookahead_remaining)
+    return (score + 2*lookahead_remaining)
   end
 end
