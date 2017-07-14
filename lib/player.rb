@@ -42,9 +42,9 @@ class Player
 
   def minimax(player_designation, current_grid, lookahead_remaining)
     if (current_grid.terminal? || lookahead_remaining == 0) then # if this is a terminal node, then return the score
-      this_score = score(current_grid, player_designation, lookahead_remaining)
-      puts "*** this_score = #{this_score}, current_grid.terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining} ***\n"
-      return this_score
+      terminal_score = score(current_grid, player_designation, lookahead_remaining)
+      puts "*** terminal_score = #{terminal_score}, current_grid.terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining} ***\n"
+      return terminal_score
 
     else # if this is not a terminal node, then recurse down the tree to fill the scorecard.
       scorecard = Array.new(10, -10)
