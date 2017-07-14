@@ -43,7 +43,8 @@ class Player
   def minimax(player_designation, current_grid, lookahead_remaining)
     if (current_grid.terminal?) then # if this is a terminal node, then return the score
       terminal_score = score(current_grid, player_designation, lookahead_remaining)
-      puts "\n*** player #{player_designation}, terminal_score = #{terminal_score}, current_grid.terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining} ***\n"
+      puts "\n*** player #{player_designation}, terminal_score = #{terminal_score}, terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining}, who_won = #{current_grid.who_won} ***\n"
+
       current_grid.print_color_grid
       return terminal_score
 
@@ -72,8 +73,7 @@ class Player
   end
 
   def score(grid, evaluated_player, lookahead_remaining)
-    # Given a terminal grid, did "evaluated_player" win (+10), lose (-10), or draw (0)?
-    # Return score w/greater weight placed on earlier results, less weight placed on later results.
+    # Given a terminal grid, did "evaluated_player" win (+10), lose (-10), or draw (0)? Return score w/greater weight placed on earlier results, less weight placed on later results.
     score = 0
 
     if grid.who_won == evaluated_player then score = 10 + 3*lookahead_remaining
