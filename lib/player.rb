@@ -76,10 +76,11 @@ class Player
     # Given a terminal grid, did "evaluated_player" win (+10), lose (-10), or draw (0)? Return score w/greater weight placed on earlier results, less weight placed on later results.
     score = 0
 
-    if grid.who_won == evaluated_player then score = 10 + 3*lookahead_remaining
-    elsif grid.who_won == evaluated_player.flipxo then score = -10 - 3*lookahead_remaining
+    if grid.who_won == self.designation then score = 10 + 3*lookahead_remaining
+    elsif grid.who_won ==  self.designation then score = -10 - 3*lookahead_remaining
     end
-    # puts "\n**** SCORING METHOD *** score = #{score}, lookahead_remaining = #{lookahead_remaining}"
+    puts "\n**** SCORING METHOD *** grid.who_won = #{grid.who_won}, score = #{score}, lookahead_remaining = #{lookahead_remaining}"
+    puts "grid.who_won = #{grid.who_won}, evaluated_player = #{evaluated_player}, flipxo = #{evaluated_player.flipxo}"
 
     return score
   end
