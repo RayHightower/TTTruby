@@ -30,7 +30,7 @@ class Player
       move_options.each do |cell|
         fake_grid = current_grid.dupe
         fake_grid.add_move(self.designation, cell)
-        puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
+        # puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
         scorecard[cell] = minimax(self.designation, fake_grid, lookahead) # scorecard.each_with_index.max[1]
       end
       puts "\nget_move scorecard = #{scorecard}"
@@ -41,10 +41,14 @@ class Player
   end
 
   def minimax(player_designation, current_grid, lookahead_remaining)
-    if (current_grid.terminal? || lookahead_remaining == 0) then # if this is a terminal node, then return the score
+    if (current_grid.terminal?) then # if this is a terminal node, then return the score
       terminal_score = score(current_grid, player_designation, lookahead_remaining)
-      puts "*** terminal_score = #{terminal_score}, current_grid.terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining} ***\n"
+      puts "\n*** player #{player_designation}, terminal_score = #{terminal_score}, current_grid.terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining} ***\n"
+      current_grid.print_color_grid
       return terminal_score
+
+    elsif (lookahead_remaining == 0) # if this is not a terminal node, but we've looked ahead far enough
+      return 0
 
     else # if this is not a terminal node, then recurse down the tree to fill the scorecard.
       scorecard = Array.new(10, -10)
@@ -54,9 +58,9 @@ class Player
       move_options.each do |fake_move| # Choose any empty cell for the next fake_move.
         deeper_grid = current_grid.dupe
         deeper_grid.add_move(other_player_designation, fake_move)
-        puts "\nBefore scoring: Next move to be made by #{other_player_designation}, fake_move = #{fake_move}\n"
+        # puts "\nBefore scoring: Next move to be made by #{other_player_designation}, fake_move = #{fake_move}\n"
         scorecard[fake_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
-        puts "\nminimax scorecard = #{scorecard}"
+        # puts "\nminimax scorecard = #{scorecard}"
       end
 
     end
@@ -75,7 +79,7 @@ class Player
     if grid.who_won == evaluated_player then score = 10 + 3*lookahead_remaining
     elsif grid.who_won == evaluated_player.flipxo then score = -10 - 3*lookahead_remaining
     end
-    puts "\n****=SCORING METHOD** score = #{score}, lookahead_remaining = #{lookahead_remaining}"
+    # puts "\n**** SCORING METHOD *** score = #{score}, lookahead_remaining = #{lookahead_remaining}"
 
     return score
   end
