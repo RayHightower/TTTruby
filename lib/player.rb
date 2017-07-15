@@ -61,7 +61,7 @@ class Player
         deeper_grid.add_move(other_player_designation, fake_move)
         # puts "\nBefore scoring: Next move to be made by #{other_player_designation}, fake_move = #{fake_move}\n"
         scorecard[fake_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
-        puts "\nminimax scorecard = #{scorecard} for fake_move = #{fake_move}"
+        puts "minimax scorecard = #{scorecard} for fake_move = #{fake_move}"
       end
 
     end
