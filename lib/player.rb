@@ -26,7 +26,7 @@ class Player
       move_options = current_grid.empty_cell_list
       # Start by making all of the moves awful so that :droid won't consider them.
       scorecard = Array.new(10, -10)
-      lookahead = 3 # larger lookahead means greater intelligence in the AI
+      lookahead = 4 # larger lookahead means greater intelligence in the AI
       move_options.each do |cell|
         fake_grid = current_grid.dupe
         fake_grid.add_move(self.designation, cell)
@@ -61,7 +61,7 @@ class Player
         deeper_grid.add_move(other_player_designation, fake_move)
         # puts "\nBefore scoring: Next move to be made by #{other_player_designation}, fake_move = #{fake_move}\n"
         scorecard[fake_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
-        puts "minimax scorecard = #{scorecard} for fake_move = #{fake_move}"
+        # puts "minimax scorecard = #{scorecard} for fake_move = #{fake_move}"
       end
 
     end
