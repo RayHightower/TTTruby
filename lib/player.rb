@@ -24,8 +24,7 @@ class Player
       move = $stdin.getch.to_i
     elsif self.type == :droid    # Droid uses minimax/AI to determine its next move.
       move_options = current_grid.empty_cell_list
-      # Start by making all of the moves awful so that :droid won't consider them.
-      scorecard = Array.new(10, -10)
+      scorecard = Array.new(10, -10) # Start by making all of the moves awful so that :droid won't consider them.
       lookahead = 3 # larger lookahead means greater intelligence in the AI
 
       move_options.each do |cell|
