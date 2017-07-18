@@ -24,7 +24,7 @@ class Player
       move = $stdin.getch.to_i
     elsif self.type == :droid    # Droid uses minimax/AI to determine its next move.
       move_options = current_grid.empty_cell_list
-      scorecard = Array.new(10, -10) # Start by making all of the moves awful so that :droid won't consider them.
+      decision_scorecard = Array.new(10, -10) # Start by making all of the moves awful so that :droid won't consider them.
       lookahead = 3 # larger lookahead means greater intelligence in the AI
 
       # Cheat for middle: If the middle cell is empty, on the droid's 1st move the droid must grab it.
@@ -34,12 +34,12 @@ class Player
         fake_grid = current_grid.dupe
         fake_grid.add_move(self.designation, cell)
         puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
-        scorecard[cell] = minimax(self.designation, fake_grid, lookahead) # scorecard.each_with_index.max[1]
-        puts "scorecard[#{cell}] = #{scorecard[cell]}"
+        decision_scorecard[cell] = minimax(self.designation, fake_grid, lookahead)
+        puts "decision_scorecard[#{cell}] = #{decision_scorecard[cell]}"
       end
 
-      puts "get_move scorecard = #{scorecard}\n\n"
-      move = scorecard.each_with_index.max[1]
+      move = decision_scorecard.each_with_index.max[1]
+      puts "get_move move = #{move}, decision_scorecard = #{decision_scorecard}\n\n"
     end
 
     return move
@@ -48,9 +48,7 @@ class Player
   def minimax(player_designation, current_grid, lookahead_remaining)
     if (current_grid.terminal?) then # if this is a terminal node, then return the score
       terminal_score = score(current_grid, player_designation, lookahead_remaining)
-      # puts "\n*** TERMINAL player #{player_designation}, terminal_score = #{terminal_score}, terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining}, who_won = #{current_grid.who_won} ***\n"
-
-      # current_grid.print_color_grid
+      puts "\n*** returning TERMINAL player #{player_designation}, terminal_score = #{terminal_score}, terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining}, who_won = #{current_grid.who_won} ***\n"
       return terminal_score
 
     elsif (lookahead_remaining == 0) # if this is not a terminal node, but we've looked ahead far enough

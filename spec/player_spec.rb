@@ -166,7 +166,7 @@ describe Player do
       expect(move).to eq 6
     end
 
-    it "avoids getting setup for a double-win" do
+    it "avoids getting setup for the opponent's double-win" do
       grid = Grid.new
       grid.add_move("X", 5)  # X
       grid.add_move("O", 9)  #  X
