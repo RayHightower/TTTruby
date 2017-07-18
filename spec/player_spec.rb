@@ -166,5 +166,16 @@ describe Player do
       move = player.get_move(grid)
       expect(move).to eq 6
     end
+
+    it "avoids getting setup for a double-win" do
+      grid = Grid.new
+      grid.add_move("X", 5)  # X
+      grid.add_move("O", 9)  #  X
+      grid.add_move("X", 1)  #   O
+      player = Player.new("O", :droid)
+      move = player.get_move(grid)
+      good_moves = [3, 6] # Best way for O to avoid defeat is to choose one of the remaining corners.
+      expect(good_moves.include? move).to eq true
+    end
   end
 end

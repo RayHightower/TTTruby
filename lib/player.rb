@@ -36,9 +36,10 @@ class Player
         fake_grid.add_move(self.designation, cell)
         # puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
         scorecard[cell] = minimax(self.designation, fake_grid, lookahead) # scorecard.each_with_index.max[1]
+        puts "scorecard[#{cell}] = #{scorecard[cell]}"
       end
 
-      puts "\nget_move scorecard = #{scorecard}"
+      puts "get_move scorecard = #{scorecard}\n\n"
       move = scorecard.each_with_index.max[1]
     end
 
