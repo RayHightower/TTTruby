@@ -26,7 +26,10 @@ class Player
       move_options = current_grid.empty_cell_list
       puts "move_options = #{move_options}"
       scorecard = Array.new(10, 0) # Start by making all of the moves awful so that :droid won't consider them.
-      lookahead = 3 # larger lookahead means greater intelligence in the AI
+      lookahead = 4 # larger lookahead means greater intelligence in the AI
+
+      # If the middle cell is empty, the droid must grab it.
+      if (current_grid.contents[5] == 5) then return 5 end
 
       move_options.each do |cell|
         fake_grid = current_grid.dupe
