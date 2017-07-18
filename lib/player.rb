@@ -25,7 +25,7 @@ class Player
     elsif self.type == :droid    # Droid uses minimax/AI to determine its next move.
       move_options = current_grid.empty_cell_list
       puts "move_options = #{move_options}"
-      scorecard = Array.new(10, -10) # Start by making all of the moves awful so that :droid won't consider them.
+      scorecard = Array.new(10, 0) # Start by making all of the moves awful so that :droid won't consider them.
       lookahead = 3 # larger lookahead means greater intelligence in the AI
 
       move_options.each do |cell|
@@ -54,7 +54,7 @@ class Player
       return 0
 
     else # if this is not a terminal node, then recurse down the tree to fill the scorecard.
-      scorecard = Array.new(10, -10)
+      scorecard = Array.new(10, 0)
       other_player_designation = player_designation.flipxo # Flip the player that moves on this fake_grid.
       move_options = current_grid.empty_cell_list
 
