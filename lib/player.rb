@@ -69,7 +69,7 @@ class Player
 
     if player_designation = self.designation then
       max_calculation = intermediate_scorecard.max
-      puts "4.MAX returning max_calculation = #{max_calculation}, MINIMAX player #{self.designation}, intermediate_scorecard = #{intermediate_scorecard}"
+      puts "3.MAX returning max_calculation = #{max_calculation}, MINIMAX player #{self.designation}, intermediate_scorecard = #{intermediate_scorecard}"
       return max_calculation
     elsif player_designation.flipxo = self.designation then
       min_calculation = intermediate_scorecard.min
