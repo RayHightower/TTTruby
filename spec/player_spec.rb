@@ -93,15 +93,15 @@ describe Player do
       expect(allowed.include? legal_move).to eq true
     end
 
-    it "returns score = +10 when :droid has won" do
-      player = Player.new("O", :droid)
-      grid = Grid.new
-      grid.add_move("O", 1)  # OOO
-      grid.add_move("O", 2)  #
-      grid.add_move("O", 3)  #
-      lookahead_remaining = 0
-      expect(player.score(grid, player.designation, lookahead_remaining)).to eq 10
-    end
+#   it "returns score = +10 when :droid has won" do
+#     player = Player.new("O", :droid)
+#     grid = Grid.new
+#     grid.add_move("O", 1)  # OOO
+#     grid.add_move("O", 2)  #
+#     grid.add_move("O", 3)  #
+#     lookahead_remaining = 0
+#     expect(player.score(grid, player.designation, lookahead_remaining)).to eq 10
+#   end
 
 #   it "returns score = -10 when :droid has lost" do
 #     player = Player.new("O", :droid)
