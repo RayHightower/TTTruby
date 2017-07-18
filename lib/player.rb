@@ -26,7 +26,7 @@ class Player
       move_options = current_grid.empty_cell_list
       puts "move_options = #{move_options}"
       scorecard = Array.new(10, -10) # Start by making all of the moves awful so that :droid won't consider them.
-      lookahead = 7 # larger lookahead means greater intelligence in the AI
+      lookahead = 3 # larger lookahead means greater intelligence in the AI
 
       # Cheat for middle: If the middle cell is empty, on the droid's 1st move the droid must grab it.
       if (move_options.count > 7 && current_grid.contents[5] == 5) then return 5 end
