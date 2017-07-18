@@ -113,34 +113,34 @@ describe Player do
       expect(player.score(grid, player.designation, lookahead_remaining)).to eq (-10)
     end
 
-#   it "retuns score = 0 when grid shows a tie game" do
-#     player = Player.new("O", :droid)
-#     grid = Grid.new
-#     grid.add_move("O", 1)  # OXO
-#     grid.add_move("X", 2)  # XOX
-#     grid.add_move("O", 3)  # XOX
-#     grid.add_move("X", 4)  #
-#     grid.add_move("O", 5)  #
-#     grid.add_move("X", 6)  #
-#     grid.add_move("X", 7)  #
-#     grid.add_move("O", 8)  #
-#     grid.add_move("X", 9)  #
-#     lookahead_remaining = 0
-#     expect(player.score(grid, player.designation, lookahead_remaining)).to eq (0)
-#   end
+    it "retuns score = 0 when grid shows a tie game" do
+      player = Player.new("O", :droid)
+      grid = Grid.new
+      grid.add_move("O", 1)  # OXO
+      grid.add_move("X", 2)  # XOX
+      grid.add_move("O", 3)  # XOX
+      grid.add_move("X", 4)  #
+      grid.add_move("O", 5)  #
+      grid.add_move("X", 6)  #
+      grid.add_move("X", 7)  #
+      grid.add_move("O", 8)  #
+      grid.add_move("X", 9)  #
+      lookahead_remaining = 0
+      expect(player.score(grid, player.designation, lookahead_remaining)).to eq (0)
+    end
 
-#   it "returns a blocking horizontal move when given a potential winning board for the opposing player" do
-#     grid = Grid.new
-#     grid.add_move("X", 1)  # XX
-#     grid.add_move("O", 4)  # O
-#     grid.add_move("X", 7)  # X O
-#     grid.add_move("O", 9)  #
-#     grid.add_move("X", 2)
-#     # grid.print_color_grid
-#     player = Player.new("O", :droid)
-#     move = player.get_move(grid)
-#     expect(move).to eq 3
-#   end
+    it "returns a blocking horizontal move when given a potential winning board for the opposing player" do
+      grid = Grid.new
+      grid.add_move("X", 1)  # XX
+      grid.add_move("O", 4)  # O
+      grid.add_move("X", 7)  # X O
+      grid.add_move("O", 9)  #
+      grid.add_move("X", 2)
+      # grid.print_color_grid
+      player = Player.new("O", :droid)
+      move = player.get_move(grid)
+      expect(move).to eq 3
+    end
 
     it "returns a blocking diagonal move when given a potential winning board for the opposing player" do
       grid = Grid.new
