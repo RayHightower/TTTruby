@@ -82,7 +82,7 @@ class Player
     score = 0
 
     if grid.who_won == self.designation then score = (10 + 3*lookahead_remaining)
-    elsif grid.who_won == self.designation.flipxo then score = (-10 - 3*lookahead_remaining)
+    elsif grid.who_won == self.designation.flipxo then score = (-15 - 3*lookahead_remaining)
     end
     # puts "\n**** SCORING METHOD *** grid.who_won = #{grid.who_won}, score = #{score}, lookahead_remaining = #{lookahead_remaining}"
     # puts "grid.who_won = #{grid.who_won}, evaluated_player = #{evaluated_player}, flipxo = #{evaluated_player.flipxo}"

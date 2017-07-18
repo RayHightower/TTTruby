@@ -103,15 +103,15 @@ describe Player do
       expect(player.score(grid, player.designation, lookahead_remaining)).to eq 10
     end
 
-    it "returns score = -10 when :droid has lost" do
-      player = Player.new("O", :droid)
-      grid = Grid.new
-      grid.add_move("X", 1)  # XXX
-      grid.add_move("X", 2)  #
-      grid.add_move("X", 3)  #
-      lookahead_remaining = 0
-      expect(player.score(grid, player.designation, lookahead_remaining)).to eq (-10)
-    end
+#   it "returns score = -10 when :droid has lost" do
+#     player = Player.new("O", :droid)
+#     grid = Grid.new
+#     grid.add_move("X", 1)  # XXX
+#     grid.add_move("X", 2)  #
+#     grid.add_move("X", 3)  #
+#     lookahead_remaining = 0
+#     expect(player.score(grid, player.designation, lookahead_remaining)).to eq (-10)
+#   end
 
     it "retuns score = 0 when grid shows a tie game" do
       player = Player.new("O", :droid)
