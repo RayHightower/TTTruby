@@ -26,7 +26,7 @@ class Player
       move_options = current_grid.empty_cell_list
       puts "move_options = #{move_options}"
       scorecard = Array.new(10, -10) # Start by making all of the moves awful so that :droid won't consider them.
-      lookahead = 4 # larger lookahead means greater intelligence in the AI
+      lookahead = 7 # larger lookahead means greater intelligence in the AI
 
       # Cheat for middle: If the middle cell is empty, on the droid's 1st move the droid must grab it.
       if (move_options.count > 7 && current_grid.contents[5] == 5) then return 5 end
@@ -34,7 +34,7 @@ class Player
       move_options.each do |cell|
         fake_grid = current_grid.dupe
         fake_grid.add_move(self.designation, cell)
-        puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
+        # puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
         scorecard[cell] = minimax(self.designation, fake_grid, lookahead) # scorecard.each_with_index.max[1]
       end
 
@@ -48,7 +48,7 @@ class Player
   def minimax(player_designation, current_grid, lookahead_remaining)
     if (current_grid.terminal?) then # if this is a terminal node, then return the score
       terminal_score = score(current_grid, player_designation, lookahead_remaining)
-      puts "\n*** TERMINAL player #{player_designation}, terminal_score = #{terminal_score}, terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining}, who_won = #{current_grid.who_won} ***\n"
+      # puts "\n*** TERMINAL player #{player_designation}, terminal_score = #{terminal_score}, terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining}, who_won = #{current_grid.who_won} ***\n"
 
       # current_grid.print_color_grid
       return terminal_score
@@ -66,7 +66,7 @@ class Player
         deeper_grid.add_move(other_player_designation, fake_move)
         # puts "\nBefore scoring: Next move to be made by #{other_player_designation}, fake_move = #{fake_move}\n"
         scorecard[fake_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
-        puts "MINIMAX player #{self.designation}, scorecard [#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}"
+        # puts "MINIMAX player #{self.designation}, scorecard [#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}"
       end
 
     end
@@ -84,7 +84,7 @@ class Player
     if grid.who_won == self.designation then score = (10 + 3*lookahead_remaining)
     elsif grid.who_won == self.designation.flipxo then score = (-10 - 3*lookahead_remaining)
     end
-    puts "\n**** SCORING METHOD *** grid.who_won = #{grid.who_won}, score = #{score}, lookahead_remaining = #{lookahead_remaining}"
+    # puts "\n**** SCORING METHOD *** grid.who_won = #{grid.who_won}, score = #{score}, lookahead_remaining = #{lookahead_remaining}"
     # puts "grid.who_won = #{grid.who_won}, evaluated_player = #{evaluated_player}, flipxo = #{evaluated_player.flipxo}"
 
     return score
