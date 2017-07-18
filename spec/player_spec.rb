@@ -136,7 +136,6 @@ describe Player do
       grid.add_move("X", 7)  # X O
       grid.add_move("O", 9)  #
       grid.add_move("X", 2)
-      # grid.print_color_grid
       player = Player.new("O", :droid)
       move = player.get_move(grid)
       expect(move).to eq 3
@@ -174,6 +173,8 @@ describe Player do
       grid.add_move("X", 1)  #   O
       player = Player.new("O", :droid)
       move = player.get_move(grid)
+      grid.add_move(player.designation, move)
+      grid.print_color_grid
       good_moves = [3, 6] # Best way for O to avoid defeat is to choose one of the remaining corners.
       expect(good_moves.include? move).to eq true
     end

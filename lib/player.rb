@@ -24,7 +24,6 @@ class Player
       move = $stdin.getch.to_i
     elsif self.type == :droid    # Droid uses minimax/AI to determine its next move.
       move_options = current_grid.empty_cell_list
-      # puts "move_options = #{move_options}"
       scorecard = Array.new(10, -10) # Start by making all of the moves awful so that :droid won't consider them.
       lookahead = 3 # larger lookahead means greater intelligence in the AI
 
@@ -34,7 +33,7 @@ class Player
       move_options.each do |cell|
         fake_grid = current_grid.dupe
         fake_grid.add_move(self.designation, cell)
-        # puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
+        puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
         scorecard[cell] = minimax(self.designation, fake_grid, lookahead) # scorecard.each_with_index.max[1]
         puts "scorecard[#{cell}] = #{scorecard[cell]}"
       end
@@ -69,7 +68,6 @@ class Player
         scorecard[fake_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
         # puts "MINIMAX player #{self.designation}, scorecard [#{fake_move}] = #{scorecard[fake_move]}, scorecard = #{scorecard}"
       end
-
     end
 
     if player_designation = self.designation then return scorecard.each_with_index.max[1]
