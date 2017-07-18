@@ -25,7 +25,7 @@ class Player
     elsif self.type == :droid    # Droid uses minimax/AI to determine its next move.
       move_options = current_grid.empty_cell_list
       puts "move_options = #{move_options}"
-      scorecard = Array.new(10, 0) # Start by making all of the moves awful so that :droid won't consider them.
+      scorecard = Array.new(10, -10) # Start by making all of the moves awful so that :droid won't consider them.
       lookahead = 4 # larger lookahead means greater intelligence in the AI
 
       # If the middle cell is empty, on the droid's 1st move the droid must grab it.
