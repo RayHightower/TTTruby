@@ -29,7 +29,7 @@ class Player
       lookahead = 3 # larger lookahead means greater intelligence in the AI
 
       # Cheat for middle: If the middle cell is empty, on the droid's 1st move the droid must grab it.
-      if (move_options.count > 7 && current_grid.contents[5] == 5) then return 5 end
+      if (move_options.count > 4 && current_grid.contents[5] == 5) then return 5 end
 
       move_options.each do |cell|
         fake_grid = current_grid.dupe
