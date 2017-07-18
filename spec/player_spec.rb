@@ -166,6 +166,5 @@ describe Player do
       move = player.get_move(grid)
       expect(move).to eq 6
     end
-
   end
 end
