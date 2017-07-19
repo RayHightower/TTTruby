@@ -31,8 +31,8 @@ class Player
       if (move_options.count > 4 && current_grid.contents[5] == 5) then return 5 end
 
       move_options.each do |cell|
-        # fake_grid = current_grid.dupe
-        # fake_grid.add_move(self.designation, cell)
+        fake_grid = current_grid.dupe
+        fake_grid.add_move(self.designation, cell)
         puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
         decision_scorecard[cell] = minimax(self.designation, fake_grid, lookahead)
         puts "decision_scorecard[#{cell}] = #{decision_scorecard[cell]}"
