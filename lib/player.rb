@@ -85,8 +85,8 @@ class Player
     # Given a terminal grid, did "evaluated_player" win (+10), lose (-10), or draw (0)? Return score w/greater weight placed on earlier results, less weight placed on later results.
     score = 0
 
-    if grid.who_won == self.designation then score = (10 + 3*lookahead_remaining)
-    elsif grid.who_won == self.designation.flipxo then score = (-10 - 3*lookahead_remaining)
+    if grid.who_won == self.designation then score = 10 # (10 + 3*lookahead_remaining)
+    elsif grid.who_won == self.designation.flipxo then score = -10 # (-10 - 3*lookahead_remaining)
     end
     puts "1. score method: returning score = #{score}, evaluated_player/self = #{evaluated_player}/#{self.designation}"
     grid.print_color_grid
