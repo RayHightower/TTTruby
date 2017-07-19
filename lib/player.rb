@@ -39,7 +39,7 @@ class Player
       end
 
       move = decision_scorecard.each_with_index.max[1] # Return the index of the cell with the maximum score.
-      puts "get_move move = #{move}, decision_scorecard = #{decision_scorecard}\n\n"
+      puts "decision_scorecard = #{decision_scorecard}, get_move move = #{move}, \n\n"
     end
 
     return move
@@ -55,7 +55,8 @@ class Player
       return 0
 
     else # if this is not a terminal node, then recurse down the tree to fill the intermediate_scorecard.
-      intermediate_scorecard = Array.new(10, 0)
+      intermediate_scorecard = [0]
+
       other_player_designation = player_designation.flipxo # Flip the player that moves on this fake_grid.
       move_options = current_grid.empty_cell_list
 
@@ -63,7 +64,7 @@ class Player
         deeper_grid = current_grid.dupe
         deeper_grid.add_move(other_player_designation, fake_move)
         # puts "\nBefore scoring: Next move to be made by #{other_player_designation}, fake_move = #{fake_move}\n"
-        intermediate_scorecard[fake_move] = minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
+        intermediate_scorecard << minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
       end
     end
 
