@@ -175,7 +175,7 @@ describe Player do
       move = player.get_move(grid)
       grid.add_move(player.designation, move)
       grid.print_color_grid
-      good_moves = [3, 6] # Best way for O to avoid defeat is to choose one of the remaining corners.
+      good_moves = [3, 7] # Best way for O to avoid defeat is to choose one of the remaining corners.
       expect(good_moves.include? move).to eq true
     end
   end
