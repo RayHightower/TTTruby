@@ -69,15 +69,13 @@ class Player
     end
 
     if player_designation == self.designation then # Are we evaluating ourselves? If so, then MAX.
-      max_calculation = intermediate_scorecard.max
-      puts "3.MAX returning max_calculation = #{max_calculation}, MINIMAX player #{player_designation}, intermediate_scorecard = #{intermediate_scorecard}"
-      return max_calculation
+      minimax_result = intermediate_scorecard.max
     elsif player_designation.flipxo == self.designation then # Are we evaluating the opponent? If so, then MIN.
-      min_calculation = intermediate_scorecard.min
-      puts "4.MIN returning min_calculation = #{min_calculation}, MINIMAX player #{player_designation}, intermediate_scorecard = #{intermediate_scorecard}"
-      return min_calculation
+      minimax_result = intermediate_scorecard.min
     end
 
+    puts "3.MINIMAX returning minimax_result = #{minimax_result}, MINIMAX player #{player_designation}, intermediate_scorecard = #{intermediate_scorecard}"
+    return minimax_result
   end
 
   def score(evaluated_player, grid, lookahead_remaining)
