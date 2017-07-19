@@ -32,16 +32,15 @@ class Player
 
       move_options.each do |cell|
         fake_grid = current_grid.dupe
+
         # Make a fake move for the current player.
         fake_grid.add_move(self.designation, cell)
-        puts "\n\n\n\n[[[ Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
+
         # Explore possible responses from the opposing player.
         decision_scorecard[cell] = minimax(self.designation.flipxo, fake_grid, lookahead)
-        puts "ADDING to the decision_scorecard: decision_scorecard[#{cell}] = #{decision_scorecard[cell]}"
       end
 
       move = decision_scorecard.each_with_index.max[1] # Return the index of the cell with the maximum score.
-      puts "decision_scorecard = #{decision_scorecard}, get_move move = #{move}, \n\n"
     end
 
     return move
@@ -50,7 +49,6 @@ class Player
   def minimax(player_designation, current_grid, lookahead_remaining)
     if (current_grid.terminal?) then # if this is a terminal node, then return the score
       terminal_score = score(player_designation, current_grid, lookahead_remaining)
-      puts "\n2. minimax method, terminal section: returning TERMINAL player #{player_designation}, terminal_score = #{terminal_score}, terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining}, who_won = #{current_grid.who_won} ***\n"
       return terminal_score
 
     elsif (lookahead_remaining == 0) # if this is not a terminal node, but we've looked ahead far enough
@@ -65,21 +63,15 @@ class Player
       move_options.each do |fake_move| # Choose any empty cell for the next fake_move.
         deeper_grid = current_grid.dupe
         deeper_grid.add_move(player_designation, fake_move)
-        puts "minimax method, move_options loop: Deeper move to be tried by #{other_player_designation}, fake_move = #{fake_move}\n"
         intermediate_scorecard << minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
-        puts "\nminimax method, added << score to intermediate_scorecard = #{intermediate_scorecard}\n"
       end
     end
 
     if player_designation == self.designation then # Are we evaluating ourselves? If so, then MAX.
-      puts "player_designation = #{player_designation} so we are MAXING this time"
       minimax_result = intermediate_scorecard.max
     elsif player_designation.flipxo == self.designation then # Are we evaluating the opponent? If so, then MIN.
-      puts "player_designation.flipxo = #{player_designation.flipxo} so we are MINNNNNNNNNNNNING this time"
       minimax_result = intermediate_scorecard.min
     end
-
-    puts "3. minimax method, last section returning minimax_result = #{minimax_result}, MINIMAX player #{player_designation}, intermediate_scorecard = #{intermediate_scorecard}"
     return minimax_result
   end
 
@@ -90,8 +82,6 @@ class Player
     if grid.who_won == self.designation then score = 10 # (10 + 3*lookahead_remaining)
     elsif grid.who_won == self.designation.flipxo then score = -10 # (-10 - 3*lookahead_remaining)
     end
-    puts "1. score method: returning score = #{score}, evaluated_player/self = #{evaluated_player}/#{self.designation}"
-    grid.print_color_grid
     return score
   end
 end
