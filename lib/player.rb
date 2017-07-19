@@ -32,9 +32,11 @@ class Player
 
       move_options.each do |cell|
         fake_grid = current_grid.dupe
+        # Make a fake move for the current player.
         fake_grid.add_move(self.designation, cell)
         puts "\n\n\n\n[[[ Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
-        decision_scorecard[cell] = minimax(self.designation, fake_grid, lookahead)
+        # Explore possible responses from the opposing player.
+        decision_scorecard[cell] = minimax(self.designation.flipxo, fake_grid, lookahead)
         puts "ADDING to the decision_scorecard: decision_scorecard[#{cell}] = #{decision_scorecard[cell]}"
       end
 
@@ -62,7 +64,7 @@ class Player
 
       move_options.each do |fake_move| # Choose any empty cell for the next fake_move.
         deeper_grid = current_grid.dupe
-        deeper_grid.add_move(other_player_designation, fake_move)
+        deeper_grid.add_move(player_designation, fake_move)
         puts "minimax method, move_options loop: Deeper move to be tried by #{other_player_designation}, fake_move = #{fake_move}\n"
         intermediate_scorecard << minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
         puts "\nminimax method, added << score to intermediate_scorecard = #{intermediate_scorecard}\n"
@@ -73,7 +75,7 @@ class Player
       puts "player_designation = #{player_designation} so we are MAXING this time"
       minimax_result = intermediate_scorecard.max
     elsif player_designation.flipxo == self.designation then # Are we evaluating the opponent? If so, then MIN.
-      puts "player_designation = #{player_designation} so we are MINNNNNNNNNNNNING this time"
+      puts "player_designation.flipxo = #{player_designation.flipxo} so we are MINNNNNNNNNNNNING this time"
       minimax_result = intermediate_scorecard.min
     end
 
