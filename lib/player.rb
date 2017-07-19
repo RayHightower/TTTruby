@@ -88,7 +88,7 @@ class Player
     if grid.who_won == self.designation then score = (10 + 3*lookahead_remaining)
     elsif grid.who_won == self.designation.flipxo then score = (-10 - 3*lookahead_remaining)
     end
-    puts "1. score method: returning score = #{score}, evaluated_player = #{evaluated_player}, self = #{self.designation}"
+    puts "1. score method: returning score = #{score}, evaluated_player/self = #{evaluated_player}/#{self.designation}"
     grid.print_color_grid
     return score
   end
