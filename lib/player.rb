@@ -38,7 +38,7 @@ class Player
         puts "decision_scorecard[#{cell}] = #{decision_scorecard[cell]}"
       end
 
-      move = decision_scorecard.each_with_index.max[1]
+      move = decision_scorecard.each_with_index.max[1] # Return the index of the cell with the maximum score.
       puts "get_move move = #{move}, decision_scorecard = #{decision_scorecard}\n\n"
     end
 
@@ -47,7 +47,7 @@ class Player
 
   def minimax(player_designation, current_grid, lookahead_remaining)
     if (current_grid.terminal?) then # if this is a terminal node, then return the score
-      terminal_score = score(current_grid, player_designation, lookahead_remaining)
+      terminal_score = score(player_designation, current_grid, lookahead_remaining)
       puts "\n2. *** returning TERMINAL player #{player_designation}, terminal_score = #{terminal_score}, terminal? = #{current_grid.terminal?}, lookahead_remaining = #{lookahead_remaining}, who_won = #{current_grid.who_won} ***\n"
       return terminal_score
 
@@ -63,23 +63,23 @@ class Player
         deeper_grid = current_grid.dupe
         deeper_grid.add_move(other_player_designation, fake_move)
         # puts "\nBefore scoring: Next move to be made by #{other_player_designation}, fake_move = #{fake_move}\n"
-        intermediate_scorecard[fake_move] = -minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
+        intermediate_scorecard[fake_move] = minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
       end
     end
 
-    if player_designation = self.designation then
+    if player_designation == self.designation then # Are we evaluating ourselves? If so, then MAX.
       max_calculation = intermediate_scorecard.max
-      puts "3.MAX returning max_calculation = #{max_calculation}, MINIMAX player #{self.designation}, intermediate_scorecard = #{intermediate_scorecard}"
+      puts "3.MAX returning max_calculation = #{max_calculation}, MINIMAX player #{player_designation}, intermediate_scorecard = #{intermediate_scorecard}"
       return max_calculation
-    elsif player_designation.flipxo = self.designation then
+    elsif player_designation.flipxo == self.designation then # Are we evaluating the opponent? If so, then MIN.
       min_calculation = intermediate_scorecard.min
-      puts "4.MIN returning min_calculation = #{min_calculation}, MINIMAX player #{self.designation}, intermediate_scorecard = #{intermediate_scorecard}"
+      puts "4.MIN returning min_calculation = #{min_calculation}, MINIMAX player #{player_designation}, intermediate_scorecard = #{intermediate_scorecard}"
       return min_calculation
     end
 
   end
 
-  def score(grid, evaluated_player, lookahead_remaining)
+  def score(evaluated_player, grid, lookahead_remaining)
     # Given a terminal grid, did "evaluated_player" win (+10), lose (-10), or draw (0)? Return score w/greater weight placed on earlier results, less weight placed on later results.
     score = 0
 

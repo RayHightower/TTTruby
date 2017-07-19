@@ -100,7 +100,7 @@ describe Player do
 #     grid.add_move("O", 2)  #
 #     grid.add_move("O", 3)  #
 #     lookahead_remaining = 0
-#     expect(player.score(grid, player.designation, lookahead_remaining)).to eq 10
+#     expect(player.score(player.designation, grid, lookahead_remaining)).to eq 10
 #   end
 
 #   it "returns score = -10 when :droid has lost" do
@@ -110,7 +110,7 @@ describe Player do
 #     grid.add_move("X", 2)  #
 #     grid.add_move("X", 3)  #
 #     lookahead_remaining = 0
-#     expect(player.score(grid, player.designation, lookahead_remaining)).to eq (-10)
+#     expect(player.score(player.designation, grid, lookahead_remaining)).to eq (-10)
 #   end
 
     it "retuns score = 0 when grid shows a tie game" do
@@ -126,7 +126,7 @@ describe Player do
       grid.add_move("O", 8)  #
       grid.add_move("X", 9)  #
       lookahead_remaining = 0
-      expect(player.score(grid, player.designation, lookahead_remaining)).to eq (0)
+      expect(player.score(player.designation, grid, lookahead_remaining)).to eq (0)
     end
 
     it "returns a blocking horizontal move when given a potential winning board for the opposing player" do
