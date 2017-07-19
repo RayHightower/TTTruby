@@ -33,7 +33,7 @@ class Player
       move_options.each do |cell|
         fake_grid = current_grid.dupe
         fake_grid.add_move(self.designation, cell)
-        puts "\n\n*** Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
+        puts "\n\n\n\n[[[ Calling minimax for #{self.designation}, move_options = #{move_options}, cell = #{cell}.\n"
         decision_scorecard[cell] = minimax(self.designation, fake_grid, lookahead)
         puts "ADDING to the decision_scorecard: decision_scorecard[#{cell}] = #{decision_scorecard[cell]}"
       end
@@ -55,7 +55,7 @@ class Player
       return 0
 
     else # if this is not a terminal node, then recurse down the tree to fill the intermediate_scorecard.
-      intermediate_scorecard = [0]
+      intermediate_scorecard = [] # Start with an empty array to keep track of intermediate scores.
 
       other_player_designation = player_designation.flipxo # Flip the player that moves on this fake_grid.
       move_options = current_grid.empty_cell_list
@@ -63,7 +63,7 @@ class Player
       move_options.each do |fake_move| # Choose any empty cell for the next fake_move.
         deeper_grid = current_grid.dupe
         deeper_grid.add_move(other_player_designation, fake_move)
-        puts "\nminimax method, move_options loop: Deeper move to be tried by #{other_player_designation}, fake_move = #{fake_move}\n"
+        puts "minimax method, move_options loop: Deeper move to be tried by #{other_player_designation}, fake_move = #{fake_move}\n"
         intermediate_scorecard << minimax(other_player_designation, deeper_grid, lookahead_remaining-1)
         puts "\nminimax method, added << score to intermediate_scorecard = #{intermediate_scorecard}\n"
       end
@@ -89,6 +89,7 @@ class Player
     elsif grid.who_won == self.designation.flipxo then score = (-10 - 3*lookahead_remaining)
     end
     puts "1. score method: returning score = #{score}, evaluated_player = #{evaluated_player}, self = #{self.designation}"
+    grid.print_color_grid
     return score
   end
 end
