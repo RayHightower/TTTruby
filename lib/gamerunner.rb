@@ -15,7 +15,7 @@ class GameRunner
   end
 
   def call(env)  # To support Rack.
-    pp env
+    print_color_grid
   end
 
   def start_game
