@@ -1,4 +1,3 @@
-require 'rack'
 require_relative './game'
 
 class GameRunner
@@ -12,10 +11,6 @@ class GameRunner
     @is_active = true
     @mover = @game.player[@turn % 2]
     start_game
-  end
-
-  def call(env)  # To support Rack.
-    print_color_grid
   end
 
   def start_game
