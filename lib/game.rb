@@ -1,4 +1,3 @@
-require 'rack'
 require 'io/console'
 require_relative './grid'
 require_relative './player'
@@ -10,10 +9,6 @@ class Game
   def initialize
     @grid = Grid.new
     @player = []
-  end
-
-  def call(env)  # To support Rack.
-    pp env
   end
 
   def get_status
