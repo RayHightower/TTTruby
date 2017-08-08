@@ -5,7 +5,8 @@ class TTT
 
   def call(env)  # To support Rack.
     @gamerunner = GameRunner.new
-    [200, {"Content-Type" => "text/plain"}, ["#{@gamerunner.game.grid.print_color_grid}"]]
+    # Rack::Response.new("#{@gamerunner.game.grid.print_color_grid}")
+    Rack::Response.new("Hello World!")
   end
 
 end
