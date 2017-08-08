@@ -4,7 +4,8 @@ require_relative './lib/gamerunner'
 class TTT
 
   def call(env)  # To support Rack.
-    @game.grid.print_color_grid
+    @gamerunner = GameRunner.new
+    [200, {"Content-Type" => "text/plain"}, ["#{@gamerunner.game.grid.print_color_grid}"]]
   end
 
 end
