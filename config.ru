@@ -1,7 +1,7 @@
 require 'rack'
 require_relative './lib/gamerunner'
 
-class TTT
+class GameWeb
 
   def call(env)  # To support Rack.
     @gamerunner = GameRunner.new
@@ -11,4 +11,4 @@ class TTT
 
 end
 
-Rack::Handler::WEBrick.run TTT.new
+Rack::Handler::WEBrick.run GameWeb.new
