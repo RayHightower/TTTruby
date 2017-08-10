@@ -1,7 +1,7 @@
 require_relative './gamerunner'
 require "erb"
 
-class GameWeb
+class Gameweb
 
   def call(env)  # To support Rack.
     request = Rack::Request.new(env)
