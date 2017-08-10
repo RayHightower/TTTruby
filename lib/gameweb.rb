@@ -10,10 +10,11 @@ class Gameweb
     sleep 5
     Rack::Response.new("Hello Everybody!!!!!!!")
     sleep 5
-    Rack::Response.new(render("currentboard.html.erb"))
+    Rack::Response.new(render("gameweb.html.erb"))
   end
 
   def render(template)
+    @gamerunner = GameRunner.new
     path = File.expand_path("../views/#{template}", __FILE__)
     ERB.new(File.read(path)).result(binding)
   end
