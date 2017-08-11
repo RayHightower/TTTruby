@@ -7,9 +7,6 @@ class Gameweb
     request = Rack::Request.new(env)
     # request.path # = the URL path that the user typed in to access this page
     Rack::Response.new("#{request.path}")
-    sleep 5
-    Rack::Response.new("Hello Everybody!!!!!!!")
-    sleep 5
     Rack::Response.new(render("gameweb.html.erb"))
   end
 
