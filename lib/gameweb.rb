@@ -10,6 +10,7 @@ class Gameweb
 
   def call(env)  # To support Rack.
     request = Rack::Request.new(env)
+    puts "request = #{request}"
     # request.path # = the URL path that the user typed in to access this page
     Rack::Response.new("#{request.path}")
     Rack::Response.new(render("gameweb.html.erb"))
