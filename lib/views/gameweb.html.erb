@@ -22,11 +22,11 @@ a { color: #0000FF; }
     <div id="container" align="center">
       <h1>Welcome to Tic Tac Toe.</h1>
       <h3>You know the rules. Let's do this!</h3>
-      <h3>grid.contents = <%= grid = @gridcontents %></h3>
-      <h3>Last move =  <%= grid = @gridcontents %></h3>
+      <h3>grid.contents = <%= grid = @grid.contents %></h3>
+      <h3>Last move =  <%= grid = @grid.contents %></h3>
       <table width="600" border="1">
         <tr height="50">
-          <td width="200" align="center"><a href="/?msg=1"><%= grid[1] %></a></td>
+          <td width="200" align="center"><a href="/?msg=grid.add_move(1)"><%= grid[1] %></a></td>
           <td width="200" align="center"><a href="/?msg=2"><%= grid[2] %></a></td>
           <td width="200" align="center"><a href="/?msg=3"><%= grid[3] %></a></td>
         </tr>

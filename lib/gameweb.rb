@@ -5,7 +5,8 @@ class Gameweb
 
   def initialize
     @gamerunner = GameRunner.new
-    @gridcontents = @gamerunner.game.grid.contents
+    # @gridcontents = @gamerunner.game.grid.contents
+    @grid = @gamerunner.game.grid
   end
 
   def call(env)  # To support Rack.
