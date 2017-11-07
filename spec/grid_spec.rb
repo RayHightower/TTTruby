@@ -66,7 +66,7 @@ describe Grid do
       test_grid.add_move("O", 1)
       test_grid.add_move("X", 8)
       test_grid.add_move("X", 9)
-      expect(test_grid.empty_cell_list.count).to eq 5
+      expect(test_grid.moves_remaining).to eq 5
     end
 
     it "returns an array containing the designations of empty cells" do

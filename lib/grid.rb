@@ -44,30 +44,19 @@ class Grid
   end
 
   def moves_remaining
-    empty_count = 0
-    self.contents[1..-1].each do |cell|
-      if self.contents[cell.to_i] == cell # if the cell is empty
-        empty_count +=1 # count one more
-      end
-    end
-    return empty_count
+    return self.empty_cell_list.size
   end
 
   def empty_cell_list
-    empty_cells = []
-    self.contents[1..-1].each do |cell|
-      if self.contents[cell.to_i] == cell # if the cell is empty
-        empty_cells << cell  # add its designation to the list
-      end
-    end
-    return empty_cells
+    return @cell[1..-1].select { |cell| is_cell_empty?(cell) }
   end
 
   def terminal? # A grid can look at itself and know that it's terminal, ie there are no legal moves left on the grid.
-    terminal_state = true
-    (self.who_won == nil) ? terminal_state = false : nil
-    (self.moves_remaining < 1) ? terminal_state = true : nil
-    return terminal_state
+    return (who_won != nil) || (moves_remaining <1)
+  end
+
+  def is_cell_empty?(cell)
+    return cell.to_i == cell
   end
 
   def dupe
