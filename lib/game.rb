@@ -4,7 +4,7 @@ require_relative './player'
 
 class Game
 
-  attr_accessor :grid, :player
+  attr_accessor :grid
 
   def initialize
     @grid = Grid.new
