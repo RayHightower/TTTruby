@@ -8,7 +8,7 @@ class Game
 
   def initialize
     @grid = Grid.new
-    @player = []
+    # @player = [] # This line does absolutely nothing. Hah!
   end
 
   def get_status
