@@ -7,6 +7,16 @@ describe Player do
       @player = [Player.new("X"), Player.new("O")]
     end
 
+    it "inits the first player with the correct designation" do
+      @player[0].designation = "X"
+      expect(@player[0].designation).to eq "X"
+    end
+
+    it "inits the second player with the correct designation" do
+      @player[1].designation = "O"
+      expect(@player[1].designation).to eq "O"
+    end
+
     it "can flip strings because we monkey patched the String class" do
       sample_designation = "X"
       expect(sample_designation.flipxo).to eq "O"
