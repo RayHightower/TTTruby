@@ -8,7 +8,7 @@ describe GameRunner do
       $stdin = @bunch_of_input_moves
       $stdout = @bunch_of_output
       @thisgamerunner = GameRunner.new
-      @players = @thisgamerunner.game.player
+      # @players = @thisgamerunner.game.player
     end
 
     it "can choose a move using AI" do
