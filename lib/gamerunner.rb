@@ -2,7 +2,7 @@ require_relative './game'
 
 class GameRunner
   attr_accessor :game
-  attr_reader :turn, :is_active, :mover
+  attr_reader :turn, :is_active, :mover, :player
 
   def initialize(type=:human)
     @game = Game.new
@@ -73,6 +73,6 @@ class GameRunner
     print_color_grid
 
     @turn = @turn + 1
-    @mover = @game.player[@turn % 2]
+    @mover = @player[@turn % 2]
   end
 end

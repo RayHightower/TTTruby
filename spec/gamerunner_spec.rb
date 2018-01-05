@@ -8,7 +8,7 @@ describe GameRunner do
       $stdin = @bunch_of_input_moves
       $stdout = @bunch_of_output
       @thisgamerunner = GameRunner.new
-      # @players = @thisgamerunner.game.player
+      @players = @thisgamerunner.player
     end
 
     it "can choose a move using AI" do
@@ -17,7 +17,7 @@ describe GameRunner do
 
     it "can start the game with human vs droid" do
       game_with_droid = GameRunner.new(:droid)
-      expect(game_with_droid.game.player[1].type).to eq :droid
+      expect(game_with_droid.player[1].type).to eq :droid
     end
 
     it "stops the game after all squares have been occupied" do
@@ -43,11 +43,11 @@ describe GameRunner do
     end
 
     it "creates a game with player named 'X'" do
-      expect(@thisgamerunner.game.player[0].designation).to eq "X"
+      expect(@thisgamerunner.player[0].designation).to eq "X"
     end
 
     it "creates a game with player named 'O'" do
-      expect(@thisgamerunner.game.player[1].designation).to eq "O"
+      expect(@thisgamerunner.player[1].designation).to eq "O"
     end
 
     it "stores the state of the game" do
