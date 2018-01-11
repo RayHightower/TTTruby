@@ -32,7 +32,7 @@ describe Game do
       expect(@game.get_status).to eq [ 0, 1, 2, 3, 4, "X", 6, 7, 8, 9 ]
     end
 
-    it "will yell loudly when a player tries to make an illegal move" do
+    it "will return false when a player tries to make an illegal move" do
       move = 5
       mover = @player[0]
       @game.add_move(mover, move)
