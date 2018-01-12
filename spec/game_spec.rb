@@ -32,12 +32,12 @@ describe Game do
       expect(@game.get_status).to eq [ 0, 1, 2, 3, 4, "X", 6, 7, 8, 9 ]
     end
 
-    it "will return false when a player tries to make an illegal move" do
-      move = 5
-      mover = @player[0]
-      @game.add_move(mover, move)
-      reaction = @game.add_move(mover, move)
-      expect(reaction).to eq false
-    end
+    # it "will return false when a player tries to make an illegal move" do
+    #   move = 5
+    #   mover = @player[0]
+    #   @game.add_move(mover, move)
+    #   reaction = @game.add_move(mover, move)
+    #   expect(reaction).to eq false
+    # end
   end
 end
