@@ -13,6 +13,14 @@ class Grid
     @cell
   end
 
+  def move_at(space)
+    if contents[space].is_a?(String)
+      return contents[space]
+    end
+
+    return nil
+  end
+
   def print_color_grid
     print "\n"
     for location in 1..9 do
@@ -62,6 +70,11 @@ class Grid
   def dupe
     return Marshal.load(Marshal.dump(self))
   end
+
+  # what needs to be done to get rid of this implementation?
+  # terminal? needs to move
+  # remove specs from grid (because we have them on game now)
+  # any other usages of who_won on grid inside the codebase?
 
   def who_won   # A grid can look at itself and see who won.
     winner = nil

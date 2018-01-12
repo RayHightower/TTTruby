@@ -1,8 +1,7 @@
 require_relative './game'
 
 class GameRunner
-  attr_accessor :game
-  attr_reader :turn, :is_active, :mover, :player
+  attr_reader :turn, :is_active, :mover, :player, :game
 
   def initialize(type=:human)
     @game = Game.new

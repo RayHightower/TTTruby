@@ -2,7 +2,6 @@ require 'game'
 
 describe Game do
   context "orginary game of Tic Tac Toe" do
-
     before do
       @game = Game.new
       @player = [Player.new("X"), Player.new("O")]
@@ -10,34 +9,78 @@ describe Game do
       $stdout = @fake_console
     end
 
-    it "inits the game" do
-      sample_grid_contents = @game.get_status
-      expect(sample_grid_contents).to eq [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+    it "on initialize, sets grid" do
+      game = Game.new
+      expect(game.grid).not_to be_nil
     end
 
     it "adds a move to the grid" do
-      move = 5
-      mover = @player[0]
-      @game.add_move(mover, move)
-      expect(@game.get_status).to eq [ 0, 1, 2, 3, 4, "X", 6, 7, 8, 9 ]
+      expect(@game.grid).to receive(:add_move).with(@player[0].designation, 5)
+      @game.add_move(@player[0], 5)
     end
 
-    it "will not allow a move to an occupied cell" do
-      mover = @player[1]
-      move = 5
-      mover = @player[0]
-      @game.add_move(mover, move)
-      mover = @player[1]
-      @game.add_move(mover, move)
-      expect(@game.get_status).to eq [ 0, 1, 2, 3, 4, "X", 6, 7, 8, 9 ]
+    it "tells us when O wins on the first row" do
+      game = Game.new
+      game.add_move(@player[0], 1)
+      game.add_move(@player[0], 2)
+      game.add_move(@player[0], 3)
+      expect(game.who_won).to eq "X"
     end
 
-    # it "will return false when a player tries to make an illegal move" do
-    #   move = 5
-    #   mover = @player[0]
-    #   @game.add_move(mover, move)
-    #   reaction = @game.add_move(mover, move)
-    #   expect(reaction).to eq false
-    # end
+    it "tells us when O wins on the second row" do
+      game = Game.new
+      game.add_move(@player[1], 4)
+      game.add_move(@player[1], 5)
+      game.add_move(@player[1], 6)
+      expect(game.who_won).to eq "O"
+    end
+
+    it "tells us when O wins on the third row" do
+      game = Game.new
+      game.add_move(@player[0], 7)
+      game.add_move(@player[0], 8)
+      game.add_move(@player[0], 9)
+      expect(game.who_won).to eq "X"
+    end
+
+    it "tells us when O wins on the first column" do
+      game = Game.new
+      game.add_move(@player[0], 1)
+      game.add_move(@player[0], 4)
+      game.add_move(@player[0], 7)
+      expect(game.who_won).to eq "X"
+    end
+
+    it "tells us when O wins on the second column" do
+      game = Game.new
+      game.add_move(@player[0], 2)
+      game.add_move(@player[0], 5)
+      game.add_move(@player[0], 8)
+      expect(game.who_won).to eq "X"
+    end
+
+    it "tells us when O wins on the third column" do
+      game = Game.new
+      game.add_move(@player[0], 3)
+      game.add_move(@player[0], 6)
+      game.add_move(@player[0], 9)
+      expect(game.who_won).to eq "X"
+    end
+
+    it "tells us when O wins on the forward-slash diagonal" do
+      game = Game.new
+      game.add_move(@player[0], 3)
+      game.add_move(@player[0], 5)
+      game.add_move(@player[0], 7)
+      expect(game.who_won).to eq "X"
+    end
+
+    it "tells us when O wins on the back-slash diagonal" do
+      game = Game.new
+      game.add_move(@player[0], 1)
+      game.add_move(@player[0], 5)
+      game.add_move(@player[0], 9)
+      expect(game.who_won).to eq "X"
+    end
   end
 end
