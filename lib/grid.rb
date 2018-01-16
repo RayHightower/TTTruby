@@ -72,8 +72,12 @@ class Grid
   end
 
   # what needs to be done to get rid of this implementation?
+  # RTH: Remove all code that calls grid.who_won, and call game.who_won instead.
+  #
   # terminal? needs to move
+  #
   # remove specs from grid (because we have them on game now)
+  #
   # any other usages of who_won on grid inside the codebase?
 
   def who_won   # A grid can look at itself and see who won.
