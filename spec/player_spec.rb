@@ -86,7 +86,7 @@ describe Player do
       current_grid = Grid.new
       current_player = Player.new("X", :droid)
       move = current_player.get_move(current_grid)
-      expect(move.class == Fixnum).to eq true
+      expect(move.class == Integer).to eq true
     end
 
     it "makes a legal move when given a grid with existing moves" do
