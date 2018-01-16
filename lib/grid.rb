@@ -87,12 +87,14 @@ class Grid
   # RTH: Alternate solution: Implement who_won in Grid because... (see Gist).
   #
   # terminal? needs to move
-  # RTH: No. It stays here.
+  # RTH: No. It stays here. Details are in Gist.
   #
   # remove specs from grid (because we have them on game now)
   # RTH: Alternate: Remove specs from Game because we have them on Grid now.
   #
   # any other usages of who_won on grid inside the codebase?
+  # All usages of who_won on Grid can remain as they were.
+  # Question: Should we do more to remove who_won from Game?
 
   def who_won # A grid can look at itself and see who won.
     ["X", "O"].find { |token| has_winning_combo?(token) }
@@ -106,5 +108,4 @@ class Grid
     indices.map { |idx| self.move_at(idx) }
       .all? { |item| item == token }
   end
-
 end
