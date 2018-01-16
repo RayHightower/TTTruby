@@ -36,9 +36,9 @@ describe GameRunner do
     end
 
     it "changes the state of the grid with each turn" do
-      grid_state_1 = @thisgamerunner.get_status.dup
+      grid_state_1 = @thisgamerunner.game.grid.dupe
       @thisgamerunner.next_turn
-      grid_state_2 = @thisgamerunner.get_status
+      grid_state_2 = @thisgamerunner.game.grid
       expect(grid_state_1 == grid_state_2).to eq false
     end
 
@@ -51,7 +51,7 @@ describe GameRunner do
     end
 
     it "stores the state of the game" do
-      currentgrid = @thisgamerunner.get_status
+      currentgrid = @thisgamerunner.game.grid
       expect(currentgrid.contents).to eq [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
@@ -59,7 +59,7 @@ describe GameRunner do
       player = @players[0]
       move = @bunch_of_input_moves.getc.to_i
       @thisgamerunner.game.add_move(player, move)
-      currentgrid = @thisgamerunner.get_status
+      currentgrid = @thisgamerunner.game.grid
       expect(currentgrid.contents).to eq [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
