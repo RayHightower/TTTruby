@@ -17,11 +17,6 @@ class GameRunner
     print_color_grid
   end
 
-#   def get_status
-#     # @game.get_status
-#     @game.grid
-#   end
-# 
   def print_color_grid
     @game.print_color_grid
   end
