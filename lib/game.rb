@@ -10,10 +10,6 @@ class Game
     @grid = Grid.new
   end
 
-  def get_status
-    @grid.contents
-  end
-
   def print_color_grid
     @grid.print_color_grid
   end
