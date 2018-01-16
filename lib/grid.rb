@@ -1,5 +1,16 @@
 require_relative './colorizer'
 
+WINNING_COMBOS = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [1, 4, 7],
+  [2, 5, 8],
+  [3, 6, 9],
+  [1, 5, 9],
+  [3, 5, 7]
+]
+
 class Grid
   include Colorizer # A module for color!
 
@@ -80,31 +91,44 @@ class Grid
   #
   # any other usages of who_won on grid inside the codebase?
 
-  def who_won   # A grid can look at itself and see who won.
-    winner = nil
-
-    (self.contents[1] == "O" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "O" : nil
-    (self.contents[4] == "O" && self.contents[4] == self.contents[5] && self.contents[5] == self.contents[6]) ? winner = "O" : nil
-    (self.contents[7] == "O" && self.contents[7] == self.contents[8] && self.contents[8] == self.contents[9]) ? winner = "O" : nil
-
-    (self.contents[1] == "O" && self.contents[1] == self.contents[4] && self.contents[4] == self.contents[7]) ? winner = "O" : nil
-    (self.contents[2] == "O" && self.contents[2] == self.contents[5] && self.contents[5] == self.contents[8]) ? winner = "O" : nil
-    (self.contents[3] == "O" && self.contents[3] == self.contents[6] && self.contents[6] == self.contents[9]) ? winner = "O" : nil
-
-    (self.contents[1] == "O" && self.contents[1] == self.contents[5] && self.contents[5] == self.contents[9]) ? winner = "O" : nil
-    (self.contents[3] == "O" && self.contents[3] == self.contents[5] && self.contents[5] == self.contents[7]) ? winner = "O" : nil
-
-    (self.contents[1] == "X" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "X" : nil
-    (self.contents[4] == "X" && self.contents[4] == self.contents[5] && self.contents[5] == self.contents[6]) ? winner = "X" : nil
-    (self.contents[7] == "X" && self.contents[7] == self.contents[8] && self.contents[8] == self.contents[9]) ? winner = "X" : nil
-
-    (self.contents[1] == "X" && self.contents[1] == self.contents[4] && self.contents[4] == self.contents[7]) ? winner = "X" : nil
-    (self.contents[2] == "X" && self.contents[2] == self.contents[5] && self.contents[5] == self.contents[8]) ? winner = "X" : nil
-    (self.contents[3] == "X" && self.contents[3] == self.contents[6] && self.contents[6] == self.contents[9]) ? winner = "X" : nil
-
-    (self.contents[1] == "X" && self.contents[1] == self.contents[5] && self.contents[5] == self.contents[9]) ? winner = "X" : nil
-    (self.contents[3] == "X" && self.contents[3] == self.contents[5] && self.contents[5] == self.contents[7]) ? winner = "X" : nil
-
-    return winner
+  def who_won
+    ["X", "O"].find { |token| has_winning_combo?(token) }
   end
+
+  def has_winning_combo?(token)
+    WINNING_COMBOS.any? { |indices| all_items_equal?(indices, token) }
+  end
+
+  def all_items_equal?(indices, token)
+    indices.map { |idx| grid.move_at(idx) }
+      .all? { |item| item == token }
+  end
+
+#   def who_won   # A grid can look at itself and see who won.
+#     winner = nil
+# 
+#     (self.contents[1] == "O" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "O" : nil
+#     (self.contents[4] == "O" && self.contents[4] == self.contents[5] && self.contents[5] == self.contents[6]) ? winner = "O" : nil
+#     (self.contents[7] == "O" && self.contents[7] == self.contents[8] && self.contents[8] == self.contents[9]) ? winner = "O" : nil
+# 
+#     (self.contents[1] == "O" && self.contents[1] == self.contents[4] && self.contents[4] == self.contents[7]) ? winner = "O" : nil
+#     (self.contents[2] == "O" && self.contents[2] == self.contents[5] && self.contents[5] == self.contents[8]) ? winner = "O" : nil
+#     (self.contents[3] == "O" && self.contents[3] == self.contents[6] && self.contents[6] == self.contents[9]) ? winner = "O" : nil
+# 
+#     (self.contents[1] == "O" && self.contents[1] == self.contents[5] && self.contents[5] == self.contents[9]) ? winner = "O" : nil
+#     (self.contents[3] == "O" && self.contents[3] == self.contents[5] && self.contents[5] == self.contents[7]) ? winner = "O" : nil
+# 
+#     (self.contents[1] == "X" && self.contents[1] == self.contents[2] && self.contents[2] == self.contents[3]) ? winner = "X" : nil
+#     (self.contents[4] == "X" && self.contents[4] == self.contents[5] && self.contents[5] == self.contents[6]) ? winner = "X" : nil
+#     (self.contents[7] == "X" && self.contents[7] == self.contents[8] && self.contents[8] == self.contents[9]) ? winner = "X" : nil
+# 
+#     (self.contents[1] == "X" && self.contents[1] == self.contents[4] && self.contents[4] == self.contents[7]) ? winner = "X" : nil
+#     (self.contents[2] == "X" && self.contents[2] == self.contents[5] && self.contents[5] == self.contents[8]) ? winner = "X" : nil
+#     (self.contents[3] == "X" && self.contents[3] == self.contents[6] && self.contents[6] == self.contents[9]) ? winner = "X" : nil
+# 
+#     (self.contents[1] == "X" && self.contents[1] == self.contents[5] && self.contents[5] == self.contents[9]) ? winner = "X" : nil
+#     (self.contents[3] == "X" && self.contents[3] == self.contents[5] && self.contents[5] == self.contents[7]) ? winner = "X" : nil
+# 
+#     return winner
+#   end
 end
