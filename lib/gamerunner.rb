@@ -17,18 +17,18 @@ class GameRunner
     print_color_grid
   end
 
-  def get_status
-    # @game.get_status
-    @game.grid
-  end
-
+#   def get_status
+#     # @game.get_status
+#     @game.grid
+#   end
+# 
   def print_color_grid
     @game.print_color_grid
   end
 
   def get_move
     # This calls the get_move method in the Player class.
-    @mover.get_move(get_status)
+    @mover.get_move(@game.grid)
   end
 
   def check_tie_game
