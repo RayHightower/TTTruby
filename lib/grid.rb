@@ -1,4 +1,6 @@
+require 'io/console'
 require_relative './colorizer'
+
 
 WINNING_COMBOS = [
   [1, 2, 3],

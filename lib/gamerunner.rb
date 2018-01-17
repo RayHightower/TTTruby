@@ -1,10 +1,11 @@
-require_relative './game'
+require_relative './grid'
+require_relative './player'
 
 class GameRunner
-  attr_reader :turn, :is_active, :mover, :player, :game
+  attr_reader :turn, :is_active, :mover, :player, :grid
 
   def initialize(type=:human)
-    @game = Game.new
+    @grid = Grid.new
     @player = [Player.new("X"), Player.new("O", type)]
     @turn = 0
     @is_active = true
@@ -18,12 +19,12 @@ class GameRunner
   end
 
   def print_color_grid
-    @game.print_color_grid
+    @grid.print_color_grid
   end
 
   def get_move
     # This calls the get_move method in the Player class.
-    @mover.get_move(@game.grid)
+    @mover.get_move(@grid)
   end
 
   def check_tie_game
@@ -34,14 +35,14 @@ class GameRunner
   end
 
   def check_winner
-    if (@game.grid.who_won != nil)
+    if (@grid.who_won != nil)
       print "\n\e[#{93}m#{"\n*** Player #{@mover.designation} wins! ***\n"}\e[0m"
       @is_active = false
     end
   end
 
   def add_good_move(move)
-    while (!@game.add_move(@mover, move) && (@game.grid.moves_remaining > 0))
+    while (!@grid.add_move(@mover, move) && (@grid.moves_remaining > 0))
       puts "No way, Player #{@mover.designation}. Illegal move. Try again."
       move = get_move
     end

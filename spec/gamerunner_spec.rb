@@ -36,9 +36,9 @@ describe GameRunner do
     end
 
     it "changes the state of the grid with each turn" do
-      grid_state_1 = @thisgamerunner.game.grid.dupe
+      grid_state_1 = @thisgamerunner.grid.dupe
       @thisgamerunner.next_turn
-      grid_state_2 = @thisgamerunner.game.grid
+      grid_state_2 = @thisgamerunner.grid
       expect(grid_state_1 == grid_state_2).to eq false
     end
 
@@ -51,16 +51,15 @@ describe GameRunner do
     end
 
     it "stores the state of the game" do
-      currentgrid = @thisgamerunner.game.grid
+      currentgrid = @thisgamerunner.grid
       expect(currentgrid.contents).to eq [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
     it "receives a move and stores it" do
       player = @players[0]
       move = @bunch_of_input_moves.getc.to_i
-      @thisgamerunner.game.add_move(player, move)
-      currentgrid = @thisgamerunner.game.grid
-      expect(currentgrid.contents).to eq [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
+      @thisgamerunner.grid.add_move(player.designation, move)
+      expect(@thisgamerunner.grid.contents).to eq [ 0, "X", 2, 3, 4, 5, 6, 7, 8, 9 ]
     end
 
     it "will quit the game if the move is 'Q'" do
@@ -72,17 +71,17 @@ describe GameRunner do
       expect(@thisgamerunner.is_active).to eq false
     end
 
-    it "can tell if X has won the game" do
-      player = @players[0]
-      winning_moves_for_x = StringIO.new('15293')
-
-      while !@thisgamerunner.game.grid.who_won do
-        move = winning_moves_for_x.getc.to_i
-        @thisgamerunner.game.add_move(player, move)
-      end
-
-      expect(@thisgamerunner.game.grid.who_won).to eq "X"
-    end
+#     it "can tell if X has won the game" do
+#       player = @players[0]
+#       winning_moves_for_x = StringIO.new('15293')
+# 
+#       while !@thisgamerunner.grid.who_won do
+#         move = winning_moves_for_x.getc.to_i
+#         @thisgamerunner.grid.add_move(player, move)
+#       end
+# 
+#       expect(@thisgamerunner.grid.who_won).to eq "X"
+#     end
 
     it "alternates players with each turn" do
       mover1 = @thisgamerunner.mover
