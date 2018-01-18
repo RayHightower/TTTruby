@@ -1,6 +1,6 @@
-require 'io/console'
-require_relative './grid'
-require_relative './player'
+# require 'io/console'
+# require_relative './grid'
+# require_relative './player'
 
 class Game
 
