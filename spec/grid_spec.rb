@@ -40,7 +40,7 @@ describe Grid do
       grid.add_move("X", 7)
       grid.add_move("X", 8)
       grid.add_move("O", 9)
-      expect(grid.terminal?).to eq true
+      expect(grid.rules.terminal?).to eq true
     end
 
     it "can look at a winning grid and know that it's terminal" do
@@ -48,7 +48,7 @@ describe Grid do
       grid.add_move("O", 1)
       grid.add_move("O", 2)
       grid.add_move("O", 3)
-      expect(grid.terminal?).to eq true
+      expect(grid.rules.terminal?).to eq true
     end
 
     it "can look at a non-terminal grid and know that it's non-terminal" do
@@ -57,7 +57,7 @@ describe Grid do
       grid.add_move("X", 2)
       grid.add_move("O", 4)
       grid.add_move("O", 9)
-      expect(grid.terminal?).to eq false
+      expect(grid.rules.terminal?).to eq false
     end
 
     it "calculates the number of moves remaining on any given grid" do
@@ -83,7 +83,7 @@ describe Grid do
       grid.add_move("O", 1)
       grid.add_move("O", 2)
       grid.add_move("O", 3)
-      expect(grid.who_won).to eq "O"
+      expect(grid.rules.who_won).to eq "O"
     end
 
     it "tells us when O wins on the second row" do
@@ -91,7 +91,7 @@ describe Grid do
       grid.add_move("O", 4)
       grid.add_move("O", 5)
       grid.add_move("O", 6)
-      expect(grid.who_won).to eq "O"
+      expect(grid.rules.who_won).to eq "O"
     end
 
     it "tells us when O wins on the third row" do
@@ -99,7 +99,7 @@ describe Grid do
       grid.add_move("O", 7)
       grid.add_move("O", 8)
       grid.add_move("O", 9)
-      expect(grid.who_won).to eq "O"
+      expect(grid.rules.who_won).to eq "O"
     end
 
     it "tells us when O wins on the first column" do
@@ -107,7 +107,7 @@ describe Grid do
       grid.add_move("O", 1)
       grid.add_move("O", 4)
       grid.add_move("O", 7)
-      expect(grid.who_won).to eq "O"
+      expect(grid.rules.who_won).to eq "O"
     end
 
     it "tells us when O wins on the second column" do
@@ -115,7 +115,7 @@ describe Grid do
       grid.add_move("O", 2)
       grid.add_move("O", 5)
       grid.add_move("O", 8)
-      expect(grid.who_won).to eq "O"
+      expect(grid.rules.who_won).to eq "O"
     end
 
     it "tells us when O wins on the third column" do
@@ -123,7 +123,7 @@ describe Grid do
       grid.add_move("O", 3)
       grid.add_move("O", 6)
       grid.add_move("O", 9)
-      expect(grid.who_won).to eq "O"
+      expect(grid.rules.who_won).to eq "O"
     end
 
     it "tells us when O wins on the forward-slash diagonal" do
@@ -131,7 +131,7 @@ describe Grid do
       grid.add_move("O", 3)
       grid.add_move("O", 5)
       grid.add_move("O", 7)
-      expect(grid.who_won).to eq "O"
+      expect(grid.rules.who_won).to eq "O"
     end
 
     it "tells us when O wins on the back-slash diagonal" do
@@ -139,7 +139,7 @@ describe Grid do
       grid.add_move("O", 1)
       grid.add_move("O", 5)
       grid.add_move("O", 9)
-      expect(grid.who_won).to eq "O"
+      expect(grid.rules.who_won).to eq "O"
     end
 
     it "tells us when X wins on the first row" do
@@ -147,7 +147,7 @@ describe Grid do
       grid.add_move("X", 1)
       grid.add_move("X", 2)
       grid.add_move("X", 3)
-      expect(grid.who_won).to eq "X"
+      expect(grid.rules.who_won).to eq "X"
     end
 
     it "tells us when X wins on the second row" do
@@ -155,7 +155,7 @@ describe Grid do
       grid.add_move("X", 4)
       grid.add_move("X", 5)
       grid.add_move("X", 6)
-      expect(grid.who_won).to eq "X"
+      expect(grid.rules.who_won).to eq "X"
     end
 
     it "tells us when X wins on the third row" do
@@ -163,7 +163,7 @@ describe Grid do
       grid.add_move("X", 7)
       grid.add_move("X", 8)
       grid.add_move("X", 9)
-      expect(grid.who_won).to eq "X"
+      expect(grid.rules.who_won).to eq "X"
     end
 
     it "tells us when X wins on the first column" do
@@ -171,7 +171,7 @@ describe Grid do
       grid.add_move("X", 1)
       grid.add_move("X", 4)
       grid.add_move("X", 7)
-      expect(grid.who_won).to eq "X"
+      expect(grid.rules.who_won).to eq "X"
     end
 
     it "tells us when X wins on the second column" do
@@ -179,7 +179,7 @@ describe Grid do
       grid.add_move("X", 2)
       grid.add_move("X", 5)
       grid.add_move("X", 8)
-      expect(grid.who_won).to eq "X"
+      expect(grid.rules.who_won).to eq "X"
     end
 
     it "tells us when X wins on the third column" do
@@ -187,7 +187,7 @@ describe Grid do
       grid.add_move("X", 3)
       grid.add_move("X", 6)
       grid.add_move("X", 9)
-      expect(grid.who_won).to eq "X"
+      expect(grid.rules.who_won).to eq "X"
     end
 
     it "tells us when X wins on the forward-slash diagonal" do
@@ -195,7 +195,7 @@ describe Grid do
       grid.add_move("X", 3)
       grid.add_move("X", 5)
       grid.add_move("X", 7)
-      expect(grid.who_won).to eq "X"
+      expect(grid.rules.who_won).to eq "X"
     end
 
     it "tells us when X wins on the back-slash diagonal" do
@@ -203,7 +203,7 @@ describe Grid do
       grid.add_move("X", 1)
       grid.add_move("X", 5)
       grid.add_move("X", 9)
-      expect(grid.who_won).to eq "X"
+      expect(grid.rules.who_won).to eq "X"
     end
 
     it "allows moves between the range of 1 and 9, inclusive" do
