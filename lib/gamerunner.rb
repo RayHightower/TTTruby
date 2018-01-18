@@ -42,7 +42,7 @@ class GameRunner
   end
 
   def add_good_move(move)
-    while (!@grid.add_move(@mover, move) && (@grid.moves_remaining > 0))
+    while (!@grid.add_move(@mover.designation, move) && (@grid.moves_remaining > 0))
       puts "No way, Player #{@mover.designation}. Illegal move. Try again."
       move = get_move
     end
