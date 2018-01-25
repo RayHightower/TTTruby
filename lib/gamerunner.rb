@@ -1,5 +1,7 @@
 require_relative './grid'
 require_relative './player'
+require_relative './console_ui'
+
 
 class GameRunner
   attr_reader :turn, :is_active, :mover, :player, :grid
@@ -19,7 +21,7 @@ class GameRunner
   end
 
   def print_color_grid
-    @grid.print_color_grid
+    ConsoleUI.print_color_grid(@grid.contents)
   end
 
   def get_move

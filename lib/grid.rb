@@ -1,5 +1,4 @@
 require 'io/console'
-require_relative './colorizer'
 
 
 WINNING_COMBOS = [
@@ -18,16 +17,9 @@ WINNING_COMBOS = [
 #   contents
 #   move_at
 #   add_move
-#
-# user interface
-#   print_color_grid
-#
-# business rules
-#   who_won
-#   terminal?
+
 
 class Grid
-  include Colorizer # A module for color!
 
   attr_accessor :contents
 
@@ -69,7 +61,6 @@ class Grid
     return @cell[1..-1].select { |cell| is_cell_empty?(cell) }
   end
 
-
   def is_cell_empty?(cell)
     return cell.to_i == cell
   end
@@ -82,39 +73,6 @@ class Grid
   def rules
     GameRules.new(self)
   end
-
-
-  # user interface
-  def print_color_grid
-    print "\n"
-    for location in 1..9 do
-      print " "
-      if @cell[location] == "X" then print colorize("X", 31)
-      elsif @cell[location] == "O" then print colorize("O", 34)
-      else print location
-      end
-      print " "
-
-      if (location % 3 == 0 && location % 9 != 0) then print "\n-----------\n"
-      elsif (location % 9 != 0) then print "|"
-      end
-    end
-    print "\n"
-  end
-
-  # what needs to be done to get rid of this implementation?
-  # RTH: Remove all code that calls grid.who_won, and call game.who_won instead.
-  # RTH: Alternate solution: Implement who_won in Grid because... (see Gist).
-  #
-  # terminal? needs to move
-  # RTH: No. It stays here. Details are in Gist.
-  #
-  # remove specs from grid (because we have them on game now)
-  # RTH: Alternate: Remove specs from Game because we have them on Grid now.
-  #
-  # any other usages of who_won on grid inside the codebase?
-  # All usages of who_won on Grid can remain as they were.
-  # Question: Should we do more to remove who_won from Game?
 
   class GameRules
     def initialize(grid)
