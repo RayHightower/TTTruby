@@ -74,12 +74,12 @@ describe GameRunner do
 #     it "can tell if X has won the game" do
 #       player = @players[0]
 #       winning_moves_for_x = StringIO.new('15293')
-# 
+#
 #       while !@thisgamerunner.grid.who_won do
 #         move = winning_moves_for_x.getc.to_i
 #         @thisgamerunner.grid.add_move(player, move)
 #       end
-# 
+#
 #       expect(@thisgamerunner.grid.who_won).to eq "X"
 #     end
 
