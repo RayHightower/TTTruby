@@ -12,7 +12,6 @@ class GameRunner
     @turn = 0
     @is_active = true
     @mover = @player[@turn % 2]
-    start_game
   end
 
   def start_game
